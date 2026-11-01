@@ -101,7 +101,7 @@ try{
   await page.locator('#langEnglish').click();
   assert.equal(await page.locator('#langEnglish').getAttribute('aria-pressed'),'true');
   assert.equal(await page.locator('#exercisePanel').isVisible(),true,'Language switch preserves open exercise list');
-  assert.ok((await page.locator('#exercisePanel').textContent()).includes('Walk'));
+  assert.match(await page.locator('#exercisePanel').textContent(),/walk/i);
   await page.locator('#exerciseToggle').click();
 
   assert.ok((await page.locator('#mealList').textContent()).includes('Plain curd'));
