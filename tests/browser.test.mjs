@@ -15,6 +15,7 @@ await new Promise(ok=>server.listen(0,'127.0.0.1',ok));
 const url='http://127.0.0.1:'+server.address().port+'/sajid-maulana.html';
 const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
 const rowCounts=[20,19,18,20,19,19,21];
+const exerciseCounts=[6,2,6,2,6,2,1];
 try{
  for(const width of [1440,820,390]){
   const page=await browser.newPage({viewport:{width,height:900},deviceScaleFactor:1});
@@ -36,6 +37,22 @@ try{
     return{cal:rows.reduce((n,r)=>n+Number(r.cells[3].textContent),0),pro:rows.reduce((n,r)=>n+Number.parseFloat(r.cells[4].textContent),0),totalCal:Number(total.cells[1].textContent),totalPro:Number.parseFloat(total.cells[2].textContent),span:total.cells[0].colSpan};
    }));
    totals.forEach((v,j)=>{assert.equal(v.cal,v.totalCal,'Day '+(i+1)+' meal '+(j+1)+' calories');assert.equal(v.pro,v.totalPro,'Day '+(i+1)+' meal '+(j+1)+' protein');assert.equal(v.span,3)});
+
+   // Each day has its own hidden-by-default exercise list; no tutorial images yet.
+   const exerciseToggle=page.locator('#exerciseToggle');
+   const exercisePanel=page.locator('#exercisePanel');
+   assert.equal(await exerciseToggle.getAttribute('aria-expanded'),'false','Day '+(i+1)+' initially collapsed');
+   assert.equal(await exercisePanel.isVisible(),false,'Day '+(i+1)+' panel initially hidden');
+   await exerciseToggle.click();
+   assert.equal(await exerciseToggle.getAttribute('aria-expanded'),'true');
+   assert.equal(await exercisePanel.isVisible(),true);
+   assert.equal(await exercisePanel.locator('.exercise-item').count(),exerciseCounts[i],'Day '+(i+1)+' exercises');
+   assert.equal(await exercisePanel.locator('img').count(),0,'No image tutorials until requested');
+   assert.equal(await exercisePanel.locator('a').count(),0,'No tutorial links until requested');
+   const displayedWorkout=await exercisePanel.locator('#exercisePlanTitle').textContent();
+   assert.ok(displayedWorkout&&displayedWorkout.trim().length>3);
+   await exerciseToggle.click();
+   assert.equal(await exercisePanel.isVisible(),false);
    if(width===1440){
     const bounds=await page.locator('.food-table').first().evaluate(table=>{
      const h=table.querySelectorAll('thead th'),f=table.querySelectorAll('tfoot td');
@@ -45,6 +62,14 @@ try{
     assert.ok(Math.abs(bounds.h5-bounds.f5)<3,'Protein footer alignment');
    }
   }
+  // Navigating to another day closes the previously expanded workout.
+  await page.locator('#dayTabs button').first().click();
+  await page.locator('#exerciseToggle').click();
+  assert.equal(await page.locator('#exercisePanel').isVisible(),true);
+  await page.locator('#dayTabs button').nth(1).click();
+  assert.equal(await page.locator('#exercisePanel').isVisible(),false);
+  const exerciseKinds=await page.evaluate(()=>DAY_WORKOUTS.map(x=>x.kind));
+  assert.deepEqual(exerciseKinds,['strength','recovery','strength','rest','strength','recovery','rest']);
   await page.locator('#dayTabs button').nth(1).click();
   const egg=page.locator('.food-table tbody tr').filter({hasText:'Boiled eggs'}).first();
   assert.equal(await egg.count(),1);
@@ -71,8 +96,14 @@ try{
   assert.ok((await page.locator('#mealList').textContent()).includes('Eggs'));
   assert.ok((await page.locator('#mealList').textContent()).includes('Milk'));
   assert.doesNotMatch(await page.locator('#mealList').textContent(),/Anda/i);
+  await page.locator('#exerciseToggle').click();
+  assert.equal(await page.locator('#exercisePanel').isVisible(),true);
   await page.locator('#langEnglish').click();
   assert.equal(await page.locator('#langEnglish').getAttribute('aria-pressed'),'true');
+  assert.equal(await page.locator('#exercisePanel').isVisible(),true,'Language switch preserves open exercise list');
+  assert.ok((await page.locator('#exercisePanel').textContent()).includes('Walk'));
+  await page.locator('#exerciseToggle').click();
+
   assert.ok((await page.locator('#mealList').textContent()).includes('Plain curd'));
   await page.locator('#langHinglish').click();
   assert.ok((await page.locator('#mealList').textContent()).includes('Plain Dahi'));
