@@ -63,6 +63,62 @@ try{
   assert.equal(await recipe.getAttribute('open'),'');
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth);
   assert.ok(overflow<=1,'Page overflow at '+width+'px: '+overflow);
+
+  // Default Hinglish uses familiar names rather than literal Hindi translation.
+  await page.locator('#dayTabs button').first().click();
+  assert.equal(await page.locator('#langHinglish').getAttribute('aria-pressed'),'true');
+  assert.ok((await page.locator('#mealList').textContent()).includes('Dahi'));
+  assert.ok((await page.locator('#mealList').textContent()).includes('Eggs'));
+  assert.ok((await page.locator('#mealList').textContent()).includes('Milk'));
+  assert.doesNotMatch(await page.locator('#mealList').textContent(),/Anda/i);
+  await page.locator('#langEnglish').click();
+  assert.equal(await page.locator('#langEnglish').getAttribute('aria-pressed'),'true');
+  assert.ok((await page.locator('#mealList').textContent()).includes('Plain curd'));
+  await page.locator('#langHinglish').click();
+  assert.ok((await page.locator('#mealList').textContent()).includes('Plain Dahi'));
+  // A bread swap changes exactly one food row and updates the meal and daily totals.
+  const originalCalories=Number((await page.locator('#plannedKcal').textContent()).replace(/[^0-9]/g,''));
+  const breakfast=page.locator('.meal-card').first();
+  const alternatives=breakfast.locator('details.bread-alternatives');
+  assert.equal(await alternatives.count(),1);
+  await alternatives.locator('summary').click();
+  assert.equal(await alternatives.locator('.alt-item').count(),5);
+  await alternatives.locator('.alt-item').nth(1).click();
+  assert.ok((await breakfast.locator('.food-table').textContent()).includes('Roti'));
+  assert.equal(Number((await page.locator('#plannedKcal').textContent()).replace(/[^0-9]/g,'')),originalCalories+3);
+  await page.reload();
+  assert.equal(await page.locator('#langHinglish').getAttribute('aria-pressed'),'true');
+  assert.ok((await page.locator('.meal-card').first().locator('.food-table').textContent()).includes('Roti'));
+  const again=page.locator('.meal-card').first().locator('details.bread-alternatives');
+  await again.locator('summary').click();
+  await again.locator('.alt-item').first().click();
+  assert.equal(Number((await page.locator('#plannedKcal').textContent()).replace(/[^0-9]/g,'')),originalCalories);
+  // Every whole-wheat bread and toast row has alternatives.
+  for(let i=0;i<7;i++){
+    await page.locator('#dayTabs button').nth(i).click();
+    const breadRows=await page.locator('.food-table tbody tr').filter({hasText:/Whole-wheat (bread|toast)/i}).count();
+    assert.equal(await page.locator('.bread-alternatives').count(),breadRows,'Day '+(i+1)+' bread alternative coverage');
+  }
+  // Grocery list is bilingual, includes all major weekly ingredients, and saves checkmarks.
+  const grocery=page.locator('#grocerySection');
+  assert.equal(await grocery.locator('.grocery-card').count(),4);
+  assert.equal(await grocery.locator('.grocery-row').count(),30);
+  assert.ok((await grocery.textContent()).includes('Dahi'));
+  assert.ok((await grocery.textContent()).includes('Milk'));
+  const firstShop=grocery.locator('.grocery-row input').first();
+  await firstShop.check();
+  assert.equal(await page.locator('#groceryProgress').textContent(),'1 / 30');
+  await page.reload();
+  assert.equal(await page.locator('#groceryProgress').textContent(),'1 / 30');
+  assert.equal(await page.locator('#grocerySection .grocery-row input').first().isChecked(),true);
+  await page.locator('#resetGroceries').click();
+  assert.equal(await page.locator('#groceryProgress').textContent(),'0 / 30');
+  await page.locator('#langEnglish').click();
+  assert.ok((await grocery.textContent()).includes('Plain curd'));
+  await page.reload();
+  assert.equal(await page.locator('#langEnglish').getAttribute('aria-pressed'),'true');
+  await page.locator('#langHinglish').click();
+  // Ingredient counts and checkmarks persist independently of the language preference.
   await page.emulateMedia({media:'print'});
   assert.equal(await page.locator('.sidebar').evaluate(e=>getComputedStyle(e).display),'none');
   assert.deepEqual(errors,[]);
