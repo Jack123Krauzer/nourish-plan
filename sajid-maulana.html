@@ -92,18 +92,60 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-vis
 }
 
 @media print{body{background:white}.topbar,.nav-actions,.day-tabs,.section-top,.sidebar,.nav-bottom,.footer,.recipe-toggle,.meal-check,.hero-aside{display:none!important}.layout{padding:0}.hero{min-height:0;background:white!important;color:#172f22;box-shadow:none;padding:0 0 14px}.hero p,.hero-meta span{color:#333}.hero-meta span{background:none;border:1px solid #aaa}.eyebrow{color:#276448}.metrics{display:none}.content-grid{display:block}.meal-card{break-inside:avoid;box-shadow:none;margin-bottom:8px}.meal-bar{background:#eee}.meal-bottom{display:none}.food-table tbody tr{display:table-row}.food-table thead{display:table-header-group}}
+
+/* Bilingual language picker */
+.lang-switch{display:flex;align-items:center;gap:4px;padding:4px;border:1px solid #dce9df;background:#f0f7f2;border-radius:12px}
+.lang-caption{font-size:11px;color:#67816e;font-weight:800;margin:0 8px}
+.lang-switch button{border:0;background:transparent;color:#52725e;border-radius:9px;padding:9px 12px;font-weight:800;font-size:12px;white-space:nowrap}
+.lang-switch button[aria-pressed="true"]{background:#126847;color:#fff;box-shadow:0 3px 8px #175a3326}
+.lang-switch button:focus-visible{outline:2px solid #4faf78;outline-offset:2px}
+.bread-alternatives{border:1px solid #d5e9d9;border-radius:12px;background:#f7fcf8;overflow:hidden;margin-bottom:10px}
+.bread-alternatives>summary{cursor:pointer;list-style:none;display:flex;gap:9px;align-items:center;font-size:12px;font-weight:850;color:#155d3c;padding:13px}
+.bread-alternatives>summary::-webkit-details-marker{display:none}
+.bread-alternatives p{margin:0 13px 10px;color:#607c69;font-size:11px;line-height:1.6}
+.bread-alternatives .alt-arrow{margin-left:auto;transition:transform .18s}
+.bread-alternatives[open] .alt-arrow{transform:rotate(180deg)}
+.alt-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:0 12px 13px}
+.alt-item{display:flex;text-align:left;gap:10px;padding:11px;border:1px solid #dce9de;border-radius:10px;background:white;align-items:center;min-width:0}
+.alt-item:hover{background:#f0faf3;border-color:#8cc39b}
+.alt-item[aria-pressed="true"]{background:#e6f7eb;border-color:#208757}
+.alt-item .food-emoji{width:30px;min-width:30px;height:30px}
+.alt-item .food-emoji svg{width:28px;height:28px}
+.alt-item .alt-text{min-width:0;flex:1}
+.alt-item strong{display:block;font-size:12px;color:#204c35}
+.alt-item small{display:block;color:#708575;font-size:10px;margin-top:3px}
+.alt-item .alt-checked{font-size:12px;color:#137348;font-weight:850}
+.groceries{margin-top:38px;scroll-margin-top:20px}
+.grocery-header{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:0 0 18px}
+.grocery-header h2{margin:4px 0;font-size:26px;letter-spacing:-.7px}
+.grocery-header p{margin:0;color:#72877b;font-size:12px}
+.grocery-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.grocery-progress{border-radius:100px;padding:8px 12px;background:#e6f5eb;color:#176345;font-size:12px;font-weight:850}
+.grocery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grocery-card{border:1px solid #dfebe2;border-radius:17px;background:#fff;padding:19px 19px 13px;box-shadow:0 8px 25px #205b3410}
+.grocery-card h3{font-size:16px;margin:0 0 13px;display:flex;align-items:center;gap:10px}
+.grocery-card h3 span{background:#e9f5ed;border-radius:11px;padding:7px}
+.grocery-row{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #f0f4f0;gap:10px;padding:10px 0;font-size:12px}
+.grocery-row label{display:flex;align-items:center;gap:9px;cursor:pointer;font-weight:650;min-width:0}
+.grocery-row input{accent-color:#12784e;width:15px;height:15px;flex-shrink:0}
+.grocery-row label.checked span{text-decoration:line-through;color:#9bb0a0}
+.grocery-row small{font-size:11px;color:#758b7c;text-align:right;white-space:nowrap}
+.grocery-disclaimer{font-size:12px;color:#71877c;margin-top:13px}
+@media(max-width:850px){.grocery-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.lang-caption{display:none}.lang-switch{padding:3px}.lang-switch button{padding:8px;font-size:11px}.nav-actions .ghost{display:none}.nav-actions{gap:5px}.alt-list{grid-template-columns:1fr}.nav-actions .outline span{display:none}.topbar-inner{padding:0 12px}.grocery-header{align-items:start;flex-direction:column}.grocery-card{padding:15px}.grocery-header h2{font-size:22px}}
+@media print{.lang-switch,.bread-alternatives,.grocery-actions{display:none!important}.grocery-card{break-inside:avoid}}
 </style>
 </head>
 <body>
 <header class="topbar"><div class="topbar-inner">
 <a href="./index.html" class="brand"><span class="brand-mark" aria-hidden="true">✳</span><span>Nourish<span>Plan</span></span></a>
-<div class="nav-actions"><a class="ghost" href="./index.html" aria-label="Back to all plans"><span>← All plans</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></a><button class="outline" type="button" id="printTop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg><span>Print day</span></button></div>
+<div class="nav-actions"><div class="lang-switch" role="group" aria-label="Language"><span class="lang-caption">🌐 Language</span><button type="button" id="langHinglish" aria-pressed="true">Hinglish</button><button type="button" id="langEnglish" aria-pressed="false">English</button></div><a class="ghost" href="./index.html" aria-label="Back to all plans"><span>← All plans</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></a><button class="outline" type="button" id="printTop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg><span>Print day</span></button></div>
 </div></header>
 <main class="layout">
 <section class="hero" aria-labelledby="hero-title"><div class="hero-main">
 <div class="eyebrow"><span class="dot"></span>YOUR PERSONALIZED NUTRITION PLAN</div>
 <h1 id="hero-title">Eat better.<br>Grow stronger.</h1>
-<p>A clear, practical 7-day Indian diet plan. No guesswork, just what to eat, how much to eat and how to prepare it.</p>
+<p data-i18n="hero">A clear, practical 7-day Indian diet plan. No guesswork, just what to eat, how much to eat and how to prepare it.</p>
 <div class="hero-meta"><span>👤 Sajid Maulana</span><span>🎂 35 years</span><span>🥗 Non-vegetarian</span><span>🏋️ Muscle gain</span></div>
 </div><div class="hero-aside"><small>YOUR WEIGHT GOAL</small><div class="hero-big"><strong>55 → 60</strong><span>kg</span></div><div class="hero-track"></div><div class="hero-scale"><span>Current: 55 kg</span><span>Goal: 60 kg</span></div><p>Build muscle through consistent meals, training and recovery.</p></div></section>
 <section class="metrics" aria-label="Daily goals">
@@ -112,7 +154,7 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-vis
 <div class="metric"><span class="metric-symbol" aria-hidden="true">⚖️</span><div><div class="metric-label">Current weight</div><strong>55 <span>kg</span></strong></div></div>
 <div class="metric"><span class="metric-symbol" aria-hidden="true">🎯</span><div><div class="metric-label">Target weight</div><strong>60 <span>kg</span></strong></div></div>
 </section>
-<div class="section-top"><div><h2>Your 7-day schedule</h2><p>Choose a day to see each meal and its portions.</p></div><span class="section-hint">✓ Mark a meal after eating</span></div>
+<div class="section-top"><div><h2 data-i18n="schedule">Your 7-day schedule</h2><p data-i18n="scheduleDesc">Choose a day to see each meal and its portions.</p></div><span class="section-hint" data-i18n="markHint">✓ Mark a meal after eating</span></div>
 <nav class="day-tabs" id="dayTabs" aria-label="Seven day meal plan"></nav>
 <div class="content-grid">
 <section class="planner" aria-labelledby="dayTitle">
@@ -126,6 +168,10 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-vis
 <div class="side-card"><h3>Daily nutrition</h3><div class="target-label">Starting targets</div><div class="target-row"><span>Calories</span><strong>~2,200 kcal</strong></div><div class="target-row"><span>Protein</span><strong>~105 g</strong></div><div class="target-row"><span>Carbohydrates</span><strong>~290 g</strong></div><div class="target-row"><span>Fat</span><strong>~69 g</strong></div><div class="planned"><div class="target-label">Estimated food total · selected day</div><big id="plannedKcal">—</big><small id="plannedProtein">—</small></div><div class="tip"><span class="tip-icon">💡</span><span>Listed meal estimates may exceed or fall below starting targets. Use food labels for precise tracking.</span></div></div>
 <div class="side-card"><h3>Quick guide</h3><div class="tip"><span class="tip-icon">🥄</span><span><strong>Quantity</strong> = item count, such as 2 eggs or 10–15 almonds.</span></div><div class="tip"><span class="tip-icon">⚖️</span><span><strong>Portion</strong> = weight or volume, such as 50 g each or 200 ml.</span></div><div class="tip"><span class="tip-icon">👨‍🍳</span><span>Open <strong>View recipe</strong> only when you need cooking directions.</span></div><div class="side-actions"><button type="button" class="outline" id="printSide">🖨 Print day</button></div></div>
 </aside></div>
+<section class="groceries" id="grocerySection" aria-label="Weekly Grocery List">
+<div class="grocery-header"><div><div class="day-eyebrow" data-i18n="shopEyebrow">SHOP SMARTER</div><h2 data-i18n="shopTitle">Weekly Grocery List</h2><p data-i18n="shopDescription">Everything you'll generally need across all 7 days, in one checklist.</p></div><div class="grocery-actions"><span class="grocery-progress" id="groceryProgress">0 / 0</span><button type="button" class="outline" id="copyGroceries" data-i18n="copyList">Copy list</button><button type="button" class="outline" id="resetGroceries" data-i18n="resetList">Reset</button></div></div>
+<div id="groceryGrid" class="grocery-grid"></div>
+<p class="grocery-disclaimer" data-i18n="shopDisclaimer">Rounded shopping estimates for one adult. Adjust to your appetite and the bread alternatives you select. Per-meal quantities remain the reference.</p></section>
 <footer class="footer">Nourish Plan · Food values are estimates, not a medical prescription. · Keep training and recovery consistent.</footer>
 </main>
 <script>
@@ -159,6 +205,7 @@ const FOOD_SVG = {
  bread: svgBody('<path d="M7 13q-3-10 8-10h10q11 0 8 10v22H7z" fill="#d08f4b" stroke="#925626" stroke-width="1.8"/><path d="M11 14q-1-8 6-8h7q7 0 6 8v18H11z" fill="#f5d5a0" stroke="#ddaa64" stroke-width="1.3"/><path d="M13 18h15" stroke="#ead0a5" stroke-width="1.4"/>'),
  chilla: svgBody('<ellipse cx="20" cy="30" rx="17" ry="6" fill="#f0efe9" stroke="#abb4a8" stroke-width="1.2"/><ellipse cx="20" cy="24" rx="15" ry="7" fill="#e7b968" stroke="#b48a43" stroke-width="1.4"/><ellipse cx="19" cy="20" rx="15" ry="7" fill="#f2c978" stroke="#b48a43" stroke-width="1.4"/><g fill="#488e51"><circle cx="14" cy="19" r="1.4"/><circle cx="25" cy="21" r="1.2"/><circle cx="21" cy="17" r="1.4"/></g>'),
  butter: svgBody('<rect x="8" y="12" width="24" height="24" rx="5" fill="#c79452" stroke="#90683d" stroke-width="1.5"/><rect x="6" y="8" width="28" height="7" rx="3" fill="#e7bb7d" stroke="#a98151" stroke-width="1.5"/><rect x="12" y="21" width="16" height="9" rx="2" fill="#fff3d2"/><path d="M15 25h10" stroke="#be9655" stroke-width="1.3"/>'),
+ idli: svgBody('<ellipse cx="20" cy="32" rx="17" ry="5" fill="#b9d0db" stroke="#799ba7" stroke-width="1.2"/><ellipse cx="13" cy="22" rx="9" ry="9" fill="#fffdf3" stroke="#d1c8ad" stroke-width="1.6"/><ellipse cx="26" cy="21" rx="9" ry="9" fill="#fffdf5" stroke="#d1c8ad" stroke-width="1.6"/>'),
  other: svgBody('<ellipse cx="20" cy="29" rx="17" ry="6" fill="#e4f0e9" stroke="#80a28e" stroke-width="1.7"/><ellipse cx="20" cy="26" rx="12" ry="4" fill="#fbfff5" stroke="#bbd1bd" stroke-width="1"/><path d="M6 8v13m-3-13v9m6-9v9M34 8v13" stroke="#658a74" stroke-width="2" stroke-linecap="round"/>')
 };
 function foodCategory(name){
@@ -183,6 +230,7 @@ function foodCategory(name){
  if(/bread|toast/.test(n))return "bread";
  if(/chilla/.test(n))return "chilla";
  if(/butter/.test(n))return "butter";
+ if(/idli/.test(n))return "idli";
  return "other";
 }
 function makeFoodGraphic(name){
@@ -191,6 +239,195 @@ function makeFoodGraphic(name){
  icon.innerHTML=FOOD_SVG[foodCategory(name)] || FOOD_SVG.other;
  return icon;
 }
+
+const langKey="nourish-plan-language";
+let language="hinglish";
+try{const saved=localStorage.getItem(langKey);if(saved==="english"||saved==="hinglish")language=saved;}catch(_){}
+const FOOD_HI={
+ "Boiled eggs":"Boiled Eggs","Eggs":"Eggs","Plain curd":"Plain Dahi","Curd":"Dahi","Almonds":"Badam","Rice":"Chawal",
+ "Mixed vegetables":"Mix Sabzi","Roasted chana":"Bhuna Chana","Peanuts":"Moongfali","Chapatis":"Roti","Cooked dal":"Dal",
+ "Vegetable sabzi":"Sabzi","Dates":"Khajoor","Cucumber salad":"Kheera Salad","Onion & tomato":"Pyaaz & Tomato",
+ "Besan chillas":"Besan Chilla","Guava":"Amrood","Cucumber raita":"Kheera Raita","Paneer stuffing":"Paneer Filling"
+};
+const MEAL_HI={
+ "Boiled eggs, toast, banana & milk":"Boiled Eggs, Toast, Banana & Milk",
+ "Curd, almonds & papaya":"Dahi, Badam & Papaya",
+ "Spiced chicken, rice & vegetable sabzi":"Masala Chicken, Chawal & Sabzi",
+ "Roasted chana, banana & peanuts":"Bhuna Chana, Banana & Moongfali",
+ "Chapati, dal, paneer & salad":"Roti, Dal, Paneer & Salad",
+ "Vegetable poha & eggs":"Veg Poha & Eggs",
+ "Fish curry, chapatis, sabzi & curd":"Fish Curry, Roti, Sabzi & Dahi",
+ "Rajma rice & salad":"Rajma Chawal & Salad",
+ "Plain curd":"Plain Dahi",
+ "Banana-almond oats":"Banana-Badam Oats",
+ "Eggs & orange":"Eggs & Orange",
+ "Chicken curry, chapati & sabzi":"Chicken Curry, Roti & Sabzi",
+ "Curd, chana & dates":"Dahi, Chana & Khajoor",
+ "Moong dal rice & salad":"Moong Dal, Chawal & Salad",
+ "Banana, peanuts & milk":"Banana, Moongfali & Milk",
+ "Chole chawal with curd":"Chole Chawal & Dahi",
+ "Chicken breast, chapati & sabzi":"Chicken Breast, Roti & Sabzi",
+ "Paneer besan chillas & curd":"Paneer Besan Chilla & Dahi",
+ "Banana, almonds & milk":"Banana, Badam & Milk",
+ "Fish with rice & vegetables":"Fish, Chawal & Sabzi",
+ "Peanut butter toast & guava":"Peanut Butter Toast & Amrood",
+ "Chapatis, masoor dal & salad":"Roti, Masoor Dal & Salad",
+ "Eggs & vegetable upma":"Eggs & Veg Upma",
+ "Chicken pulao & cucumber raita":"Chicken Pulao & Kheera Raita",
+ "Chana, peanuts & apple":"Chana, Moongfali & Apple",
+ "Chapati, dal & sabzi":"Roti, Dal & Sabzi",
+ "Egg bhurji & chapati":"Egg Bhurji & Roti",
+ "Banana, almonds & curd":"Banana, Badam & Dahi",
+ "Home-style chicken curry & rice":"Homestyle Chicken Curry & Chawal",
+ "Chapati, dal, paneer & vegetables":"Roti, Dal, Paneer & Sabzi"
+};
+const DAY_HI=["Chicken, Eggs & Dal","Fish, Poha & Rajma","Oats, Chicken & Moong Dal","Eggs, Chole & Chicken","Paneer, Fish & Masoor Dal","Chicken Pulao & Eggs","Chicken Curry & Paneer"];
+const RECIPES_HI={
+ "Spiced chicken, rice & vegetable sabzi":"Chicken ko ginger-garlic, haldi, mirch, namak aur nimbu ke saath 10 min marinate karein. Listed oil ke 5 g mein chicken ko 74°C internal temperature tak pakayein. Chawal banayein. Bache hue 5 g oil mein jeera daal kar Sabzi sauté karein.",
+ "Chapati, dal, paneer & salad":"Listed atta se 2 Roti bina extra oil banayein. Dal ko haldi, jeera aur tomato ke saath pakayein; 5 g oil ka tadka dein. Paneer ko kali mirch ke saath season karke Salad ke saath serve karein.",
+ "Vegetable poha & eggs":"Poha ko rai, curry patta, pyaaz, Moongfali aur Sabzi ke saath listed oil mein banayein. Saath mein 2 Boiled Eggs lein.",
+ "Fish curry, chapatis, sabzi & curd":"Fish ko ginger-garlic, haldi, dhaniya, tomato aur listed oil ke saath 63°C internal temperature tak pakayein. Bina extra oil wali Roti, Sabzi aur Dahi ke saath serve karein.",
+ "Rajma rice & salad":"Rajma raat bhar bhigoye, soaking water discard karein aur achhi tarah boil karein. Tomato, pyaaz, jeera aur listed oil se Rajma masala banayein. Chawal aur Salad ke saath serve karein.",
+ "Banana-almond oats":"Oats ko Milk mein thick hone tak pakayein; Banana aur Badam add karein.",
+ "Chicken curry, chapati & sabzi":"Chicken ko pyaaz, tomato, ginger-garlic, haldi, mirch aur dhaniya ke saath listed oil mein 74°C internal temperature tak pakayein. Roti aur Sabzi ke saath serve karein.",
+ "Moong dal rice & salad":"Moong Dal ko haldi aur tomato ke saath pakayein; listed oil mein jeera ka tadka dein. Chawal aur Kheera Salad ke saath serve karein.",
+ "Masala omelette & toast":"Eggs ko pyaaz, tomato, dhaniya, mirch aur namak ke saath whisk karein. Listed oil mein omelette set hone tak pakayein; Toast aur Orange ke saath serve karein.",
+ "Chole chawal with curd":"Chole ko raat bhar bhigokar achhi tarah pakayein. Tomato, pyaaz, jeera, dhaniya aur listed oil mein masala banayein. Chawal, Dahi aur Salad ke saath serve karein.",
+ "Chicken breast, chapati & sabzi":"Chicken ko ginger-garlic, haldi, dhaniya aur nimbu se season karein. Listed oil mein 74°C tak pakayein; bache hue oil mein Sabzi banayein. Roti bina extra oil banayein.",
+ "Paneer besan chillas & curd":"Besan mein pani, pyaaz, dhaniya, haldi aur namak mila kar batter banayein. Listed oil mein 2 Chilla banakar Paneer filling karein. Dahi ke saath serve karein.",
+ "Fish with rice & vegetables":"Fish ko haldi, nimbu aur kali mirch se season karein; 5 g oil mein 63°C tak pakayein. Chawal aur bache hue 5 g oil mein Sabzi banayein.",
+ "Chapatis, masoor dal & salad":"Roti bina extra oil banayein. Masoor Dal ko haldi aur tomato ke saath pakayein; listed oil mein jeera ka tadka dein. Salad ke saath serve karein.",
+ "Eggs & vegetable upma":"Rava ko halka roast karke rai, curry patta, Sabzi aur listed oil ke saath Upma banayein. Boiled Eggs ke saath serve karein.",
+ "Chicken pulao & cucumber raita":"Whole spices aur Chicken ko listed oil mein sauté karein; Chawal aur Sabzi add karke dum dein. Chicken ka internal temperature 74°C hona chahiye. Kheera Raita ke saath serve karein.",
+ "Chapati, dal & sabzi":"Roti bina extra oil banayein. Dal ko haldi aur jeera ke saath pakayein; listed oil Sabzi mein use karein.",
+ "Egg bhurji & chapati":"Eggs ko pyaaz, tomato, haldi, mirch aur dhaniya ke saath listed oil mein scramble karein. Bina extra oil wali Roti ke saath serve karein.",
+ "Home-style chicken curry & rice":"Pyaaz, tomato, ginger-garlic aur masala ko listed oil mein sauté karein. Chicken add karke 74°C tak pakayein. Chawal aur Salad ke saath serve karein.",
+ "Chapati, dal, paneer & vegetables":"Roti bina extra oil banayein. Dal mein haldi aur jeera add karein. Paneer ko dhaniya aur kali mirch se season karein; listed oil mein Sabzi sauté karein."
+};
+const TEXT={
+ english:{
+ hero:"A clear, practical 7-day Indian diet plan. No guesswork, just what to eat, how much to eat and how to prepare it.",
+ schedule:"Your 7-day schedule",scheduleDesc:"Choose a day to see each meal and its portions.",markHint:"✓ Mark a meal after eating",
+ food:"Your food & portions",recipe:"👨‍🍳 View recipe",prep:"Preparation",simple:"Ready to eat · No recipe needed",
+ dayDescription:"Six meals · Easy-to-read portions · Optional recipes",eaten:"Eaten",
+ alt:"Alternatives to whole-wheat bread",altExplain:"Choose a similar-calorie replacement. Portions and meal totals update automatically. Protein and fibre are not identical.",original:"Original bread",choose:"Choose",
+ progressReady:"Ready to begin",progressOngoing:"Keep it going",progressDone:"All meals complete!",progressReadyText:"Tick a meal after eating. Your progress saves in this browser.",progressDoneText:"You completed today's meal checklist.",remaining:"meals remaining today.",
+ shopEyebrow:"SHOP SMARTER",shopTitle:"Weekly Grocery List",shopDescription:"Everything you'll generally need across all 7 days, in one checklist.",copyList:"Copy list",resetList:"Reset",shopDisclaimer:"Rounded shopping estimates for one adult. Bread substitutions may change what you need. The per-meal portions are the reference.",
+ shopCategories:["Protein & dairy","Grains & pulses","Fruits & vegetables","Nuts & pantry"],shopNames:["Eggs","Boneless chicken","Fish","Paneer","Milk","Plain curd","Whole-wheat atta","Whole-wheat bread","Rice","Oats","Poha","Rava (upma)","Besan","Mixed dal","Rajma","Chole","Bananas","Apples","Oranges","Papaya","Guava","Mixed vegetables","Salad ingredients","Almonds","Peanuts","Roasted chana","Peanut butter","Dates","Cooking oil","Onion, tomato & spices"],
+ },
+ hinglish:{
+ hero:"7 din ka easy Indian diet plan: kya khana hai, kitna khana hai aur kaise banana hai, sab ek jagah.",
+ schedule:"Aapka 7-day diet schedule",scheduleDesc:"Day select karein aur har meal ki exact quantity dekhein.",markHint:"✓ Meal khane ke baad tick karein",
+ food:"Kya khana hai & kitna",recipe:"👨‍🍳 Recipe dekhein",prep:"Kaise banayein",simple:"Seedha kha sakte hain · Recipe ki zaroorat nahi",
+ dayDescription:"6 meals · Exact portions · Optional recipes",eaten:"Kha liya",
+ alt:"Whole-wheat bread ke alternatives",altExplain:"Bread ke badle similar-calorie option select karein. Meal ka portion aur nutrition total update hoga. Protein aur fibre same nahi honge.",original:"Original bread",choose:"Choose",
+ progressReady:"Shuru karein",progressOngoing:"Aise hi continue karein",progressDone:"Saare meals complete!",progressReadyText:"Meal khane ke baad tick karein. Progress browser mein save rahegi.",progressDoneText:"Aaj ke saare meals complete ho gaye.",remaining:"meals baaki hain.",
+ shopEyebrow:"WEEKLY PLANNING",shopTitle:"Hafte ki Grocery List",shopDescription:"Poore 7 din ke liye kaunse ingredients chahiye, ek hi checklist mein.",copyList:"List copy karein",resetList:"Reset",shopDisclaimer:"Yeh ek adult ke liye rounded shopping estimates hain. Bread alternatives select karne se ingredients badal sakte hain. Meal chart ki portion sizes follow karein.",
+ shopCategories:["Protein & Dairy","Grains & Dal","Fruits & Sabzi","Nuts & Pantry"],shopNames:["Eggs","Boneless Chicken","Fish","Paneer","Milk","Dahi","Atta","Whole-wheat bread","Chawal","Oats","Poha","Rava (Upma)","Besan","Mixed Dal","Rajma","Chole","Banana","Apple","Orange","Papaya","Amrood","Mix Sabzi","Salad items","Badam","Moongfali","Bhuna Chana","Peanut butter","Khajoor","Cooking oil","Pyaaz, tomato & masale"],
+ }
+};
+const t=k=>TEXT[language][k]??TEXT.english[k]??k;
+const foodText=name=>language==="hinglish"?(FOOD_HI[name]||name):name;
+const dishText=name=>language==="hinglish"?(MEAL_HI[name]||name):name;
+const recipeText=name=>language==="hinglish"?(RECIPES_HI[name]||recipes[name]):recipes[name];
+function paintStaticText(){
+ try{document.documentElement.lang=language==="hinglish"?"hi-Latn":"en";}catch(_){}
+ el("langHinglish").setAttribute("aria-pressed",String(language==="hinglish"));
+ el("langEnglish").setAttribute("aria-pressed",String(language==="english"));
+ if(typeof document.querySelectorAll==="function")for(const n of document.querySelectorAll("[data-i18n]"))n.textContent=t(n.getAttribute("data-i18n"));
+}
+function setLanguage(code){if(code!=="english"&&code!=="hinglish")return;language=code;try{localStorage.setItem(langKey,code);}catch(_){}render();}
+const swapKey="nourish-sajid-bread-swaps-v1";
+let breadSwaps={};
+try{const val=JSON.parse(localStorage.getItem(swapKey)||"{}");if(val&&typeof val==="object"&&!Array.isArray(val))breadSwaps=val;}catch(_){}
+const isBread=name=>/whole-wheat (bread|toast)/i.test(name);
+function breadOptions(row){
+ const half=/30\s*g/i.test(row[2]);
+ return[
+ {id:"original",row:row.slice()},
+ {id:"roti",row:half?["1 small","Chapatis","22 g atta (no oil)",75,3]:["2 small","Chapatis","45 g atta (no oil)",153,5]},
+ {id:"oats",row:half?["1 portion","Oats","20 g dry",76,3]:["1 portion","Oats","40 g dry",152,5]},
+ {id:"rice",row:half?["1 portion","Rice","20 g dry",72,1]:["1 portion","Rice","42 g dry",151,3]},
+ {id:"idli",row:half?["1 small","Idli","50 g total",72,2]:["2 small","Idli","100 g total",145,4]}
+ ];
+}
+function breadInfo(d,m){
+ const rs=days[d][m][2],i=rs.findIndex(r=>isBread(r[1]));if(i<0)return null;
+ const key=d+"-"+m+"-"+i,options=breadOptions(rs[i]);
+ return {key,index:i,options,choice:options.find(x=>x.id===breadSwaps[key])||options[0]};
+}
+function currentRows(d,m){const info=breadInfo(d,m),rows=days[d][m][2];return!info||info.choice.id==="original"?rows:rows.map((r,i)=>i===info.index?info.choice.row:r);}
+function displayDish(d,m){
+ const title=days[d][m][1], info=breadInfo(d,m),base=dishText(title);
+ if(!info||info.choice.id==="original")return base;
+ const replacement=foodText(info.choice.row[1]);
+ if(/peanut butter (toast|sandwich)/i.test(title))return"Peanut butter + "+replacement+(/guava/i.test(title)?(language==="hinglish"?" & Amrood":" & Guava"):/fruit/i.test(title)?" & Fruit":"");
+ return base.replace(/toast/ig,replacement).replace(/bread/ig,replacement);
+}
+function displayRecipe(d,m){
+ const title=days[d][m][1],v=recipeText(title),info=breadInfo(d,m);
+ return !info||info.choice.id==="original"?v:v.replace(/\btoast\b/gi,foodText(info.choice.row[1])).replace(/\bbread\b/gi,foodText(info.choice.row[1]));
+}
+function makeAlternatives(mi){
+ const info=breadInfo(active,mi);if(!info)return null;
+ const d=elNode("details","bread-alternatives");const s=elNode("summary");
+ s.append(elNode("span","","↔"),document.createTextNode(t("alt")),elNode("span","alt-arrow","⌄"));
+ d.append(s,elNode("p","",t("altExplain")));
+ const list=elNode("div","alt-list");
+ for(const option of info.options){
+  const b=elNode("button","alt-item");b.type="button";b.setAttribute("aria-pressed",String(option.id===info.choice.id));
+  const box=elNode("span","alt-text");
+  box.append(elNode("strong","",option.id==="original"?t("original")+" · "+foodText(option.row[1]):foodText(option.row[1])),elNode("small","",option.row[0]+" · "+option.row[2]+" · "+option.row[3]+" kcal · "+option.row[4]+" g protein"));
+  b.append(makeFoodGraphic(option.row[1]),box,elNode("span","alt-checked",option.id===info.choice.id?"✓":t("choose")));
+  b.addEventListener("click",()=>{
+   if(option.id==="original")delete breadSwaps[info.key];else breadSwaps[info.key]=option.id;
+   try{localStorage.setItem(swapKey,JSON.stringify(breadSwaps));}catch(_){}
+   render();
+   if(typeof document.querySelectorAll==="function"){
+    const card=document.querySelectorAll("#mealList .meal-card")[mi];
+    const panel=card?.querySelector("details.bread-alternatives");if(panel)panel.open=true;
+   }
+  });
+  list.append(b);
+ }
+ d.append(list);return d;
+}
+/* Rounded purchase quantities: independent from nutrient calculation. */
+const GROCERIES=[
+ {icon:"🥚",items:[["eggs","15 pieces"],["chicken","750 g"],["fish","350 g"],["paneer","200 g"],["milk","2.5 litres"],["dahi","1.5 kg"]]},
+ {icon:"🌾",items:[["atta","750 g"],["bread","1 small loaf"],["rice","500 g"],["oats","100 g"],["poha","100 g"],["rava","100 g"],["besan","100 g"],["dal","350 g"],["rajma","100 g"],["chole","100 g"]]},
+ {icon:"🥬",items:[["banana","8–10 pieces"],["apple","2 pieces"],["orange","2 pieces"],["papaya","150 g"],["guava","150 g"],["vegetables","2–2.5 kg"],["salad","700 g–1 kg"]]},
+ {icon:"🥜",items:[["almonds","75 g"],["peanuts","75 g"],["chana","150 g"],["peanutButter","100 g"],["dates","50 g"],["oil","160–200 ml"],["spices","As required"]]}
+];
+const GROCERY_NAMES={
+ english:{eggs:"Eggs",chicken:"Boneless chicken",fish:"Fish",paneer:"Paneer",milk:"Milk",dahi:"Plain curd",atta:"Whole-wheat atta",bread:"Whole-wheat bread",rice:"Rice",oats:"Oats",poha:"Poha",rava:"Rava (upma)",besan:"Besan",dal:"Mixed dal",rajma:"Rajma",chole:"Chole",banana:"Bananas",apple:"Apples",orange:"Oranges",papaya:"Papaya",guava:"Guava",vegetables:"Mixed vegetables",salad:"Salad ingredients",almonds:"Almonds",peanuts:"Peanuts",chana:"Roasted chana",peanutButter:"Peanut butter",dates:"Dates",oil:"Cooking oil",spices:"Onion, tomato & spices"},
+ hinglish:{eggs:"Eggs",chicken:"Boneless Chicken",fish:"Fish",paneer:"Paneer",milk:"Milk",dahi:"Dahi",atta:"Atta",bread:"Whole-wheat bread",rice:"Chawal",oats:"Oats",poha:"Poha",rava:"Rava (Upma)",besan:"Besan",dal:"Mixed Dal",rajma:"Rajma",chole:"Chole",banana:"Banana",apple:"Apple",orange:"Orange",papaya:"Papaya",guava:"Amrood",vegetables:"Mix Sabzi",salad:"Salad items",almonds:"Badam",peanuts:"Moongfali",chana:"Bhuna Chana",peanutButter:"Peanut butter",dates:"Khajoor",oil:"Cooking oil",spices:"Pyaaz, tomato & masale"}
+};
+const shopKey="nourish-sajid-grocery-v1";let groceriesChecked={};
+try{const obj=JSON.parse(localStorage.getItem(shopKey)||"{}");if(obj&&typeof obj==="object"&&!Array.isArray(obj))groceriesChecked=obj;}catch(_){}
+function saveGroceries(){try{localStorage.setItem(shopKey,JSON.stringify(groceriesChecked));}catch(_){}}
+function renderGroceries(){
+ const grid=el("groceryGrid");grid.replaceChildren();
+ GROCERIES.forEach((category,ci)=>{
+  const card=elNode("section","grocery-card"),h=elNode("h3");
+  h.append(elNode("span","",category.icon),document.createTextNode(t("shopCategories")[ci]));card.append(h);
+  for(const [id,portion] of category.items){
+   const row=elNode("div","grocery-row"),label=elNode("label",groceriesChecked[id]?"checked":"");
+   const cb=document.createElement("input");cb.type="checkbox";cb.checked=!!groceriesChecked[id];
+   cb.setAttribute("aria-label",GROCERY_NAMES[language][id]);
+   cb.addEventListener("change",()=>{groceriesChecked[id]=cb.checked;saveGroceries();renderGroceries();});
+   label.append(cb,elNode("span","",GROCERY_NAMES[language][id]));row.append(label,elNode("small","",portion));card.append(row);
+  }
+  grid.append(card);
+ });
+ const all=GROCERIES.flatMap(g=>g.items.map(x=>x[0]));
+ el("groceryProgress").textContent=all.filter(id=>groceriesChecked[id]).length+" / "+all.length;
+}
+function copyGroceryList(){
+ const val=GROCERIES.map((g,i)=>t("shopCategories")[i]+"\n"+g.items.map(([id,portion])=>"- "+GROCERY_NAMES[language][id]+": "+portion).join("\n")).join("\n\n");
+ if(typeof navigator!=="undefined"&&navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(val).catch(()=>{});
+}
+
 const key="nourish-sajid-meals-v1";
 let done={},active=0;
 try{done=JSON.parse(localStorage.getItem(key)||"{}")}catch(_){done={}}
@@ -199,22 +436,86 @@ const sum=(rs,col)=>rs.reduce((n,r)=>n+Number(r[col]||0),0);
 const elNode=(tag,className,textValue)=>{const n=document.createElement(tag);if(className)n.className=className;if(textValue!==undefined)n.textContent=String(textValue);return n;};
 function completed(i){return days[i].filter((_,m)=>done[i+"-"+m]).length;}
 function keep(){try{localStorage.setItem(key,JSON.stringify(done))}catch(_){}}
-function renderTabs(){const tabs=el("dayTabs");tabs.replaceChildren();days.forEach((d,i)=>{const n=completed(i),b=elNode("button","day-tab"+(i===active?" active":""),undefined);b.type="button";b.setAttribute("aria-current",i===active?"true":"false");const name=elNode("span","day-name","Day "+(i+1));const count=elNode("span","day-count",n+"/6 meals done");const track=elNode("div","day-track");const fill=elNode("div","day-fill");fill.style.width=(n/6*100)+"%";track.append(fill);b.append(name,count,track);b.addEventListener("click",()=>{active=i;render();});tabs.append(b);});}
-function makeRow(row){const tr=document.createElement("tr");row.forEach((value,index)=>{const td=document.createElement("td");if(index===1){const group=elNode("span","food-name");const emoji=makeFoodGraphic(value);const label=elNode("span","",/\boil\b/i.test(value)?value+" (for cooking)":value);group.append(emoji,label);td.append(group);}else{td.textContent=index===4?value+" g":String(value)}tr.append(td)});return tr;}
-function makeMeal(meal,mi){const rows=meal[2],cal=sum(rows,3),protein=sum(rows,4);
-const article=elNode("article","meal-card"+(done[active+"-"+mi]?" completed":""));
-const bar=elNode("div","meal-bar"),left=elNode("div","meal-title"),symbol=elNode("span","meal-symbol",mealIcons[mi]);symbol.setAttribute("aria-hidden","true");const txt=elNode("div");txt.append(elNode("strong","",mealDescriptions[mi]),elNode("small","",times[mi]));left.append(symbol,txt);
-const label=elNode("label","meal-check"),cb=document.createElement("input");cb.type="checkbox";cb.checked=!!done[active+"-"+mi];cb.setAttribute("aria-label","Mark "+mealDescriptions[mi]+" as eaten");cb.addEventListener("change",()=>{done[active+"-"+mi]=cb.checked;keep();render();});label.append(cb,document.createTextNode("Eaten"));bar.append(left,label);
-const body=elNode("div","meal-content"),dish=elNode("div","dish-row");dish.append(elNode("h3","",meal[1]),elNode("span","macro-summary",cal+" kcal · "+protein+" g protein"));body.append(dish,elNode("div","whattoeat","Your food & portions"));
-const wrapper=elNode("div","food-scroll"),table=elNode("table","food-table");table.setAttribute("aria-label",meal[0]+" food quantities and nutrition");const columns=document.createElement("colgroup");[15,37,24,12,12].forEach(w=>{const c=document.createElement("col");c.style.width=w+"%";columns.append(c)});table.append(columns);const thead=document.createElement("thead"),headrow=document.createElement("tr");["Quantity","What to eat","Size / Portion","Kcal","Protein"].forEach(h=>{const th=elNode("th","",h);th.scope="col";headrow.append(th)});thead.append(headrow);const tbody=document.createElement("tbody");rows.forEach(r=>tbody.append(makeRow(r)));const tfoot=document.createElement("tfoot"),totalrow=document.createElement("tr"),name=elNode("td","total-label","Meal total");name.colSpan=3;totalrow.append(name,elNode("td","total-kcal",cal),elNode("td","total-protein",protein+" g"));tfoot.append(totalrow);table.append(thead,tbody,tfoot);wrapper.append(table);body.append(wrapper);
-article.append(bar,body);
-const bottom=elNode("div","meal-bottom");if(recipes[meal[1]]){const details=elNode("details","recipe"),summary=elNode("summary","recipe-toggle");summary.append(document.createTextNode("👨‍🍳 View recipe"),elNode("span","chev","⌄"));const panel=elNode("div","recipe-panel");panel.append(elNode("h4","","Preparation"),elNode("p","",recipes[meal[1]]));details.append(summary,panel);bottom.append(details);}else{bottom.append(elNode("span","simple-note","Ready to eat · No recipe needed"));}article.append(bottom);return article;}
-function renderSide(){const n=completed(active),percent=n/6*100;el("dayBadge").textContent=n+" / 6 eaten";el("progressRing").style.background="conic-gradient(#168b5d "+percent+"%,#e8f0e8 "+percent+"%)";el("ringCount").textContent=n+"/6";el("progressHeading").textContent=n===6?"All meals complete!":n===0?"Ready to begin":"Keep it going";el("progressText").textContent=n===6?"You completed today's meal checklist.":n===0?"Tick a meal after eating. Your progress saves in this browser.":(6-n)+" meal"+(6-n===1?"":"s")+" remaining today.";const day=days[active],totalKcal=day.reduce((v,m)=>v+sum(m[2],3),0),totalProtein=day.reduce((v,m)=>v+sum(m[2],4),0);el("plannedKcal").textContent=totalKcal.toLocaleString()+" kcal";el("plannedProtein").textContent=totalProtein+" g protein · approx. from listed foods";}
-function render(){el("dayEyebrow").textContent="DAY "+String(active+1).padStart(2,"0")+" OF 07";el("dayTitle").textContent=dayThemes[active];el("dayDescription").textContent="Six meals · Easy-to-read portions · Optional recipes";const area=el("mealList");area.replaceChildren();days[active].forEach((m,i)=>area.append(makeMeal(m,i)));renderSide();renderTabs();el("prevDay").disabled=active===0;el("nextDay").disabled=active===days.length-1;}
+
+function renderTabs(){
+ const tabs=el("dayTabs");tabs.replaceChildren();
+ days.forEach((d,i)=>{
+  const n=completed(i),b=elNode("button","day-tab"+(i===active?" active":""));
+  b.type="button";b.setAttribute("aria-current",i===active?"true":"false");
+  const name=elNode("span","day-name","Day "+(i+1)),count=elNode("span","day-count",n+"/6 "+(language==="hinglish"?"meals done":"meals done"));
+  const track=elNode("div","day-track"),fill=elNode("div","day-fill");fill.style.width=n/6*100+"%";track.append(fill);
+  b.append(name,count,track);b.addEventListener("click",()=>{active=i;render();});tabs.append(b);
+ });
+}
+function makeRow(row){
+ const tr=document.createElement("tr");
+ row.forEach((value,index)=>{
+  const td=document.createElement("td");
+  if(index===1){
+   const group=elNode("span","food-name"),name=/\boil\b/i.test(value)?foodText(value)+" (for cooking)":foodText(value);
+   group.append(makeFoodGraphic(value),elNode("span","",name));td.append(group);
+  }else td.textContent=index===4?value+" g":String(value);
+  tr.append(td);
+ });
+ return tr;
+}
+function makeMeal(meal,mi){
+ const rows=currentRows(active,mi),cal=sum(rows,3),protein=sum(rows,4);
+ const article=elNode("article","meal-card"+(done[active+"-"+mi]?" completed":""));
+ const bar=elNode("div","meal-bar"),left=elNode("div","meal-title"),symbol=elNode("span","meal-symbol",mealIcons[mi]);symbol.setAttribute("aria-hidden","true");
+ const txt=elNode("div");txt.append(elNode("strong","",mealDescriptions[mi]),elNode("small","",times[mi]));left.append(symbol,txt);
+ const label=elNode("label","meal-check"),cb=document.createElement("input");cb.type="checkbox";cb.checked=!!done[active+"-"+mi];
+ cb.setAttribute("aria-label","Mark "+mealDescriptions[mi]+" as eaten");
+ cb.addEventListener("change",()=>{done[active+"-"+mi]=cb.checked;keep();render();});label.append(cb,document.createTextNode(t("eaten")));bar.append(left,label);
+ const body=elNode("div","meal-content"),dish=elNode("div","dish-row");
+ dish.append(elNode("h3","",displayDish(active,mi)),elNode("span","macro-summary",cal+" kcal · "+protein+" g protein"));
+ body.append(dish,elNode("div","whattoeat",t("food")));
+ const wrapper=elNode("div","food-scroll"),table=elNode("table","food-table");
+ table.setAttribute("aria-label",meal[0]+" food quantities and nutrition");
+ const columns=document.createElement("colgroup");[15,37,24,12,12].forEach(w=>{const c=document.createElement("col");c.style.width=w+"%";columns.append(c);});table.append(columns);
+ const thead=document.createElement("thead"),headrow=document.createElement("tr");
+ ["Quantity","What to eat","Size / Portion","Kcal","Protein"].forEach(h=>{const th=elNode("th","",h);th.scope="col";headrow.append(th);});thead.append(headrow);
+ const tbody=document.createElement("tbody");rows.forEach(r=>tbody.append(makeRow(r)));
+ const tfoot=document.createElement("tfoot"),totalrow=document.createElement("tr"),name=elNode("td","total-label","Meal total");
+ name.colSpan=3;totalrow.append(name,elNode("td","total-kcal",cal),elNode("td","total-protein",protein+" g"));tfoot.append(totalrow);
+ table.append(thead,tbody,tfoot);wrapper.append(table);body.append(wrapper);
+ article.append(bar,body);
+ const bottom=elNode("div","meal-bottom"),alternatives=makeAlternatives(mi);
+ if(alternatives)bottom.append(alternatives);
+ if(recipes[meal[1]]){
+  const details=elNode("details","recipe"),summary=elNode("summary","recipe-toggle");
+  summary.append(document.createTextNode(t("recipe")),elNode("span","chev","⌄"));
+  const panel=elNode("div","recipe-panel");panel.append(elNode("h4","",t("prep")),elNode("p","",displayRecipe(active,mi)));
+  details.append(summary,panel);bottom.append(details);
+ }else bottom.append(elNode("span","simple-note",t("simple")));
+ article.append(bottom);return article;
+}
+function renderSide(){
+ const n=completed(active),percent=n/6*100;
+ el("dayBadge").textContent=n+" / 6 "+(language==="hinglish"?"eaten":"eaten");
+ el("progressRing").style.background="conic-gradient(#168b5d "+percent+"%,#e8f0e8 "+percent+"%)";
+ el("ringCount").textContent=n+"/6";
+ el("progressHeading").textContent=n===6?t("progressDone"):n===0?t("progressReady"):t("progressOngoing");
+ el("progressText").textContent=n===6?t("progressDoneText"):n===0?t("progressReadyText"):(6-n)+" "+t("remaining");
+ const day=days[active],totalKcal=day.reduce((v,m,i)=>v+sum(currentRows(active,i),3),0),totalProtein=day.reduce((v,m,i)=>v+sum(currentRows(active,i),4),0);
+ el("plannedKcal").textContent=totalKcal.toLocaleString()+" kcal";el("plannedProtein").textContent=totalProtein+" g protein · approx. from listed foods";
+}
+function render(){
+ el("dayEyebrow").textContent="DAY "+String(active+1).padStart(2,"0")+" OF 07";
+ el("dayTitle").textContent=language==="hinglish"?DAY_HI[active]:dayThemes[active];
+ el("dayDescription").textContent=t("dayDescription");
+ const area=el("mealList");area.replaceChildren();days[active].forEach((m,i)=>area.append(makeMeal(m,i)));
+ renderSide();renderTabs();paintStaticText();renderGroceries();
+ el("prevDay").disabled=active===0;el("nextDay").disabled=active===days.length-1;
+}
 function goToDay(next){active=Math.max(0,Math.min(6,next));render();el("dayTabs").scrollIntoView({behavior:"smooth",block:"start"});}
 el("prevDay").addEventListener("click",()=>goToDay(active-1));
 el("nextDay").addEventListener("click",()=>goToDay(active+1));
 el("resetDay").addEventListener("click",()=>{if(!completed(active))return;if(!confirm("Clear the completed meals for Day "+(active+1)+"?"))return;for(let i=0;i<6;i++)delete done[active+"-"+i];keep();render();});
+el("langHinglish").addEventListener("click",()=>setLanguage("hinglish"));
+el("langEnglish").addEventListener("click",()=>setLanguage("english"));
+el("copyGroceries").addEventListener("click",copyGroceryList);
+el("resetGroceries").addEventListener("click",()=>{groceriesChecked={};saveGroceries();renderGroceries();});
 el("printTop").addEventListener("click",()=>window.print());el("printSide").addEventListener("click",()=>window.print());
 render();
 </script></body></html>
