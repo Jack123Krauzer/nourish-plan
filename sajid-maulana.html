@@ -136,30 +136,23 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-vis
 @media(max-width:650px){.lang-caption{display:none}.lang-switch{padding:3px}.lang-switch button{padding:8px;font-size:11px}.nav-actions .ghost{display:none}.nav-actions{gap:5px}.alt-list{grid-template-columns:1fr}.nav-actions .outline span{display:none}.topbar-inner{padding:0 12px}.grocery-header{align-items:start;flex-direction:column}.grocery-card{padding:15px}.grocery-header h2{font-size:22px}}
 @media print{.lang-switch,.bread-alternatives,.grocery-actions{display:none!important}.grocery-card{break-inside:avoid}}
 
-/* Daywise workout listing: text-only for now; individual exercise artwork is reserved for later. */
-.exercise-area{border:1px solid #d9e9df;border-radius:17px;background:#fff;overflow:hidden;box-shadow:0 6px 19px rgba(20,65,42,.035);margin:0 0 19px}
-.exercise-banner{display:flex;align-items:center;gap:12px;padding:15px 16px;background:linear-gradient(105deg,#eff8f0,#fff 75%)}
-.exercise-main-icon{display:grid;place-items:center;width:47px;height:47px;background:#dff0e5;border-radius:14px;font-size:24px;flex-shrink:0}
-.exercise-banner-text{flex:1;min-width:0}.exercise-banner-text strong{display:block;font-size:14px;color:#184b32;font-weight:850}.exercise-banner-text small{display:block;color:#6e8776;font-size:12px;margin-top:3px}
-.exercise-toggle{display:flex;gap:10px;align-items:center;justify-content:center;white-space:nowrap;padding:11px 15px;background:#156c49;border:1px solid #156c49;color:white;font-weight:800;font-size:12px;border-radius:11px;transition:background .16s}
-.exercise-toggle:hover{background:#0d5639}.exercise-toggle[aria-expanded=true]{background:#e5f5eb;border-color:#b6debf;color:#165a39}
-.exercise-toggle .exercise-arrow{font-size:18px;line-height:12px;transition:transform .15s}.exercise-toggle[aria-expanded=true] .exercise-arrow{transform:rotate(180deg)}
-.exercise-toggle:focus-visible{outline:3px solid #64bb81;outline-offset:2px}
-.exercise-panel{padding:16px 17px 17px;border-top:1px solid #e1ece4}
-.exercise-panel[hidden]{display:none!important}
-.exercise-panel-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px}
-.exercise-panel-heading strong{display:block;font-size:16px;color:#193e2b;font-weight:850}
-.exercise-panel-heading small{display:block;font-size:11px;color:#728879;margin-top:3px}
-.exercise-plan-tag{background:#e4f4e9;color:#14623f;padding:6px 10px;border-radius:8px;font-weight:850;font-size:11px;white-space:nowrap}
-.exercise-list{display:grid;gap:9px}
-.exercise-item{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:center;border:1px solid #e6eee6;background:#fcfefc;padding:12px 13px;border-radius:12px}
-.exercise-number{display:grid;place-items:center;border-radius:10px;background:#e9f5ec;color:#15714b;width:34px;height:34px;font-size:12px;font-weight:900;font-variant-numeric:tabular-nums}
-.exercise-name{display:block;color:#223c2e;font-size:13px;font-weight:850}
-.exercise-prescription{display:flex;flex-wrap:wrap;gap:7px;margin-top:7px}
-.exercise-prescription span{background:#f0f6f1;border-radius:7px;color:#567561;padding:4px 8px;font-size:11px;font-weight:700}
-.exercise-footnote{margin:13px 0 0;color:#74877a;font-size:11px;line-height:1.7}
-@media(max-width:620px){.exercise-banner{gap:9px;padding:12px}.exercise-main-icon{width:39px;height:39px;border-radius:10px;font-size:21px}.exercise-banner-text strong{font-size:12px}.exercise-banner-text small{font-size:10px}.exercise-toggle{font-size:11px;padding:9px 10px;gap:5px}.exercise-panel{padding:13px}.exercise-panel-heading strong{font-size:14px}.exercise-item{padding:11px 10px;gap:9px;grid-template-columns:31px minmax(0,1fr)}.exercise-number{width:31px;height:31px}}
-@media print{.exercise-toggle{display:none!important}.exercise-panel:not([hidden]){display:block}}
+
+/* Daywise workout is a separate page. Keep this teaser compact, readable and keyboard-accessible. */
+.exercise-area{margin:0 0 19px;background:#fff;border:1px solid #d6e7da;border-radius:18px;box-shadow:0 8px 24px rgba(17,79,47,.045);overflow:hidden}
+.exercise-banner{display:flex;align-items:center;gap:13px;padding:17px 19px;background:linear-gradient(105deg,#edf8f1 0%,#fff 79%)}
+.exercise-main-icon{width:49px;height:49px;flex:0 0 49px;background:#d9efe1;color:#146548;border-radius:14px;display:grid;place-items:center;font-size:25px}
+.exercise-banner-text{min-width:0;flex:1;display:flex;flex-direction:column;gap:2px}
+.exercise-mini-label{font-size:10px;line-height:1.35;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:#178359}
+.exercise-banner-text strong{font-size:16px;font-weight:900;color:#143e29;letter-spacing:-.3px;line-height:1.4}
+.exercise-banner-text small{font-size:11px;color:#769080;font-weight:600;line-height:1.5}
+.exercise-toggle{display:inline-flex;justify-content:center;align-items:center;gap:10px;padding:12px 15px;min-height:44px;flex-shrink:0;background:#116848;border:1px solid #116848;border-radius:11px;color:#fff;font-size:12px;font-weight:850;white-space:nowrap;text-decoration:none;transition:background .16s,transform .16s}
+.exercise-toggle:hover{background:#0b5037;transform:translateY(-1px)}
+.exercise-toggle:focus-visible{outline:3px solid #5cbd8d;outline-offset:3px}
+.exercise-toggle svg{display:block;flex:none}
+@media(max-width:620px){.exercise-banner{padding:13px;gap:10px}.exercise-main-icon{width:41px;height:41px;flex-basis:41px;font-size:21px;border-radius:12px}.exercise-banner-text strong{font-size:13px}.exercise-banner-text small{font-size:10px}.exercise-mini-label{font-size:9px}.exercise-toggle{padding:11px 12px;font-size:11px;min-height:42px;gap:5px}.exercise-toggle svg{width:14px;height:14px}}
+@media(max-width:370px){.exercise-banner{flex-wrap:wrap}.exercise-toggle{flex:1 0 100%}}
+@media print{.exercise-toggle{display:none!important}}
+
 </style>
 </head>
 <body>
@@ -185,24 +178,11 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-vis
 <div class="content-grid">
 <section class="planner" aria-labelledby="dayTitle">
 <div class="planner-top"><div><div class="day-eyebrow" id="dayEyebrow">DAY 01 OF 07</div><h2 id="dayTitle">Chicken, eggs & dal</h2><p id="dayDescription">Six meals · precise portions · optional recipes</p></div><span class="count-badge" id="dayBadge">0 / 6 eaten</span></div>
-<section class="exercise-area" id="dailyExercise" aria-label="Daywise exercise schedule">
+<section class="exercise-area" id="dailyExercise" aria-label="Daywise workout">
 <div class="exercise-banner">
-  <span class="exercise-main-icon" id="exerciseMainIcon" aria-hidden="true">🏋️</span>
-  <div class="exercise-banner-text">
-    <strong id="exerciseDayType">Today's exercise plan</strong>
-    <small id="exerciseDaySummary">Daily routine</small>
-  </div>
-  <button class="exercise-toggle" id="exerciseToggle" type="button" aria-controls="exercisePanel" aria-expanded="false">
-    <span id="exerciseToggleLabel">View exercises</span><span class="exercise-arrow" aria-hidden="true">⌄</span>
-  </button>
-</div>
-<div id="exercisePanel" class="exercise-panel" hidden>
- <div class="exercise-panel-heading">
-  <div><strong id="exercisePlanTitle">Full body</strong><small id="exercisePlanSub">Workout list</small></div>
-  <span id="exercisePlanTag" class="exercise-plan-tag">Strength</span>
- </div>
- <div id="exerciseList" class="exercise-list"></div>
- <p class="exercise-footnote" id="exerciseFootnote"></p>
+ <span class="exercise-main-icon" id="exerciseMainIcon" aria-hidden="true">🏋️</span>
+ <div class="exercise-banner-text"><span class="exercise-mini-label" id="exerciseDayType">STRENGTH TRAINING</span><strong id="exerciseDaySummary">Workout A · 35–45 min</strong><small id="exerciseDayDescription">Your exercise schedule is on its own page.</small></div>
+ <a class="exercise-toggle" id="exerciseToggle" href="./sajid-maulana-workout.html?day=1" aria-label="Open the exercises for the selected day"><span id="exerciseToggleLabel">Open workout</span><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
 </div>
 </section>
 <div id="mealList" aria-live="polite"></div>
@@ -230,111 +210,25 @@ const recipes={"Spiced chicken, rice & vegetable sabzi":"Marinate the chicken wi
  * Stable IDs support future per-position image assets/tutorials without changing the daily schedule.
  * Explanations and images are deliberately not included in this version.
  */
-const EXERCISE_CATALOG={
- warmup:{en:"Warm-up walk or marching",hi:"Warm-up walk ya march"},
- squat:{en:"Bodyweight squats",hi:"Bodyweight squats"},
- inclinePushup:{en:"Incline push-ups",hi:"Incline push-ups"},
- bandRow:{en:"Resistance-band row / seated row",hi:"Band row / seated row"},
- gluteBridge:{en:"Glute bridges",hi:"Glute bridges"},
- plank:{en:"Forearm plank",hi:"Forearm plank"},
- walk:{en:"Brisk or easy walk",hi:"Brisk ya easy walk"},
- mobility:{en:"Gentle joint mobility",hi:"Light mobility"},
- lunge:{en:"Reverse lunges",hi:"Reverse lunges"},
- press:{en:"Light dumbbell shoulder press",hi:"Light dumbbell shoulder press"},
- pulldown:{en:"Lat pulldown / band pulldown",hi:"Lat pulldown / band pulldown"},
- rdl:{en:"Light Romanian deadlift / hip hinge",hi:"Light Romanian deadlift / hip hinge"},
- deadBug:{en:"Dead bug",hi:"Dead bug"},
- stretch:{en:"Gentle stretching",hi:"Light stretching"},
- rest:{en:"Rest from strength training",hi:"Strength training se rest"}
-};
-/* Each entry has an exercise ID plus either duration or sets/reps/rest. */
-const DAY_WORKOUTS=[
- {kind:"strength",icon:"🏋️",en:"Full-body Strength A",hi:"Full-body Strength A",minutes:"35–45 min",items:[
-  {id:"warmup",duration:"5 min"},
-  {id:"squat",sets:3,reps:"10–12",rest:"60–90 sec"},
-  {id:"inclinePushup",sets:3,reps:"8–12",rest:"60–90 sec"},
-  {id:"bandRow",sets:3,reps:"10–12",rest:"60–90 sec"},
-  {id:"gluteBridge",sets:2,reps:"12–15",rest:"60 sec"},
-  {id:"plank",sets:2,duration:"20–40 sec",rest:"45 sec"}
- ]},
- {kind:"recovery",icon:"🚶",en:"Walk & mobility",hi:"Walk aur mobility",minutes:"25–35 min",items:[
-  {id:"walk",duration:"20–30 min"},
-  {id:"mobility",duration:"5 min"}
- ]},
- {kind:"strength",icon:"🏋️",en:"Full-body Strength B",hi:"Full-body Strength B",minutes:"35–45 min",items:[
-  {id:"warmup",duration:"5 min"},
-  {id:"lunge",sets:2,reps:"8 each leg",rest:"60–90 sec"},
-  {id:"press",sets:3,reps:"8–12",rest:"60–90 sec"},
-  {id:"pulldown",sets:3,reps:"10–12",rest:"60–90 sec"},
-  {id:"rdl",sets:2,reps:"10–12",rest:"60–90 sec"},
-  {id:"deadBug",sets:2,reps:"8 each side",rest:"45 sec"}
- ]},
- {kind:"rest",icon:"🌿",en:"Rest & recover",hi:"Rest aur recovery",minutes:"Rest day",items:[
-  {id:"rest",duration:"All day"},
-  {id:"stretch",duration:"5–10 min (optional)"}
- ]},
- {kind:"strength",icon:"🏋️",en:"Full-body Strength A",hi:"Full-body Strength A",minutes:"35–45 min",items:[
-  {id:"warmup",duration:"5 min"},
-  {id:"squat",sets:3,reps:"10–12",rest:"60–90 sec"},
-  {id:"inclinePushup",sets:3,reps:"8–12",rest:"60–90 sec"},
-  {id:"bandRow",sets:3,reps:"10–12",rest:"60–90 sec"},
-  {id:"gluteBridge",sets:2,reps:"12–15",rest:"60 sec"},
-  {id:"plank",sets:2,duration:"20–40 sec",rest:"45 sec"}
- ]},
- {kind:"recovery",icon:"🚶",en:"Easy walking",hi:"Easy walking",minutes:"25–35 min",items:[
-  {id:"walk",duration:"20–30 min"},
-  {id:"mobility",duration:"5 min"}
- ]},
- {kind:"rest",icon:"🌿",en:"Full rest day",hi:"Full rest day",minutes:"Rest day",items:[
-  {id:"rest",duration:"All day"}
- ]}
+/* Workout details live on sajid-maulana-workout.html?day=N. No accordion or duplicated tutorials. */
+const WORKOUT_PREVIEW=[
+ {icon:"🏋️",kind:"strength",en:"Workout A",hi:"Workout A",time:"35–45 min"},
+ {icon:"🚶",kind:"recovery",en:"Walking & mobility",hi:"Walking aur mobility",time:"25–35 min"},
+ {icon:"🏋️",kind:"strength",en:"Workout B",hi:"Workout B",time:"35–45 min"},
+ {icon:"🌿",kind:"rest",en:"Rest & recovery",hi:"Rest aur recovery",time:"Rest day"},
+ {icon:"🏋️",kind:"strength",en:"Workout A",hi:"Workout A",time:"35–45 min"},
+ {icon:"🚶",kind:"recovery",en:"Easy walking",hi:"Easy walking",time:"25–35 min"},
+ {icon:"🌿",kind:"rest",en:"Full rest",hi:"Full rest",time:"Rest day"}
 ];
-const EXERCISE_UI={
- english:{
-  open:"View exercises",close:"Hide exercises",recoveryOpen:"View recovery plan",recoveryClose:"Hide recovery plan",
-  categoryStrength:"Strength training",categoryRecovery:"Active recovery",categoryRest:"Rest day",
-  session:"Daily workout",exerciseCount:"activities",sets:"sets",reps:"reps",rest:"rest",notes:"Start with comfortable resistance and good form. Take an extra rest day if unusually sore. Stop an exercise if it causes pain.",
-  restNotes:"Recovery helps muscle growth. Gentle movement is optional on rest days.",sessionTag:"Today's plan"
- },
- hinglish:{
-  open:"Exercises dekhein",close:"Exercises hide karein",recoveryOpen:"Recovery plan dekhein",recoveryClose:"Recovery plan hide karein",
-  categoryStrength:"Strength workout",categoryRecovery:"Active recovery",categoryRest:"Rest day",
-  session:"Aaj ka workout",exerciseCount:"activities",sets:"sets",reps:"reps",rest:"rest",notes:"Light weight se start karein aur form sahi rakhein. Zyada soreness ho toh extra rest lein. Pain ho toh exercise stop karein.",
-  restNotes:"Muscle growth ke liye recovery bhi important hai. Rest day par light movement optional hai.",sessionTag:"Aaj ka plan"
- }
-};
-let exerciseOpen=false;
-const exText=k=>EXERCISE_UI[language][k]||EXERCISE_UI.english[k]||k;
 function renderExercises(){
- const w=DAY_WORKOUTS[active],kind=w.kind;
+ const w=WORKOUT_PREVIEW[active];
  el("exerciseMainIcon").textContent=w.icon;
- el("exerciseDayType").textContent=exText(kind==="strength"?"categoryStrength":kind==="recovery"?"categoryRecovery":"categoryRest");
- el("exerciseDaySummary").textContent=(language==="hinglish"?w.hi:w.en)+" · "+w.minutes;
- el("exercisePlanTitle").textContent=language==="hinglish"?w.hi:w.en;
- el("exercisePlanSub").textContent=w.minutes+" · "+w.items.length+" "+exText("exerciseCount");
- el("exercisePlanTag").textContent=exText(kind==="strength"?"categoryStrength":kind==="recovery"?"categoryRecovery":"categoryRest");
- const button=el("exerciseToggle"),panel=el("exercisePanel");
- button.setAttribute("aria-expanded",String(exerciseOpen));
- const view=kind==="strength"?(exerciseOpen?"close":"open"):(exerciseOpen?"recoveryClose":"recoveryOpen");
- el("exerciseToggleLabel").textContent=exText(view);
- panel.hidden=!exerciseOpen;
- const list=el("exerciseList");list.replaceChildren();
- if(exerciseOpen){
-  w.items.forEach((exercise,i)=>{
-   const item=elNode("div","exercise-item"),number=elNode("span","exercise-number",String(i+1).padStart(2,"0"));
-   const detail=elNode("div","exercise-details");
-   const title=elNode("strong","exercise-name",EXERCISE_CATALOG[exercise.id][language==="hinglish"?"hi":"en"]);
-   const metrics=elNode("div","exercise-prescription");
-   if(exercise.sets)metrics.append(elNode("span","",exercise.sets+" "+exText("sets")));
-   if(exercise.reps)metrics.append(elNode("span","",exercise.reps+" "+exText("reps")));
-   if(exercise.duration)metrics.append(elNode("span","",exercise.duration));
-   if(exercise.rest)metrics.append(elNode("span","",exercise.rest+" "+exText("rest")));
-   detail.append(title,metrics);item.append(number,detail);list.append(item);
-  });
- }
- el("exerciseFootnote").textContent=exText(kind==="rest"?"restNotes":"notes");
+ el("exerciseDayType").textContent=language==="hinglish"?(w.kind==="strength"?"STRENGTH WORKOUT":w.kind==="recovery"?"ACTIVE RECOVERY":"REST DAY"):(w.kind==="strength"?"STRENGTH TRAINING":w.kind==="recovery"?"ACTIVE RECOVERY":"REST DAY");
+ el("exerciseDaySummary").textContent=(language==="hinglish"?w.hi:w.en)+" · "+w.time;
+ el("exerciseDayDescription").textContent=language==="hinglish"?"Exercise list alag page par dekhein.":"Your exercise list opens on its own page.";
+ el("exerciseToggleLabel").textContent=language==="hinglish"?(w.kind==="strength"?"Workout dekhein":"Plan dekhein"):(w.kind==="strength"?"View workout":"View plan");
+ el("exerciseToggle").href="./sajid-maulana-workout.html?day="+(active+1);
 }
-
 const mealIcons=["🍳","🍎","🍛","🥜","🍽️","🥛"];
 const mealDescriptions=["Breakfast","Morning snack","Lunch","Evening snack","Dinner","Before bed"];
 const times=["7:30 AM","10:30 AM","1:30 PM","5:00 PM","8:00 PM","10:00 PM"];
@@ -595,6 +489,7 @@ function copyGroceryList(){
 
 const key="nourish-sajid-meals-v1";
 let done={},active=0;
+try{const param=new URLSearchParams(window.location.search).get('day');const n=Number.parseInt(param,10);if(Number.isInteger(n)&&n>=1&&n<=7)active=n-1;}catch(_){}
 try{done=JSON.parse(localStorage.getItem(key)||"{}")}catch(_){done={}}
 const el=id=>document.getElementById(id);
 const sum=(rs,col)=>rs.reduce((n,r)=>n+Number(r[col]||0),0);
@@ -609,7 +504,7 @@ function renderTabs(){
   b.type="button";b.setAttribute("aria-current",i===active?"true":"false");
   const name=elNode("span","day-name","Day "+(i+1)),count=elNode("span","day-count",n+"/6 "+(language==="hinglish"?"meals done":"meals done"));
   const track=elNode("div","day-track"),fill=elNode("div","day-fill");fill.style.width=n/6*100+"%";track.append(fill);
-  b.append(name,count,track);b.addEventListener("click",()=>{if(active!==i)exerciseOpen=false;active=i;render();});tabs.append(b);
+  b.append(name,count,track);b.addEventListener("click",()=>{active=i;render();});tabs.append(b);
  });
 }
 function makeRow(row){
@@ -674,11 +569,10 @@ function render(){
  renderSide();renderTabs();paintStaticText();renderGroceries();
  el("prevDay").disabled=active===0;el("nextDay").disabled=active===days.length-1;
 }
-function goToDay(next){const nextDay=Math.max(0,Math.min(6,next));if(nextDay!==active)exerciseOpen=false;active=nextDay;render();el("dayTabs").scrollIntoView({behavior:"smooth",block:"start"});}
+function goToDay(next){const nextDay=Math.max(0,Math.min(6,next));active=nextDay;render();el("dayTabs").scrollIntoView({behavior:"smooth",block:"start"});}
 el("prevDay").addEventListener("click",()=>goToDay(active-1));
 el("nextDay").addEventListener("click",()=>goToDay(active+1));
 el("resetDay").addEventListener("click",()=>{if(!completed(active))return;if(!confirm("Clear the completed meals for Day "+(active+1)+"?"))return;for(let i=0;i<6;i++)delete done[active+"-"+i];keep();render();});
-el("exerciseToggle").addEventListener("click",()=>{exerciseOpen=!exerciseOpen;renderExercises();});
 el("langHinglish").addEventListener("click",()=>setLanguage("hinglish"));
 el("langEnglish").addEventListener("click",()=>setLanguage("english"));
 el("copyGroceries").addEventListener("click",copyGroceryList);
