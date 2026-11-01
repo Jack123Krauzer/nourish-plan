@@ -94,12 +94,13 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-vis
 @media print{body{background:white}.topbar,.nav-actions,.day-tabs,.section-top,.sidebar,.nav-bottom,.footer,.recipe-toggle,.meal-check,.hero-aside{display:none!important}.layout{padding:0}.hero{min-height:0;background:white!important;color:#172f22;box-shadow:none;padding:0 0 14px}.hero p,.hero-meta span{color:#333}.hero-meta span{background:none;border:1px solid #aaa}.eyebrow{color:#276448}.metrics{display:none}.content-grid{display:block}.meal-card{break-inside:avoid;box-shadow:none;margin-bottom:8px}.meal-bar{background:#eee}.meal-bottom{display:none}.food-table tbody tr{display:table-row}.food-table thead{display:table-header-group}}
 
 /* Bilingual language picker */
+.meal-bottom{display:block}
 .lang-switch{display:flex;align-items:center;gap:4px;padding:4px;border:1px solid #dce9df;background:#f0f7f2;border-radius:12px}
 .lang-caption{font-size:11px;color:#67816e;font-weight:800;margin:0 8px}
 .lang-switch button{border:0;background:transparent;color:#52725e;border-radius:9px;padding:9px 12px;font-weight:800;font-size:12px;white-space:nowrap}
 .lang-switch button[aria-pressed="true"]{background:#126847;color:#fff;box-shadow:0 3px 8px #175a3326}
 .lang-switch button:focus-visible{outline:2px solid #4faf78;outline-offset:2px}
-.bread-alternatives{border:1px solid #d5e9d9;border-radius:12px;background:#f7fcf8;overflow:hidden;margin-bottom:10px}
+.bread-alternatives{width:100%;border:1px solid #d5e9d9;border-radius:12px;background:#f7fcf8;overflow:hidden;margin-bottom:10px}
 .bread-alternatives>summary{cursor:pointer;list-style:none;display:flex;gap:9px;align-items:center;font-size:12px;font-weight:850;color:#155d3c;padding:13px}
 .bread-alternatives>summary::-webkit-details-marker{display:none}
 .bread-alternatives p{margin:0 13px 10px;color:#607c69;font-size:11px;line-height:1.6}
@@ -147,12 +148,12 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-vis
 <h1 id="hero-title">Eat better.<br>Grow stronger.</h1>
 <p data-i18n="hero">A clear, practical 7-day Indian diet plan. No guesswork, just what to eat, how much to eat and how to prepare it.</p>
 <div class="hero-meta"><span>👤 Sajid Maulana</span><span>🎂 35 years</span><span>🥗 Non-vegetarian</span><span>🏋️ Muscle gain</span></div>
-</div><div class="hero-aside"><small>YOUR WEIGHT GOAL</small><div class="hero-big"><strong>55 → 60</strong><span>kg</span></div><div class="hero-track"></div><div class="hero-scale"><span>Current: 55 kg</span><span>Goal: 60 kg</span></div><p>Build muscle through consistent meals, training and recovery.</p></div></section>
+</div><div class="hero-aside"><small data-i18n="weightGoal">YOUR WEIGHT GOAL</small><div class="hero-big"><strong>55 → 60</strong><span>kg</span></div><div class="hero-track"></div><div class="hero-scale"><span>Current: 55 kg</span><span>Goal: 60 kg</span></div><p>Build muscle through consistent meals, training and recovery.</p></div></section>
 <section class="metrics" aria-label="Daily goals">
-<div class="metric"><span class="metric-symbol" aria-hidden="true">🔥</span><div><div class="metric-label">Daily calories</div><strong>2,200 <span>kcal</span></strong></div></div>
-<div class="metric"><span class="metric-symbol" aria-hidden="true">💪</span><div><div class="metric-label">Protein goal</div><strong>105 <span>g / day</span></strong></div></div>
-<div class="metric"><span class="metric-symbol" aria-hidden="true">⚖️</span><div><div class="metric-label">Current weight</div><strong>55 <span>kg</span></strong></div></div>
-<div class="metric"><span class="metric-symbol" aria-hidden="true">🎯</span><div><div class="metric-label">Target weight</div><strong>60 <span>kg</span></strong></div></div>
+<div class="metric"><span class="metric-symbol" aria-hidden="true">🔥</span><div><div class="metric-label" data-i18n="dailyCalories">Daily calories</div><strong>2,200 <span>kcal</span></strong></div></div>
+<div class="metric"><span class="metric-symbol" aria-hidden="true">💪</span><div><div class="metric-label" data-i18n="proteinGoal">Protein goal</div><strong>105 <span>g / day</span></strong></div></div>
+<div class="metric"><span class="metric-symbol" aria-hidden="true">⚖️</span><div><div class="metric-label" data-i18n="currentWeight">Current weight</div><strong>55 <span>kg</span></strong></div></div>
+<div class="metric"><span class="metric-symbol" aria-hidden="true">🎯</span><div><div class="metric-label" data-i18n="targetWeight">Target weight</div><strong>60 <span>kg</span></strong></div></div>
 </section>
 <div class="section-top"><div><h2 data-i18n="schedule">Your 7-day schedule</h2><p data-i18n="scheduleDesc">Choose a day to see each meal and its portions.</p></div><span class="section-hint" data-i18n="markHint">✓ Mark a meal after eating</span></div>
 <nav class="day-tabs" id="dayTabs" aria-label="Seven day meal plan"></nav>
@@ -160,13 +161,13 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-vis
 <section class="planner" aria-labelledby="dayTitle">
 <div class="planner-top"><div><div class="day-eyebrow" id="dayEyebrow">DAY 01 OF 07</div><h2 id="dayTitle">Chicken, eggs & dal</h2><p id="dayDescription">Six meals · precise portions · optional recipes</p></div><span class="count-badge" id="dayBadge">0 / 6 eaten</span></div>
 <div id="mealList" aria-live="polite"></div>
-<div class="nav-bottom"><button type="button" id="prevDay">← Previous day</button><button type="button" id="nextDay">Next day →</button></div>
-<div class="how"><strong>How to read this plan:</strong> Quantity is the number of items to eat; Size / Portion is the weight or volume. Calories and protein apply to the entire row, not each individual item. Dry and raw weights are measured before cooking. Oil is an ingredient used in cooking.</div>
+<div class="nav-bottom"><button type="button" id="prevDay" data-i18n="previousDay">← Previous day</button><button type="button" id="nextDay" data-i18n="nextDay">Next day →</button></div>
+<div class="how"><strong data-i18n="howTo">How to read this plan:</strong> Quantity is the number of items to eat; Size / Portion is the weight or volume. Calories and protein apply to the entire row, not each individual item. Dry and raw weights are measured before cooking. Oil is an ingredient used in cooking.</div>
 </section>
 <aside class="sidebar" aria-label="Progress and nutrition">
-<div class="side-card"><h3>Today's progress</h3><div class="ring-section"><div class="ring" id="progressRing"><div class="ring-inner"><strong id="ringCount">0/6</strong><small>meals eaten</small></div></div><div class="ring-copy"><strong id="progressHeading">Ready to begin</strong><p id="progressText">Tick a meal after eating. Your progress saves in this browser.</p></div></div><button class="reset" id="resetDay" type="button">↺ Reset today's checkmarks</button></div>
-<div class="side-card"><h3>Daily nutrition</h3><div class="target-label">Starting targets</div><div class="target-row"><span>Calories</span><strong>~2,200 kcal</strong></div><div class="target-row"><span>Protein</span><strong>~105 g</strong></div><div class="target-row"><span>Carbohydrates</span><strong>~290 g</strong></div><div class="target-row"><span>Fat</span><strong>~69 g</strong></div><div class="planned"><div class="target-label">Estimated food total · selected day</div><big id="plannedKcal">—</big><small id="plannedProtein">—</small></div><div class="tip"><span class="tip-icon">💡</span><span>Listed meal estimates may exceed or fall below starting targets. Use food labels for precise tracking.</span></div></div>
-<div class="side-card"><h3>Quick guide</h3><div class="tip"><span class="tip-icon">🥄</span><span><strong>Quantity</strong> = item count, such as 2 eggs or 10–15 almonds.</span></div><div class="tip"><span class="tip-icon">⚖️</span><span><strong>Portion</strong> = weight or volume, such as 50 g each or 200 ml.</span></div><div class="tip"><span class="tip-icon">👨‍🍳</span><span>Open <strong>View recipe</strong> only when you need cooking directions.</span></div><div class="side-actions"><button type="button" class="outline" id="printSide">🖨 Print day</button></div></div>
+<div class="side-card"><h3 data-i18n="todayProgress">Today's progress</h3><div class="ring-section"><div class="ring" id="progressRing"><div class="ring-inner"><strong id="ringCount">0/6</strong><small>meals eaten</small></div></div><div class="ring-copy"><strong id="progressHeading">Ready to begin</strong><p id="progressText">Tick a meal after eating. Your progress saves in this browser.</p></div></div><button class="reset" id="resetDay" type="button" data-i18n="resetToday">↺ Reset today's checkmarks</button></div>
+<div class="side-card"><h3 data-i18n="dailyNutrition">Daily nutrition</h3><div class="target-label" data-i18n="startingTargets">Starting targets</div><div class="target-row"><span data-i18n="calories">Calories</span><strong>~2,200 kcal</strong></div><div class="target-row"><span data-i18n="protein">Protein</span><strong>~105 g</strong></div><div class="target-row"><span data-i18n="carbs">Carbohydrates</span><strong>~290 g</strong></div><div class="target-row"><span data-i18n="fat">Fat</span><strong>~69 g</strong></div><div class="planned"><div class="target-label" data-i18n="estimatedFoodTotal">Estimated food total · selected day</div><big id="plannedKcal">—</big><small id="plannedProtein">—</small></div><div class="tip"><span class="tip-icon">💡</span><span>Listed meal estimates may exceed or fall below starting targets. Use food labels for precise tracking.</span></div></div>
+<div class="side-card"><h3 data-i18n="quickGuide">Quick guide</h3><div class="tip"><span class="tip-icon">🥄</span><span><strong>Quantity</strong> = item count, such as 2 eggs or 10–15 almonds.</span></div><div class="tip"><span class="tip-icon">⚖️</span><span><strong>Portion</strong> = weight or volume, such as 50 g each or 200 ml.</span></div><div class="tip"><span class="tip-icon">👨‍🍳</span><span>Open <strong>View recipe</strong> only when you need cooking directions.</span></div><div class="side-actions"><button type="button" class="outline" id="printSide">🖨 Print day</button></div></div>
 </aside></div>
 <section class="groceries" id="grocerySection" aria-label="Weekly Grocery List">
 <div class="grocery-header"><div><div class="day-eyebrow" data-i18n="shopEyebrow">SHOP SMARTER</div><h2 data-i18n="shopTitle">Weekly Grocery List</h2><p data-i18n="shopDescription">Everything you'll generally need across all 7 days, in one checklist.</p></div><div class="grocery-actions"><span class="grocery-progress" id="groceryProgress">0 / 0</span><button type="button" class="outline" id="copyGroceries" data-i18n="copyList">Copy list</button><button type="button" class="outline" id="resetGroceries" data-i18n="resetList">Reset</button></div></div>
@@ -326,6 +327,14 @@ const TEXT={
  shopCategories:["Protein & Dairy","Grains & Dal","Fruits & Sabzi","Nuts & Pantry"],shopNames:["Eggs","Boneless Chicken","Fish","Paneer","Milk","Dahi","Atta","Whole-wheat bread","Chawal","Oats","Poha","Rava (Upma)","Besan","Mixed Dal","Rajma","Chole","Banana","Apple","Orange","Papaya","Amrood","Mix Sabzi","Salad items","Badam","Moongfali","Bhuna Chana","Peanut butter","Khajoor","Cooking oil","Pyaaz, tomato & masale"],
  }
 };
+
+const MORE_TEXT={
+ english:{weightGoal:"YOUR WEIGHT GOAL",dailyCalories:"Daily calories",proteinGoal:"Protein goal",currentWeight:"Current weight",targetWeight:"Target weight",todayProgress:"Today's progress",dailyNutrition:"Daily nutrition",quickGuide:"Quick guide",startingTargets:"Starting targets",estimatedFoodTotal:"Estimated food total · selected day",resetToday:"↺ Reset today's checkmarks",previousDay:"← Previous day",nextDay:"Next day →",howTo:"How to read this plan:",calories:"Calories",protein:"Protein",carbs:"Carbohydrates",fat:"Fat"},
+ hinglish:{weightGoal:"AAPKA WEIGHT GOAL",dailyCalories:"Daily calories",proteinGoal:"Protein goal",currentWeight:"Abhi ka weight",targetWeight:"Target weight",todayProgress:"Aaj ka progress",dailyNutrition:"Daily nutrition",quickGuide:"Easy guide",startingTargets:"Daily targets",estimatedFoodTotal:"Selected day ka estimated total",resetToday:"↺ Aaj ke ticks reset karein",previousDay:"← Pichhla day",nextDay:"Agla day →",howTo:"Chart kaise samjhein:",calories:"Calories",protein:"Protein",carbs:"Carbs",fat:"Fat"}
+};
+Object.assign(TEXT.english,MORE_TEXT.english);
+Object.assign(TEXT.hinglish,MORE_TEXT.hinglish);
+
 const t=k=>TEXT[language][k]??TEXT.english[k]??k;
 const foodText=name=>language==="hinglish"?(FOOD_HI[name]||name):name;
 const dishText=name=>language==="hinglish"?(MEAL_HI[name]||name):name;
