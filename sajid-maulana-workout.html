@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#126849">
+<meta name="description" content="Sajid Maulana's seven-day workout planner. Clear Workout A and B routines with sets, repetitions, rest periods, walking and recovery days.">
+<title>Workout Planner · Sajid Maulana | Nourish Plan</title>
+<style>
+:root{--forest:#105a3d;--forest-deep:#073b2b;--green:#147b50;--ink:#17382b;--muted:#6e8376;--line:#deeadf;--bg:#f5f8f5;--surface:#fff;--mint:#e8f5ec;--shadow:0 10px 32px rgba(16,65,42,.05)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;line-height:1.55}button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #5db88e;outline-offset:3px}button:disabled{opacity:.45;cursor:default}svg{display:block}
+.topbar{background:#fff;border-bottom:1px solid #e6eee8}.topinner{max-width:1360px;margin:auto;padding:14px 26px;min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:19px;letter-spacing:-.6px;white-space:nowrap}.brand-icon{width:39px;height:39px;display:grid;place-items:center;border-radius:12px;background:var(--forest);color:white;font-size:23px}.brand em{font-style:normal;color:#16875b}.navlinks{display:flex;align-items:center;gap:10px}.navlink{border:1px solid var(--line);padding:10px 13px;border-radius:11px;background:white;font-size:12px;font-weight:800;color:#426b53;display:flex;align-items:center;gap:8px}.navlink:hover{background:#f0f7f2;border-color:#9eccab}.navlink svg{width:17px;height:17px}.lang-group{display:flex;align-items:center;gap:4px;padding:4px;background:#edf6ef;border-radius:11px;border:1px solid #d9eade}.lang-group button{border:0;border-radius:8px;padding:8px 11px;background:transparent;color:#53735e;font-size:12px;font-weight:800}.lang-group button[aria-pressed=true]{background:#126849;color:white;box-shadow:0 4px 9px #145b3524}
+.shell{max-width:1360px;padding:27px 26px 65px;margin:auto}.crumb{display:flex;align-items:center;gap:9px;color:#71907d;font-size:12px;font-weight:750;margin-bottom:17px}.crumb a:hover{color:#0a754d}.crumb .sep{font-size:14px;color:#9ab3a0}
+.hero{position:relative;overflow:hidden;border-radius:22px;padding:32px 36px;background:linear-gradient(115deg,#0a4330,#13694a 67%,#24936b);color:#fff;min-height:208px;display:flex;justify-content:space-between;align-items:center;gap:22px;box-shadow:0 14px 30px #125a3718}.hero:before,.hero:after{content:"";position:absolute;pointer-events:none;border:1px solid #fff2;border-radius:50%;height:380px;width:380px;right:10%;top:-265px}.hero:after{height:500px;width:500px;right:-330px;top:-170px}.hero-copy,.hero-right{z-index:1;position:relative}.eyebrow{font-weight:900;font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:#b4f3cd;display:flex;align-items:center;gap:8px}.eyebrow i{height:7px;width:7px;background:#acffcc;border-radius:100%}.hero h1{font-size:clamp(30px,4vw,45px);letter-spacing:-1.5px;line-height:1.11;margin:13px 0 8px}.hero p{margin:0;max-width:650px;color:#d9f2e3;font-size:13px}.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.hero-pills span{font-size:11px;font-weight:750;padding:7px 10px;border-radius:100px;border:1px solid #ffffff24;background:#ffffff18}.hero-right{min-width:215px;border:1px solid #ffffff35;background:#ffffff17;padding:18px 20px;border-radius:15px}.hero-right .small{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#c5e9d5;font-weight:900}.hero-right strong{display:block;font-size:28px;font-weight:900;line-height:1.2;margin:6px 0}.hero-right span{font-size:11px;color:#cce7d8}
+.dayhead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:29px 0 13px}.dayhead h2{font-size:21px;margin:0;letter-spacing:-.6px}.dayhead p{margin:3px 0 0;color:var(--muted);font-size:12px}.daytabs{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px}.daytab{display:flex;flex-direction:column;min-width:0;padding:12px;border:1px solid #dce9de;background:white;border-radius:14px;transition:transform .15s,border-color .15s;box-shadow:0 2px 6px #12573706}.daytab:hover{transform:translateY(-2px);border-color:#80bea0}.daytab.active{background:#146849;color:#fff;border-color:#146849;box-shadow:0 8px 19px #0b6a4425}.daytab strong{font-size:13px}.daytab small{margin-top:3px;font-size:10px;font-weight:650;color:#718b79}.daytab.active small{color:#cbebd7}.tabline{height:4px;background:#edf4ee;border-radius:100px;margin-top:11px;overflow:hidden}.tabline i{height:100%;display:block;background:#289b68;border-radius:100px}.daytab.active .tabline{background:#ffffff3c}.daytab.active .tabline i{background:#bdf1d2}
+.columns{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start;margin-top:23px}.maincol{min-width:0}.sessiontop{display:flex;align-items:center;justify-content:space-between;gap:13px;margin-bottom:16px}.sessiontop h2{font-size:31px;letter-spacing:-1px;margin:3px 0}.sessiontop p{color:var(--muted);font-size:12px;margin:0}.sessioneyebrow{font-weight:900;font-size:11px;color:#168e62;letter-spacing:1.5px}.backdiet{display:inline-flex;align-items:center;gap:7px;border:1px solid #cfe6d5;background:#eaf6ee;padding:10px 12px;border-radius:11px;color:#176947;font-size:12px;font-weight:850;white-space:nowrap}.backdiet:hover{background:#dff1e5}.backdiet svg{width:16px;height:16px}
+.sessioncard{border:1px solid #dce9df;border-radius:18px;background:white;overflow:hidden;box-shadow:var(--shadow)}.sessioncardhead{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 20px;background:#f6faf7;border-bottom:1px solid #e5eee8}.sessioncardhead .left{display:flex;align-items:center;gap:12px}.sessionicon{width:44px;height:44px;border-radius:13px;background:#e5f4e9;display:grid;place-items:center;font-size:24px}.sessioncardhead strong{display:block;font-size:15px}.sessioncardhead small{display:block;font-size:11px;color:#748e7c;margin-top:3px}.sessionbadge{background:#e3f3e7;color:#146540;font-size:11px;font-weight:850;padding:8px 11px;border-radius:100px}
+.prep-strip{margin:18px 20px 2px;padding:12px 14px;border:1px solid #e3eee5;background:#f4faf6;border-radius:11px;display:flex;gap:11px;align-items:center}.prep-strip .prep-icon{font-size:23px}.prep-strip strong{display:block;font-size:12px}.prep-strip small{font-size:11px;color:#65816e}.movement-list{display:grid;gap:10px;padding:18px 20px 20px}.movement{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:12px;background:#fff;border:1px solid #e2ece4;border-radius:13px;padding:16px}.movement.checked{background:#f1faf3;border-color:#b9dec4}.movement-number{height:43px;width:43px;display:grid;place-items:center;background:#edf6ef;border-radius:12px;color:#19764e;font-weight:900;font-size:13px}.movement-body{min-width:0}.movement-body strong{font-size:15px;display:block;letter-spacing:-.25px}.movement.checked .movement-body strong{text-decoration:line-through;text-decoration-color:#a9c8b2;color:#789586}.movement-details{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.movement-details span{padding:5px 9px;border-radius:8px;background:#f2f6f2;color:#577660;font-size:11px;font-weight:750}.movement-details span.primary{background:#e7f5ec;color:#146842}.movement label{display:flex;gap:8px;align-items:center;font-size:11px;font-weight:800;color:#5b7863;white-space:nowrap;cursor:pointer}.movement input{width:17px;height:17px;margin:0;accent-color:#178258}.rest-note{border-top:1px solid #e8eee9;background:#fcfefd;padding:14px 20px;color:#698171;font-size:12px;display:flex;gap:9px;line-height:1.7}.rest-note i{font-style:normal;font-size:17px}
+.sidebar{display:grid;gap:15px;position:sticky;top:18px}.sidecard{background:white;border:1px solid #dfeae1;padding:20px;border-radius:18px;box-shadow:var(--shadow)}.sidecard h3{margin:0 0 15px;font-size:15px;letter-spacing:-.2px}.progress{display:flex;align-items:center;gap:15px}.ring{width:100px;height:100px;flex:none;border-radius:50%;background:conic-gradient(#1b9864 0%,#e6f0e8 0%);display:grid;place-items:center}.ring-inner{width:79px;height:79px;border-radius:50%;background:white;display:flex;align-items:center;justify-content:center;flex-direction:column}.ring-inner strong{font-size:27px;line-height:1}.ring-inner small{color:#829888;font-size:10px;margin-top:5px}.progress-msg strong{font-size:13px}.progress-msg p{font-size:11px;color:#738a7b;margin:4px 0;line-height:1.7}.reset{width:100%;border:1px solid #dce8df;background:#fff;border-radius:10px;color:#52755e;padding:11px;margin-top:15px;font-size:12px;font-weight:800}.reset:hover{background:#f1f8f3}.schedulemini{display:grid;gap:9px}.miniday{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border:1px solid #e8efe9;border-radius:10px;font-size:12px}.miniday.current{background:#e8f6ed;border-color:#bbe1c7}.miniday span{font-weight:850}.miniday small{color:#728978;text-align:right}.guide{color:#648071;font-size:12px;line-height:1.8}.guide strong{color:#264e37}.footer{margin-top:38px;text-align:center;font-size:11px;color:#91a69a}
+@media(max-width:1120px){.columns{grid-template-columns:minmax(0,1fr) 260px;gap:14px}.hero-right{min-width:192px}.daytab{padding:11px 9px}}
+@media(max-width:880px){.shell{padding:19px 18px 45px}.hero{padding:29px;min-height:0}.daytabs{display:flex;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin}.daytab{min-width:126px}.columns{grid-template-columns:1fr}.sidebar{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}.sidebar .sidecard:last-child{grid-column:1/-1}}
+@media(max-width:620px){.topinner{padding:11px 13px;min-height:64px}.brand{font-size:17px}.brand-icon{width:33px;height:33px;font-size:18px}.navlinks{gap:6px}.lang-group{padding:3px}.lang-group button{font-size:10px;padding:8px}.navlink{padding:8px}.navlink span{display:none}.shell{padding:15px 12px 38px}.hero{padding:24px 20px;border-radius:19px;display:block}.hero h1{font-size:33px}.hero-right{margin-top:20px;width:100%;padding:14px}.hero-right strong{font-size:24px}.dayhead{margin-top:22px}.dayhead h2{font-size:18px}.daytab{min-width:114px}.sessiontop{align-items:flex-start;flex-direction:column;gap:11px}.sessiontop h2{font-size:27px}.backdiet{width:100%;justify-content:center}.sessioncardhead{padding:13px}.sessionicon{width:39px;height:39px}.sessionbadge{font-size:10px}.prep-strip{margin:12px 12px 0}.movement-list{padding:12px;gap:9px}.movement{grid-template-columns:35px minmax(0,1fr);gap:10px;padding:12px}.movement-number{height:35px;width:35px}.movement-body strong{font-size:13px}.movement label{grid-column:2;justify-self:start;font-size:11px}.movement-details span{font-size:10px;padding:4px 7px}.sidebar{grid-template-columns:1fr}.sidebar .sidecard:last-child{grid-column:auto}.sidecard{padding:17px}}
+@media print{body{background:white}.topbar,.crumb,.dayhead,.daytabs,.backdiet,.sidebar,.footer,.movement label,.reset{display:none!important}.shell{padding:0}.hero{background:#f1f7f3!important;color:#183c29;box-shadow:none;min-height:0;padding:18px}.hero h1{font-size:28px}.hero p,.hero .eyebrow,.hero-right span{color:#315c41}.hero-right{display:none}.columns{display:block}.sessioncard,.movement{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topinner">
+<a class="brand" href="./index.html"><span class="brand-icon" aria-hidden="true">✳</span><span>Nourish<em>Plan</em></span></a>
+<nav class="navlinks" aria-label="Page navigation">
+ <a id="navDiet" class="navlink" href="./sajid-maulana.html?day=1" title="Back to diet plan" aria-label="Back to diet plan"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span data-key="dietNav">Diet plan</span></a>
+ <div class="lang-group" role="group" aria-label="Language"><button type="button" id="langHinglish" aria-pressed="true">Hinglish</button><button type="button" id="langEnglish" aria-pressed="false">English</button></div>
+ <button class="navlink" type="button" id="printPage" title="Print workout" aria-label="Print workout"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg><span data-key="print">Print</span></button>
+</nav></div></header>
+<main class="shell">
+<div class="crumb"><a href="./index.html" data-key="home">Home</a><span class="sep">/</span><a id="crumbDiet" href="./sajid-maulana.html?day=1" data-key="dietPlan">Diet plan</a><span class="sep">/</span><span data-key="workouts">Workouts</span></div>
+<section class="hero">
+<div class="hero-copy"><div class="eyebrow"><i></i><span data-key="eyebrow">YOUR TRAINING PLAN</span></div>
+<h1 data-key="heroTitle">Train smarter.<br>Get stronger.</h1>
+<p data-key="heroDescription">Simple daywise exercise sessions that support your muscle-gain nutrition plan. Choose a day, follow the sets and reps, and track your progress.</p>
+<div class="hero-pills"><span>🏋️ <span data-key="strengthDays">3 strength days</span></span><span>🚶 <span data-key="activeDays">2 active recovery days</span></span><span>🌿 <span data-key="restDays">2 rest days</span></span></div>
+</div>
+<div class="hero-right"><div class="small" data-key="weeklyFocus">WEEKLY FOCUS</div><strong data-key="goal">Build muscle</strong><span data-key="goalSub">Strength + recovery + good nutrition</span></div>
+</section>
+<section aria-label="Day navigation">
+<div class="dayhead"><div><h2 data-key="scheduleTitle">Your 7-day workout schedule</h2><p data-key="scheduleDesc">Switch days to see the assigned session.</p></div></div>
+<nav class="daytabs" id="dayTabs" aria-label="Select exercise day"></nav>
+</section>
+<div class="columns">
+<section class="maincol" aria-labelledby="sessionTitle">
+<div class="sessiontop"><div><div class="sessioneyebrow" id="dayEyebrow">DAY 01 OF 07</div><h2 id="sessionTitle">Workout A</h2><p id="sessionSubtitle">Full-body strength · 5 exercises</p></div><a class="backdiet" id="backToDiet" href="./sajid-maulana.html?day=1"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span data-key="backToMeals">Back to this day's meals</span></a></div>
+<section class="sessioncard">
+<div class="sessioncardhead"><div class="left"><div class="sessionicon" id="sessionIcon" aria-hidden="true">🏋️</div><div><strong id="sessionLabel">Full-body training</strong><small id="sessionDuration">35–45 minutes</small></div></div><span class="sessionbadge" id="sessionTag">Strength day</span></div>
+<div id="prepStrip" class="prep-strip"><span class="prep-icon" aria-hidden="true">🔥</span><div><strong data-key="warmUp">Warm up before strength training</strong><small data-key="warmUpDuration">5 minutes of easy walking or marching</small></div></div>
+<div class="movement-list" id="movementList" aria-live="polite"></div>
+<div class="rest-note"><i aria-hidden="true">💡</i><span id="sessionNote"></span></div>
+</section>
+</section>
+<aside class="sidebar" aria-label="Workout details">
+<section class="sidecard"><h3 data-key="progressHeading">Workout progress</h3><div class="progress"><div class="ring" id="progressRing"><div class="ring-inner"><strong id="progressCount">0/5</strong><small data-key="complete">complete</small></div></div><div class="progress-msg"><strong id="progressTitle">Ready to train</strong><p id="progressDetail"></p></div></div><button type="button" id="resetProgress" class="reset" data-key="resetProgress">↺ Reset this day</button></section>
+<section class="sidecard"><h3 data-key="weeklyHeading">This week's schedule</h3><div class="schedulemini" id="weekMini"></div></section>
+<section class="sidecard"><h3 data-key="quickTips">Quick reminders</h3><p class="guide" id="quickGuide"></p></section>
+</aside>
+</div>
+<footer class="footer" data-key="footer">Nourish Plan · Training guide for general fitness, not a substitute for individualized coaching.</footer>
+</main>
+<script>
+const WORKOUTS={
+ A:{id:"A",kind:"strength",en:"Workout A",hi:"Workout A",labelEn:"Full-body strength",labelHi:"Full-body strength",minutes:"35–45 min",icon:"🏋️",items:[
+  {id:"squats",en:"Squats",hi:"Squats",sets:"2–3",reps:"8–12",rest:"60–90 sec"},
+  {id:"pushups",en:"Push-ups or chest press",hi:"Push-ups ya Chest Press",sets:"2–3",reps:"8–12",rest:"60–90 sec"},
+  {id:"seatedRow",en:"Seated row",hi:"Seated Row",sets:"2–3",reps:"10–12",rest:"60–90 sec"},
+  {id:"romanianDeadlift",en:"Romanian deadlift",hi:"Romanian Deadlift",sets:"2",reps:"8–10",rest:"90 sec"},
+  {id:"plank",en:"Plank",hi:"Plank",sets:"2",reps:"20–40 sec",rest:"45–60 sec"}
+ ]},
+ B:{id:"B",kind:"strength",en:"Workout B",hi:"Workout B",labelEn:"Full-body strength",labelHi:"Full-body strength",minutes:"35–45 min",icon:"🏋️",items:[
+  {id:"lunges",en:"Lunges",hi:"Lunges",sets:"2–3",reps:"8–10 each leg",rest:"60–90 sec"},
+  {id:"shoulderPress",en:"Shoulder press",hi:"Shoulder Press",sets:"2–3",reps:"8–12",rest:"60–90 sec"},
+  {id:"latPulldown",en:"Lat pulldown",hi:"Lat Pulldown",sets:"2–3",reps:"10–12",rest:"60–90 sec"},
+  {id:"hipThrust",en:"Hip thrust",hi:"Hip Thrust",sets:"2",reps:"8–12",rest:"60–90 sec"},
+  {id:"deadBug",en:"Dead bug",hi:"Dead Bug",sets:"2",reps:"10 each side",rest:"45–60 sec"}
+ ]},
+ WALK:{id:"WALK",kind:"recovery",en:"Walk & mobility",hi:"Walking aur Mobility",labelEn:"Active recovery",labelHi:"Active recovery",minutes:"25–35 min",icon:"🚶",items:[
+  {id:"walk",en:"Easy or brisk walk",hi:"Easy ya Brisk Walk",duration:"20–30 min"},
+  {id:"mobility",en:"Gentle mobility",hi:"Light Mobility",duration:"5 min"}
+ ]},
+ REST:{id:"REST",kind:"rest",en:"Rest & recovery",hi:"Rest aur Recovery",labelEn:"Recovery day",labelHi:"Recovery day",minutes:"Rest day",icon:"🌿",items:[]},
+ EASY:{id:"EASY",kind:"recovery",en:"Easy walk",hi:"Easy Walking",labelEn:"Active recovery",labelHi:"Active recovery",minutes:"25–35 min",icon:"🚶",items:[
+  {id:"walk",en:"Easy walk",hi:"Easy Walk",duration:"20–30 min"},
+  {id:"mobility",en:"Optional mobility",hi:"Optional Mobility",duration:"5 min"}
+ ]},
+ FULLREST:{id:"FULLREST",kind:"rest",en:"Full rest day",hi:"Full Rest Day",labelEn:"Recovery day",labelHi:"Recovery day",minutes:"Rest day",icon:"🌿",items:[]}
+};
+const WEEK=["A","WALK","B","REST","A","EASY","FULLREST"];
+const TRANSLATIONS={
+ english:{home:"Home",dietNav:"Diet plan",dietPlan:"Diet plan",workouts:"Workouts",print:"Print",eyebrow:"YOUR TRAINING PLAN",heroTitle:"Train smarter. Get stronger.",heroDescription:"A simple 7-day exercise schedule to support your muscle-gain diet. See what to train each day and how many sets and reps to do.",strengthDays:"3 strength days",activeDays:"2 active recovery days",restDays:"2 rest days",weeklyFocus:"WEEKLY FOCUS",goal:"Build muscle",goalSub:"Strength + recovery + good nutrition",scheduleTitle:"Your 7-day workout schedule",scheduleDesc:"Choose a day to see its exercises.",backToMeals:"Back to this day's meals",warmUp:"Warm up before strength training",warmUpDuration:"5 minutes of easy walking or marching",progressHeading:"Workout progress",complete:"complete",resetProgress:"↺ Reset this day",weeklyHeading:"Your weekly schedule",quickTips:"Quick reminders",footer:"Nourish Plan · General fitness guidance. Adjust intensity to your ability.",sets:"sets",reps:"reps",rest:"rest",done:"Done",strength:"Strength",recovery:"Recovery",restDay:"Rest",ready:"Ready to train",inProgress:"Keep going",allDone:"Session complete!",readyDetail:"Tick off each exercise when finished.",inProgressDetail:"exercises remaining.",allDoneDetail:"Nice work. Give your body time to recover.",recoveryDetail:"Easy movement only. Recovery supports muscle gain.",restDetail:"Rest is part of your plan. No strength session today.",restRow:"No exercises scheduled today",restSub:"Take a rest from strength training.",noteStrength:"Start light, prioritize controlled form and rest between sets. Stop any movement that causes pain.",noteRecovery:"Keep effort comfortable. Walking and gentle mobility are enough today.",noteRest:"You do not need a hard workout every day. Recover, eat well and sleep.",tipsStrength:"Choose loads that allow the listed reps with good form. Increase resistance gradually, not all at once.",tipsRecovery:"Keep the walk comfortable and stay hydrated. Skip optional mobility if you feel sore.",tipsRest:"Rest and sleep help your muscles adapt to strength training.",day:"Day"},
+ hinglish:{home:"Home",dietNav:"Diet plan",dietPlan:"Diet plan",workouts:"Workouts",print:"Print",eyebrow:"AAPKA WORKOUT PLAN",heroTitle:"Train smart. Grow strong.",heroDescription:"Muscle gain diet ke saath 7-day exercise schedule. Har din ka workout, sets aur reps clearly dekhein.",strengthDays:"3 strength days",activeDays:"2 active recovery days",restDays:"2 rest days",weeklyFocus:"WEEKLY FOCUS",goal:"Build muscle",goalSub:"Strength + recovery + nutrition",scheduleTitle:"Aapka 7-day workout schedule",scheduleDesc:"Day select karke exercises dekhein.",backToMeals:"Is day ke meals par jaayein",warmUp:"Workout se pehle warm-up",warmUpDuration:"5 min easy walk ya marching",progressHeading:"Workout progress",complete:"complete",resetProgress:"↺ Is day ka progress reset karein",weeklyHeading:"Weekly schedule",quickTips:"Quick reminders",footer:"Nourish Plan · General fitness guide. Workout ko apni capacity ke hisaab se adjust karein.",sets:"sets",reps:"reps",rest:"rest",done:"Ho gaya",strength:"Strength",recovery:"Recovery",restDay:"Rest",ready:"Start karein",inProgress:"Continue rakhein",allDone:"Workout complete!",readyDetail:"Har exercise complete hone par tick karein.",inProgressDetail:"exercises baaki hain.",allDoneDetail:"Workout done. Recovery bhi zaroori hai.",recoveryDetail:"Aaj light movement kaafi hai. Recovery muscle gain mein help karti hai.",restDetail:"Aaj strength workout nahi hai. Rest bhi plan ka hissa hai.",restRow:"Aaj koi exercise schedule nahi hai",restSub:"Strength training se rest lein.",noteStrength:"Light weight se start karein aur form control mein rakhein. Sets ke beech rest lein. Pain hone par movement stop karein.",noteRecovery:"Walk comfortable pace mein karein. Aaj light mobility enough hai.",noteRest:"Roz heavy workout zaroori nahi hai. Recovery, diet aur sleep important hain.",tipsStrength:"Aisa weight choose karein jisse saare reps sahi form se ho sakein. Resistance gradually badhayein.",tipsRecovery:"Walk easy rakhein aur hydration maintain karein. Soreness ho toh optional mobility skip karein.",tipsRest:"Rest aur sleep muscle recovery ke liye important hain.",day:"Day"}
+};
+const KEY_LANG="nourish-plan-language";
+const KEY_PROGRESS="nourish-sajid-workout-progress-v1";
+let language="hinglish",completed={};
+try{const l=localStorage.getItem(KEY_LANG);if(l==="english"||l==="hinglish")language=l;}catch(_){}
+try{const obj=JSON.parse(localStorage.getItem(KEY_PROGRESS)||"{}");if(obj&&typeof obj==="object"&&!Array.isArray(obj))completed=obj;}catch(_){}
+const p=new URLSearchParams(window.location.search);let active=Math.max(0,Math.min(6,(Number.parseInt(p.get("day"),10)||1)-1));
+const el=id=>document.getElementById(id);
+const tr=k=>TRANSLATIONS[language][k]??TRANSLATIONS.english[k]??k;
+function session(day=active){return WORKOUTS[WEEK[day]];}
+const itemName=item=>language==="hinglish"?item.hi:item.en;
+const workoutName=w=>language==="hinglish"?w.hi:w.en;
+const workoutLabel=w=>language==="hinglish"?w.labelHi:w.labelEn;
+const doneKey=(day,id)=>day+":"+id;
+function doneCount(day=active){return session(day).items.filter(i=>completed[doneKey(day,i.id)]).length;}
+function persist(){try{localStorage.setItem(KEY_PROGRESS,JSON.stringify(completed));}catch(_){}}
+function create(tag,cls,text){const node=document.createElement(tag);if(cls)node.className=cls;if(text!==undefined)node.textContent=String(text);return node;}
+function renderDayTabs(){
+ const container=el("dayTabs");container.replaceChildren();
+ WEEK.forEach((key,i)=>{const w=session(i),n=doneCount(i),total=w.items.length;
+  const a=create("a","daytab"+(i===active?" active":""),undefined);a.href="?day="+(i+1);a.setAttribute("aria-current",i===active?"page":"false");
+  a.append(create("strong","",tr("day")+" "+(i+1)),create("small","",w.kind==="rest"?tr("restDay"):w.kind==="strength"?"Workout "+w.id:tr("recovery")));
+  const line=create("span","tabline");const fill=create("i");fill.style.width=(total?100*n/total:0)+"%";line.append(fill);a.append(line);
+  a.addEventListener("click",e=>{if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey||e.button!==0)return;e.preventDefault();selectDay(i);});
+  container.append(a);
+ });
+}
+function renderMovements(w){
+ const list=el("movementList");list.replaceChildren();
+ if(!w.items.length){
+  const row=create("div","movement");row.append(create("span","movement-number","🌿"));
+  const copy=create("div","movement-body");copy.append(create("strong","",tr("restRow")),create("div","movement-details",tr("restSub")));row.append(copy);list.append(row);return;
+ }
+ w.items.forEach((item,i)=>{
+  const checked=!!completed[doneKey(active,item.id)];
+  const row=create("div","movement"+(checked?" checked":""));
+  row.append(create("span","movement-number",String(i+1).padStart(2,"0")));
+  const copy=create("div","movement-body");copy.append(create("strong","",itemName(item)));
+  const chips=create("div","movement-details");
+  if(item.sets)chips.append(create("span","primary",item.sets+" "+tr("sets")));
+  if(item.reps)chips.append(create("span","",item.reps+" "+tr("reps")));
+  if(item.duration)chips.append(create("span","primary",item.duration));
+  if(item.rest)chips.append(create("span","",item.rest+" "+tr("rest")));
+  copy.append(chips);row.append(copy);
+  const label=create("label");
+  const input=create("input");input.type="checkbox";input.checked=checked;input.setAttribute("aria-label",itemName(item)+" "+tr("done"));
+  input.addEventListener("change",()=>{completed[doneKey(active,item.id)]=input.checked;persist();render();});
+  label.append(input,document.createTextNode(tr("done")));row.append(label);list.append(row);
+ });
+}
+function renderProgress(w){
+ const total=w.items.length,n=doneCount(),pct=total?100*n/total:0;
+ el("progressRing").style.background="conic-gradient(#1b9864 "+pct+"%,#e6f0e8 "+pct+"%)";
+ el("progressCount").textContent=total?n+"/"+total:"—";
+ const label=el("progressTitle"),detail=el("progressDetail");
+ if(!total){label.textContent=tr("restDay");detail.textContent=tr("restDetail");}
+ else if(n===total){label.textContent=tr("allDone");detail.textContent=tr("allDoneDetail");}
+ else if(n>0){label.textContent=tr("inProgress");detail.textContent=(total-n)+" "+tr("inProgressDetail");}
+ else{label.textContent=tr("ready");detail.textContent=w.kind==="recovery"?tr("recoveryDetail"):tr("readyDetail");}
+ el("resetProgress").hidden=!total;
+}
+function renderWeek(){
+ const box=el("weekMini");box.replaceChildren();
+ WEEK.forEach((key,i)=>{const w=session(i),row=create("div","miniday"+(i===active?" current":""));
+  row.append(create("span","",tr("day")+" "+(i+1)),create("small","",w.kind==="strength"?"Workout "+w.id:w.kind==="rest"?tr("restDay"):tr("recovery")));
+  box.append(row);
+ });
+}
+function render(){
+ const w=session(),isStrength=w.kind==="strength";
+ document.documentElement.lang=language==="hinglish"?"hi-Latn":"en";
+ document.querySelectorAll("[data-key]").forEach(node=>node.textContent=tr(node.dataset.key));
+ el("langHinglish").setAttribute("aria-pressed",String(language==="hinglish"));
+ el("langEnglish").setAttribute("aria-pressed",String(language==="english"));
+ el("dayEyebrow").textContent=tr("day").toUpperCase()+" "+String(active+1).padStart(2,"0")+" OF 07";
+ el("sessionTitle").textContent=workoutName(w);
+ el("sessionSubtitle").textContent=workoutLabel(w)+" · "+(w.items.length?w.items.length+" "+(language==="hinglish"?"exercises":"exercises"):"Rest day");
+ el("sessionIcon").textContent=w.icon;
+ el("sessionLabel").textContent=workoutLabel(w);
+ el("sessionDuration").textContent=w.minutes;
+ el("sessionTag").textContent=tr(isStrength?"strength":w.kind==="rest"?"restDay":"recovery");
+ el("prepStrip").hidden=!isStrength;
+ el("sessionNote").textContent=tr(isStrength?"noteStrength":w.kind==="recovery"?"noteRecovery":"noteRest");
+ el("quickGuide").textContent=tr(isStrength?"tipsStrength":w.kind==="recovery"?"tipsRecovery":"tipsRest");
+ const toDiet="./sajid-maulana.html?day="+(active+1);
+ for(const id of ["navDiet","crumbDiet","backToDiet"])el(id).href=toDiet;
+ document.title=tr("day")+" "+(active+1)+" · "+workoutName(w)+" | Nourish Plan";
+ renderDayTabs();renderMovements(w);renderProgress(w);renderWeek();
+}
+function selectDay(day){
+ if(!Number.isInteger(day)||day<0||day>6)return;
+ active=day;const u=new URL(window.location.href);u.searchParams.set("day",String(day+1));
+ history.replaceState(null,"",u.pathname+u.search+u.hash);
+ render();
+ const nav=el("dayTabs");if(nav&&nav.scrollIntoView)nav.scrollIntoView({behavior:"smooth",block:"start"});
+}
+el("langHinglish").addEventListener("click",()=>{language="hinglish";try{localStorage.setItem(KEY_LANG,language);}catch(_){}render();});
+el("langEnglish").addEventListener("click",()=>{language="english";try{localStorage.setItem(KEY_LANG,language);}catch(_){}render();});
+el("resetProgress").addEventListener("click",()=>{session().items.forEach(item=>delete completed[doneKey(active,item.id)]);persist();render();});
+el("printPage").addEventListener("click",()=>window.print());
+window.addEventListener("popstate",()=>{const day=Number.parseInt(new URLSearchParams(window.location.search).get("day"),10);active=Math.max(0,Math.min(6,(day||1)-1));render();});
+render();
+</script>
+</body></html>
