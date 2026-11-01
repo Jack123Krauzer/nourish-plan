@@ -64,36 +64,48 @@
 <footer class="footer" data-key="footer">Nourish Plan · Training guide for general fitness, not a substitute for individualized coaching.</footer>
 </main>
 <script>
+/*
+ * Beginner-friendly strength plan designed for a lightly active adult focusing on muscle gain.
+ * A/B examples are NOT used as prescribed workouts.
+ * Exercises have stable IDs for future separate position images/tutorials.
+ */
 const WORKOUTS={
- A:{id:"A",kind:"strength",en:"Workout A",hi:"Workout A",labelEn:"Full-body strength",labelHi:"Full-body strength",minutes:"35–45 min",icon:"🏋️",items:[
-  {id:"squats",en:"Squats",hi:"Squats",sets:"2–3",reps:"8–12",rest:"60–90 sec"},
-  {id:"pushups",en:"Push-ups or chest press",hi:"Push-ups ya Chest Press",sets:"2–3",reps:"8–12",rest:"60–90 sec"},
-  {id:"seatedRow",en:"Seated row",hi:"Seated Row",sets:"2–3",reps:"10–12",rest:"60–90 sec"},
-  {id:"romanianDeadlift",en:"Romanian deadlift",hi:"Romanian Deadlift",sets:"2",reps:"8–10",rest:"90 sec"},
-  {id:"plank",en:"Plank",hi:"Plank",sets:"2",reps:"20–40 sec",rest:"45–60 sec"}
+ FOUNDATION:{id:"FOUNDATION",kind:"strength",en:"Full-body Foundations",hi:"Full-body Foundations",labelEn:"Squat · Push · Pull · Core",labelHi:"Squat · Push · Pull · Core",minutes:"35–45 min",icon:"🏋️",items:[
+  {id:"bodyweightSquat",en:"Bodyweight squats",hi:"Bodyweight Squats",sets:"2–3",reps:"10–12",rest:"60–90 sec"},
+  {id:"inclinePushup",en:"Incline push-ups",hi:"Incline Push-ups",sets:"2–3",reps:"8–12",rest:"60–90 sec"},
+  {id:"backpackRow",en:"Single-arm backpack rows",hi:"Single-arm Backpack Rows",sets:"2",reps:"10–12 each arm",rest:"60–90 sec"},
+  {id:"gluteBridge",en:"Glute bridges",hi:"Glute Bridges",sets:"2–3",reps:"12–15",rest:"60 sec"},
+  {id:"forearmPlank",en:"Forearm plank",hi:"Forearm Plank",sets:"2",reps:"20–35 sec",rest:"45–60 sec"}
  ]},
- B:{id:"B",kind:"strength",en:"Workout B",hi:"Workout B",labelEn:"Full-body strength",labelHi:"Full-body strength",minutes:"35–45 min",icon:"🏋️",items:[
-  {id:"lunges",en:"Lunges",hi:"Lunges",sets:"2–3",reps:"8–10 each leg",rest:"60–90 sec"},
-  {id:"shoulderPress",en:"Shoulder press",hi:"Shoulder Press",sets:"2–3",reps:"8–12",rest:"60–90 sec"},
-  {id:"latPulldown",en:"Lat pulldown",hi:"Lat Pulldown",sets:"2–3",reps:"10–12",rest:"60–90 sec"},
-  {id:"hipThrust",en:"Hip thrust",hi:"Hip Thrust",sets:"2",reps:"8–12",rest:"60–90 sec"},
-  {id:"deadBug",en:"Dead bug",hi:"Dead Bug",sets:"2",reps:"10 each side",rest:"45–60 sec"}
+ BALANCE:{id:"BALANCE",kind:"strength",en:"Strength & Balance",hi:"Strength aur Balance",labelEn:"Lunge · Hinge · Press · Core",labelHi:"Lunge · Hinge · Press · Core",minutes:"35–45 min",icon:"🏋️",items:[
+  {id:"reverseLunge",en:"Reverse lunges",hi:"Reverse Lunges",sets:"2",reps:"8–10 each leg",rest:"60–90 sec"},
+  {id:"backpackHipHinge",en:"Backpack hip hinge",hi:"Backpack Hip Hinge",sets:"2–3",reps:"10–12",rest:"60–90 sec"},
+  {id:"bottleShoulderPress",en:"Water-bottle shoulder press",hi:"Water-bottle Shoulder Press",sets:"2",reps:"10–12",rest:"60–90 sec"},
+  {id:"bandRow",en:"Resistance-band rows",hi:"Resistance-band Rows",sets:"2–3",reps:"10–12",rest:"60–90 sec"},
+  {id:"deadBug",en:"Dead bug",hi:"Dead Bug",sets:"2",reps:"8–10 each side",rest:"45–60 sec"}
+ ]},
+ PROGRESS:{id:"PROGRESS",kind:"strength",en:"Full-body Progression",hi:"Full-body Progression",labelEn:"Step · Push · Pull · Glutes · Core",labelHi:"Step · Push · Pull · Glutes · Core",minutes:"35–45 min",icon:"🏋️",items:[
+  {id:"supportedStepup",en:"Low step-ups (stable step)",hi:"Low Step-ups (stable step)",sets:"2",reps:"8–10 each leg",rest:"60–90 sec"},
+  {id:"pushupVariation",en:"Incline or regular push-ups",hi:"Incline ya Regular Push-ups",sets:"2–3",reps:"8–12",rest:"60–90 sec"},
+  {id:"backpackRow",en:"Single-arm backpack rows",hi:"Single-arm Backpack Rows",sets:"2–3",reps:"10–12 each arm",rest:"60–90 sec"},
+  {id:"hipThrust",en:"Hip thrust (bodyweight)",hi:"Hip Thrust (bodyweight)",sets:"2–3",reps:"12–15",rest:"60 sec"},
+  {id:"sidePlank",en:"Side plank",hi:"Side Plank",sets:"2",reps:"20–30 sec each side",rest:"45–60 sec"}
  ]},
  WALK:{id:"WALK",kind:"recovery",en:"Walk & mobility",hi:"Walking aur Mobility",labelEn:"Active recovery",labelHi:"Active recovery",minutes:"25–35 min",icon:"🚶",items:[
-  {id:"walk",en:"Easy or brisk walk",hi:"Easy ya Brisk Walk",duration:"20–30 min"},
-  {id:"mobility",en:"Gentle mobility",hi:"Light Mobility",duration:"5 min"}
+  {id:"walk",en:"Comfortable walk",hi:"Comfortable Walk",duration:"20–30 min"},
+  {id:"mobility",en:"Gentle joint mobility",hi:"Light Joint Mobility",duration:"5 min"}
  ]},
  REST:{id:"REST",kind:"rest",en:"Rest & recovery",hi:"Rest aur Recovery",labelEn:"Recovery day",labelHi:"Recovery day",minutes:"Rest day",icon:"🌿",items:[]},
- EASY:{id:"EASY",kind:"recovery",en:"Easy walk",hi:"Easy Walking",labelEn:"Active recovery",labelHi:"Active recovery",minutes:"25–35 min",icon:"🚶",items:[
-  {id:"walk",en:"Easy walk",hi:"Easy Walk",duration:"20–30 min"},
-  {id:"mobility",en:"Optional mobility",hi:"Optional Mobility",duration:"5 min"}
+ EASY:{id:"EASY",kind:"recovery",en:"Easy walking",hi:"Easy Walking",labelEn:"Active recovery",labelHi:"Active recovery",minutes:"20–30 min",icon:"🚶",items:[
+  {id:"walk",en:"Easy walk",hi:"Easy Walk",duration:"20–25 min"},
+  {id:"stretch",en:"Gentle stretches (optional)",hi:"Light Stretching (optional)",duration:"5 min"}
  ]},
  FULLREST:{id:"FULLREST",kind:"rest",en:"Full rest day",hi:"Full Rest Day",labelEn:"Recovery day",labelHi:"Recovery day",minutes:"Rest day",icon:"🌿",items:[]}
 };
-const WEEK=["A","WALK","B","REST","A","EASY","FULLREST"];
+const WEEK=["FOUNDATION","WALK","BALANCE","REST","PROGRESS","EASY","FULLREST"];
 const TRANSLATIONS={
- english:{home:"Home",dietNav:"Diet plan",dietPlan:"Diet plan",workouts:"Workouts",print:"Print",eyebrow:"YOUR TRAINING PLAN",heroTitle:"Train smarter. Get stronger.",heroDescription:"A simple 7-day exercise schedule to support your muscle-gain diet. See what to train each day and how many sets and reps to do.",strengthDays:"3 strength days",activeDays:"2 active recovery days",restDays:"2 rest days",weeklyFocus:"WEEKLY FOCUS",goal:"Build muscle",goalSub:"Strength + recovery + good nutrition",scheduleTitle:"Your 7-day workout schedule",scheduleDesc:"Choose a day to see its exercises.",backToMeals:"Back to this day's meals",warmUp:"Warm up before strength training",warmUpDuration:"5 minutes of easy walking or marching",progressHeading:"Workout progress",complete:"complete",resetProgress:"↺ Reset this day",weeklyHeading:"Your weekly schedule",quickTips:"Quick reminders",footer:"Nourish Plan · General fitness guidance. Adjust intensity to your ability.",sets:"sets",reps:"reps",rest:"rest",done:"Done",strength:"Strength",recovery:"Recovery",restDay:"Rest",ready:"Ready to train",inProgress:"Keep going",allDone:"Session complete!",readyDetail:"Tick off each exercise when finished.",inProgressDetail:"exercises remaining.",allDoneDetail:"Nice work. Give your body time to recover.",recoveryDetail:"Easy movement only. Recovery supports muscle gain.",restDetail:"Rest is part of your plan. No strength session today.",restRow:"No exercises scheduled today",restSub:"Take a rest from strength training.",noteStrength:"Start light, prioritize controlled form and rest between sets. Stop any movement that causes pain.",noteRecovery:"Keep effort comfortable. Walking and gentle mobility are enough today.",noteRest:"You do not need a hard workout every day. Recover, eat well and sleep.",tipsStrength:"Choose loads that allow the listed reps with good form. Increase resistance gradually, not all at once.",tipsRecovery:"Keep the walk comfortable and stay hydrated. Skip optional mobility if you feel sore.",tipsRest:"Rest and sleep help your muscles adapt to strength training.",day:"Day"},
- hinglish:{home:"Home",dietNav:"Diet plan",dietPlan:"Diet plan",workouts:"Workouts",print:"Print",eyebrow:"AAPKA WORKOUT PLAN",heroTitle:"Train smart. Grow strong.",heroDescription:"Muscle gain diet ke saath 7-day exercise schedule. Har din ka workout, sets aur reps clearly dekhein.",strengthDays:"3 strength days",activeDays:"2 active recovery days",restDays:"2 rest days",weeklyFocus:"WEEKLY FOCUS",goal:"Build muscle",goalSub:"Strength + recovery + nutrition",scheduleTitle:"Aapka 7-day workout schedule",scheduleDesc:"Day select karke exercises dekhein.",backToMeals:"Is day ke meals par jaayein",warmUp:"Workout se pehle warm-up",warmUpDuration:"5 min easy walk ya marching",progressHeading:"Workout progress",complete:"complete",resetProgress:"↺ Is day ka progress reset karein",weeklyHeading:"Weekly schedule",quickTips:"Quick reminders",footer:"Nourish Plan · General fitness guide. Workout ko apni capacity ke hisaab se adjust karein.",sets:"sets",reps:"reps",rest:"rest",done:"Ho gaya",strength:"Strength",recovery:"Recovery",restDay:"Rest",ready:"Start karein",inProgress:"Continue rakhein",allDone:"Workout complete!",readyDetail:"Har exercise complete hone par tick karein.",inProgressDetail:"exercises baaki hain.",allDoneDetail:"Workout done. Recovery bhi zaroori hai.",recoveryDetail:"Aaj light movement kaafi hai. Recovery muscle gain mein help karti hai.",restDetail:"Aaj strength workout nahi hai. Rest bhi plan ka hissa hai.",restRow:"Aaj koi exercise schedule nahi hai",restSub:"Strength training se rest lein.",noteStrength:"Light weight se start karein aur form control mein rakhein. Sets ke beech rest lein. Pain hone par movement stop karein.",noteRecovery:"Walk comfortable pace mein karein. Aaj light mobility enough hai.",noteRest:"Roz heavy workout zaroori nahi hai. Recovery, diet aur sleep important hain.",tipsStrength:"Aisa weight choose karein jisse saare reps sahi form se ho sakein. Resistance gradually badhayein.",tipsRecovery:"Walk easy rakhein aur hydration maintain karein. Soreness ho toh optional mobility skip karein.",tipsRest:"Rest aur sleep muscle recovery ke liye important hain.",day:"Day"}
+ english:{home:"Home",dietNav:"Diet plan",dietPlan:"Diet plan",workouts:"Workouts",print:"Print",eyebrow:"YOUR TRAINING PLAN",heroTitle:"Train smarter. Get stronger.",heroDescription:"Three different beginner-friendly full-body sessions, balanced with walking and recovery. Choose a day to see the exercises, sets and reps.",strengthDays:"3 strength days",activeDays:"2 active recovery days",restDays:"2 rest days",weeklyFocus:"WEEKLY FOCUS",goal:"Build muscle",goalSub:"Strength + recovery + good nutrition",scheduleTitle:"Your 7-day workout schedule",scheduleDesc:"Choose a day to see its exercises.",backToMeals:"Back to this day's meals",warmUp:"Warm up before strength training",warmUpDuration:"5 minutes of easy walking or marching",progressHeading:"Workout progress",complete:"complete",resetProgress:"↺ Reset this day",weeklyHeading:"Your weekly schedule",quickTips:"Quick reminders",footer:"Nourish Plan · General fitness guidance. Adjust intensity to your ability.",sets:"sets",reps:"reps",rest:"rest",done:"Done",strength:"Strength",recovery:"Recovery",restDay:"Rest",ready:"Ready to train",inProgress:"Keep going",allDone:"Session complete!",readyDetail:"Tick off each exercise when finished.",inProgressDetail:"exercises remaining.",allDoneDetail:"Nice work. Give your body time to recover.",recoveryDetail:"Easy movement only. Recovery supports muscle gain.",restDetail:"Rest is part of your plan. No strength session today.",restRow:"No exercises scheduled today",restSub:"Take a rest from strength training.",noteStrength:"Start light and keep each movement controlled. Use a stable step and light backpack or water bottles where listed. A gym or equipment alternative is fine. Stop if something causes pain.",noteRecovery:"Keep effort comfortable. Walking and gentle mobility are enough today.",noteRest:"You do not need a hard workout every day. Recover, eat well and sleep.",tipsStrength:"Choose loads that allow the listed reps with good form. Increase resistance gradually, not all at once.",tipsRecovery:"Keep the walk comfortable and stay hydrated. Skip optional mobility if you feel sore.",tipsRest:"Rest and sleep help your muscles adapt to strength training.",day:"Day"},
+ hinglish:{home:"Home",dietNav:"Diet plan",dietPlan:"Diet plan",workouts:"Workouts",print:"Print",eyebrow:"AAPKA WORKOUT PLAN",heroTitle:"Train smart. Grow strong.",heroDescription:"Muscle gain ke liye 3 alag full-body workouts, walking aur recovery days. Har day ke sets aur reps clearly dekhein.",strengthDays:"3 strength days",activeDays:"2 active recovery days",restDays:"2 rest days",weeklyFocus:"WEEKLY FOCUS",goal:"Build muscle",goalSub:"Strength + recovery + nutrition",scheduleTitle:"Aapka 7-day workout schedule",scheduleDesc:"Day select karke exercises dekhein.",backToMeals:"Is day ke meals par jaayein",warmUp:"Workout se pehle warm-up",warmUpDuration:"5 min easy walk ya marching",progressHeading:"Workout progress",complete:"complete",resetProgress:"↺ Is day ka progress reset karein",weeklyHeading:"Weekly schedule",quickTips:"Quick reminders",footer:"Nourish Plan · General fitness guide. Workout ko apni capacity ke hisaab se adjust karein.",sets:"sets",reps:"reps",rest:"rest",done:"Ho gaya",strength:"Strength",recovery:"Recovery",restDay:"Rest",ready:"Start karein",inProgress:"Continue rakhein",allDone:"Workout complete!",readyDetail:"Har exercise complete hone par tick karein.",inProgressDetail:"exercises baaki hain.",allDoneDetail:"Workout done. Recovery bhi zaroori hai.",recoveryDetail:"Aaj light movement kaafi hai. Recovery muscle gain mein help karti hai.",restDetail:"Aaj strength workout nahi hai. Rest bhi plan ka hissa hai.",restRow:"Aaj koi exercise schedule nahi hai",restSub:"Strength training se rest lein.",noteStrength:"Light resistance aur controlled form se start karein. Stable step aur zaroorat par light backpack ya water bottles use karein. Pain ho toh stop karein.",noteRecovery:"Walk comfortable pace mein karein. Aaj light mobility enough hai.",noteRest:"Roz heavy workout zaroori nahi hai. Recovery, diet aur sleep important hain.",tipsStrength:"Aisa weight choose karein jisse saare reps sahi form se ho sakein. Resistance gradually badhayein.",tipsRecovery:"Walk easy rakhein aur hydration maintain karein. Soreness ho toh optional mobility skip karein.",tipsRest:"Rest aur sleep muscle recovery ke liye important hain.",day:"Day"}
 };
 const KEY_LANG="nourish-plan-language";
 const KEY_PROGRESS="nourish-sajid-workout-progress-v1";
@@ -115,7 +127,7 @@ function renderDayTabs(){
  const container=el("dayTabs");container.replaceChildren();
  WEEK.forEach((key,i)=>{const w=session(i),n=doneCount(i),total=w.items.length;
   const a=create("a","daytab"+(i===active?" active":""),undefined);a.href="?day="+(i+1);a.setAttribute("aria-current",i===active?"page":"false");
-  a.append(create("strong","",tr("day")+" "+(i+1)),create("small","",w.kind==="rest"?tr("restDay"):w.kind==="strength"?"Workout "+w.id:tr("recovery")));
+  a.append(create("strong","",tr("day")+" "+(i+1)),create("small","",w.kind==="rest"?tr("restDay"):w.kind==="strength"?workoutName(w):tr("recovery")));
   const line=create("span","tabline");const fill=create("i");fill.style.width=(total?100*n/total:0)+"%";line.append(fill);a.append(line);
   a.addEventListener("click",e=>{if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey||e.button!==0)return;e.preventDefault();selectDay(i);});
   container.append(a);
@@ -158,7 +170,7 @@ function renderProgress(w){
 function renderWeek(){
  const box=el("weekMini");box.replaceChildren();
  WEEK.forEach((key,i)=>{const w=session(i),row=create("div","miniday"+(i===active?" current":""));
-  row.append(create("span","",tr("day")+" "+(i+1)),create("small","",w.kind==="strength"?"Workout "+w.id:w.kind==="rest"?tr("restDay"):tr("recovery")));
+  row.append(create("span","",tr("day")+" "+(i+1)),create("small","",w.kind==="strength"?workoutName(w):w.kind==="rest"?tr("restDay"):tr("recovery")));
   box.append(row);
  });
 }
