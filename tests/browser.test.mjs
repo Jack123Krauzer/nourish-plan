@@ -29,7 +29,7 @@ try{
    await page.locator('#dayTabs button').nth(i).click();
    assert.equal(await page.locator('.meal-card').count(),6,'Day '+(i+1)+' meal cards');
    assert.equal(await page.locator('.food-table tbody tr').count(),rowCounts[i],'Day '+(i+1)+' food rows');
-   assert.equal(await page.locator('.food-emoji svg').count(),rowCounts[i],'Day '+(i+1)+' SVG icons');
+   assert.equal(await page.locator('.food-table tbody .food-emoji svg').count(),rowCounts[i],'Day '+(i+1)+' SVG icons');
    assert.equal(await page.locator('.food-table tfoot tr').count(),6,'Day '+(i+1)+' total rows');
    const totals=await page.locator('.food-table').evaluateAll(tables=>tables.map(table=>{
     const rows=[...table.querySelectorAll('tbody tr')],total=table.querySelector('tfoot tr');
