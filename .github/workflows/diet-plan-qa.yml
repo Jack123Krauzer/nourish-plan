@@ -13,5 +13,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Test diet data, UI logic and nutrition totals
+      - name: Test meal data and dashboard logic
         run: node --test tests/diet-plan.test.mjs
+      - name: Install Chromium browser tests
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Test desktop tablet mobile layouts
+        run: node tests/browser.test.mjs
