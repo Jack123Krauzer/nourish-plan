@@ -181,7 +181,7 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-vis
 <section class="exercise-area" id="dailyExercise" aria-label="Daywise workout">
 <div class="exercise-banner">
  <span class="exercise-main-icon" id="exerciseMainIcon" aria-hidden="true">🏋️</span>
- <div class="exercise-banner-text"><span class="exercise-mini-label" id="exerciseDayType">STRENGTH TRAINING</span><strong id="exerciseDaySummary">Workout A · 35–45 min</strong><small id="exerciseDayDescription">Your exercise schedule is on its own page.</small></div>
+ <div class="exercise-banner-text"><span class="exercise-mini-label" id="exerciseDayType">STRENGTH TRAINING</span><strong id="exerciseDaySummary">Full-body Foundations · 35–45 min</strong><small id="exerciseDayDescription">Your exercise schedule is on its own page.</small></div>
  <a class="exercise-toggle" id="exerciseToggle" href="./sajid-maulana-workout.html?day=1" aria-label="Open the exercises for the selected day"><span id="exerciseToggleLabel">Open workout</span><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
 </div>
 </section>
@@ -212,13 +212,13 @@ const recipes={"Spiced chicken, rice & vegetable sabzi":"Marinate the chicken wi
  */
 /* Workout details live on sajid-maulana-workout.html?day=N. No accordion or duplicated tutorials. */
 const WORKOUT_PREVIEW=[
- {icon:"🏋️",kind:"strength",en:"Workout A",hi:"Workout A",time:"35–45 min"},
- {icon:"🚶",kind:"recovery",en:"Walking & mobility",hi:"Walking aur mobility",time:"25–35 min"},
- {icon:"🏋️",kind:"strength",en:"Workout B",hi:"Workout B",time:"35–45 min"},
- {icon:"🌿",kind:"rest",en:"Rest & recovery",hi:"Rest aur recovery",time:"Rest day"},
- {icon:"🏋️",kind:"strength",en:"Workout A",hi:"Workout A",time:"35–45 min"},
- {icon:"🚶",kind:"recovery",en:"Easy walking",hi:"Easy walking",time:"25–35 min"},
- {icon:"🌿",kind:"rest",en:"Full rest",hi:"Full rest",time:"Rest day"}
+ {icon:"🏋️",kind:"strength",en:"Full-body Foundations",hi:"Full-body Foundations",time:"35–45 min"},
+ {icon:"🚶",kind:"recovery",en:"Walk & mobility",hi:"Walking aur Mobility",time:"25–35 min"},
+ {icon:"🏋️",kind:"strength",en:"Strength & Balance",hi:"Strength aur Balance",time:"35–45 min"},
+ {icon:"🌿",kind:"rest",en:"Rest & recovery",hi:"Rest aur Recovery",time:"Rest day"},
+ {icon:"🏋️",kind:"strength",en:"Full-body Progression",hi:"Full-body Progression",time:"35–45 min"},
+ {icon:"🚶",kind:"recovery",en:"Easy walking",hi:"Easy Walking",time:"20–30 min"},
+ {icon:"🌿",kind:"rest",en:"Full rest day",hi:"Full Rest Day",time:"Rest day"}
 ];
 function renderExercises(){
  const w=WORKOUT_PREVIEW[active];
