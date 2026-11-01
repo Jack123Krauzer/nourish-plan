@@ -21,3 +21,5 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Test desktop tablet mobile layouts
         run: node tests/browser.test.mjs
+      - name: Test standalone workout pages and cross-page navigation
+        run: node tests/workout-browser.test.mjs
