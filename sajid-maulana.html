@@ -135,6 +135,31 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-vis
 @media(max-width:850px){.grocery-grid{grid-template-columns:1fr}}
 @media(max-width:650px){.lang-caption{display:none}.lang-switch{padding:3px}.lang-switch button{padding:8px;font-size:11px}.nav-actions .ghost{display:none}.nav-actions{gap:5px}.alt-list{grid-template-columns:1fr}.nav-actions .outline span{display:none}.topbar-inner{padding:0 12px}.grocery-header{align-items:start;flex-direction:column}.grocery-card{padding:15px}.grocery-header h2{font-size:22px}}
 @media print{.lang-switch,.bread-alternatives,.grocery-actions{display:none!important}.grocery-card{break-inside:avoid}}
+
+/* Daywise workout listing: text-only for now; individual exercise artwork is reserved for later. */
+.exercise-area{border:1px solid #d9e9df;border-radius:17px;background:#fff;overflow:hidden;box-shadow:0 6px 19px rgba(20,65,42,.035);margin:0 0 19px}
+.exercise-banner{display:flex;align-items:center;gap:12px;padding:15px 16px;background:linear-gradient(105deg,#eff8f0,#fff 75%)}
+.exercise-main-icon{display:grid;place-items:center;width:47px;height:47px;background:#dff0e5;border-radius:14px;font-size:24px;flex-shrink:0}
+.exercise-banner-text{flex:1;min-width:0}.exercise-banner-text strong{display:block;font-size:14px;color:#184b32;font-weight:850}.exercise-banner-text small{display:block;color:#6e8776;font-size:12px;margin-top:3px}
+.exercise-toggle{display:flex;gap:10px;align-items:center;justify-content:center;white-space:nowrap;padding:11px 15px;background:#156c49;border:1px solid #156c49;color:white;font-weight:800;font-size:12px;border-radius:11px;transition:background .16s}
+.exercise-toggle:hover{background:#0d5639}.exercise-toggle[aria-expanded=true]{background:#e5f5eb;border-color:#b6debf;color:#165a39}
+.exercise-toggle .exercise-arrow{font-size:18px;line-height:12px;transition:transform .15s}.exercise-toggle[aria-expanded=true] .exercise-arrow{transform:rotate(180deg)}
+.exercise-toggle:focus-visible{outline:3px solid #64bb81;outline-offset:2px}
+.exercise-panel{padding:16px 17px 17px;border-top:1px solid #e1ece4}
+.exercise-panel[hidden]{display:none!important}
+.exercise-panel-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px}
+.exercise-panel-heading strong{display:block;font-size:16px;color:#193e2b;font-weight:850}
+.exercise-panel-heading small{display:block;font-size:11px;color:#728879;margin-top:3px}
+.exercise-plan-tag{background:#e4f4e9;color:#14623f;padding:6px 10px;border-radius:8px;font-weight:850;font-size:11px;white-space:nowrap}
+.exercise-list{display:grid;gap:9px}
+.exercise-item{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:center;border:1px solid #e6eee6;background:#fcfefc;padding:12px 13px;border-radius:12px}
+.exercise-number{display:grid;place-items:center;border-radius:10px;background:#e9f5ec;color:#15714b;width:34px;height:34px;font-size:12px;font-weight:900;font-variant-numeric:tabular-nums}
+.exercise-name{display:block;color:#223c2e;font-size:13px;font-weight:850}
+.exercise-prescription{display:flex;flex-wrap:wrap;gap:7px;margin-top:7px}
+.exercise-prescription span{background:#f0f6f1;border-radius:7px;color:#567561;padding:4px 8px;font-size:11px;font-weight:700}
+.exercise-footnote{margin:13px 0 0;color:#74877a;font-size:11px;line-height:1.7}
+@media(max-width:620px){.exercise-banner{gap:9px;padding:12px}.exercise-main-icon{width:39px;height:39px;border-radius:10px;font-size:21px}.exercise-banner-text strong{font-size:12px}.exercise-banner-text small{font-size:10px}.exercise-toggle{font-size:11px;padding:9px 10px;gap:5px}.exercise-panel{padding:13px}.exercise-panel-heading strong{font-size:14px}.exercise-item{padding:11px 10px;gap:9px;grid-template-columns:31px minmax(0,1fr)}.exercise-number{width:31px;height:31px}}
+@media print{.exercise-toggle{display:none!important}.exercise-panel:not([hidden]){display:block}}
 </style>
 </head>
 <body>
@@ -160,6 +185,26 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-vis
 <div class="content-grid">
 <section class="planner" aria-labelledby="dayTitle">
 <div class="planner-top"><div><div class="day-eyebrow" id="dayEyebrow">DAY 01 OF 07</div><h2 id="dayTitle">Chicken, eggs & dal</h2><p id="dayDescription">Six meals · precise portions · optional recipes</p></div><span class="count-badge" id="dayBadge">0 / 6 eaten</span></div>
+<section class="exercise-area" id="dailyExercise" aria-label="Daywise exercise schedule">
+<div class="exercise-banner">
+  <span class="exercise-main-icon" id="exerciseMainIcon" aria-hidden="true">🏋️</span>
+  <div class="exercise-banner-text">
+    <strong id="exerciseDayType">Today's exercise plan</strong>
+    <small id="exerciseDaySummary">Daily routine</small>
+  </div>
+  <button class="exercise-toggle" id="exerciseToggle" type="button" aria-controls="exercisePanel" aria-expanded="false">
+    <span id="exerciseToggleLabel">View exercises</span><span class="exercise-arrow" aria-hidden="true">⌄</span>
+  </button>
+</div>
+<div id="exercisePanel" class="exercise-panel" hidden>
+ <div class="exercise-panel-heading">
+  <div><strong id="exercisePlanTitle">Full body</strong><small id="exercisePlanSub">Workout list</small></div>
+  <span id="exercisePlanTag" class="exercise-plan-tag">Strength</span>
+ </div>
+ <div id="exerciseList" class="exercise-list"></div>
+ <p class="exercise-footnote" id="exerciseFootnote"></p>
+</div>
+</section>
 <div id="mealList" aria-live="polite"></div>
 <div class="nav-bottom"><button type="button" id="prevDay" data-i18n="previousDay">← Previous day</button><button type="button" id="nextDay" data-i18n="nextDay">Next day →</button></div>
 <div class="how"><strong data-i18n="howTo">How to read this plan:</strong> Quantity is the number of items to eat; Size / Portion is the weight or volume. Calories and protein apply to the entire row, not each individual item. Dry and raw weights are measured before cooking. Oil is an ingredient used in cooking.</div>
@@ -178,6 +223,117 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-vis
 <script>
 const days=[[["Breakfast","Boiled eggs, toast, banana & milk",[["2","Boiled eggs","50 g each",145,13],["2 slices","Whole-wheat bread","60 g total",150,6],["1","Banana","100 g",90,1],["1 glass","Milk","200 ml",125,7]]],["Morning snack","Curd, almonds & papaya",[["1 bowl","Plain curd","150 g",95,5],["10–15","Almonds","15 g total",87,3],["1 portion","Papaya","100 g",43,1]]],["Lunch","Spiced chicken, rice & vegetable sabzi",[["1 portion","Chicken breast","120 g raw",145,27],["1 portion","Rice","50 g dry",180,3],["1 portion","Mixed vegetables","150 g",60,3],["2 tsp","Cooking oil","10 g total",90,0]]],["Evening snack","Roasted chana, banana & peanuts",[["1 handful","Roasted chana","35 g",135,7],["1","Banana","100 g",90,1],["8–10","Peanuts","7 g",40,2]]],["Dinner","Chapati, dal, paneer & salad",[["2","Chapatis","60 g atta total",205,7],["1 bowl","Cooked dal","150 g",170,10],["1 portion","Paneer","50 g",150,9],["1 bowl","Salad","100 g",30,1],["1 tsp","Cooking oil","5 g",45,0]]],["Before bed","Milk",[["1 glass","Milk","200 ml",125,7]]]],[["Breakfast","Vegetable poha & eggs",[["1 plate","Poha","75 g dry",270,5],["1 portion","Peanuts","15 g",85,4],["1 portion","Mixed vegetables","100 g",40,2],["1 tsp","Cooking oil","5 g",45,0],["2","Boiled eggs","50 g each",145,13]]],["Morning snack","Milk & banana",[["1 glass","Milk","200 ml",125,7],["1","Banana","100 g",90,1]]],["Lunch","Fish curry, chapatis, sabzi & curd",[["2","Chapatis","70 g atta total",240,9],["1 portion","Fish","150 g raw",170,30],["1 bowl","Vegetable sabzi","150 g",60,3],["1 bowl","Curd","100 g",65,4],["2 tsp","Cooking oil","10 g",90,0]]],["Evening snack","Peanut butter toast",[["2 slices","Whole-wheat bread","60 g",150,6],["1 tbsp","Peanut butter","20 g",120,5]]],["Dinner","Rajma rice & salad",[["1 portion","Rice","40 g dry",145,3],["1 bowl","Rajma","60 g dry beans",200,14],["1 bowl","Salad","100 g",30,1],["1 tsp","Cooking oil","5 g",45,0]]],["Before bed","Plain curd",[["1 bowl","Curd","150 g",95,5]]]],[["Breakfast","Banana-almond oats",[["1 bowl","Oats","60 g dry",230,8],["1 glass","Milk","250 ml",155,8],["1","Banana","100 g",90,1],["10–15","Almonds","15 g",87,3]]],["Morning snack","Eggs & orange",[["2","Boiled eggs","50 g each",145,13],["1","Orange","150 g",70,1]]],["Lunch","Chicken curry, chapati & sabzi",[["1 portion","Chicken","130 g raw",160,28],["2","Chapatis","65 g atta total",220,8],["1 bowl","Vegetable sabzi","150 g",60,3],["2 tsp","Cooking oil","10 g",90,0]]],["Evening snack","Curd, chana & dates",[["1 bowl","Curd","200 g",125,7],["1 handful","Roasted chana","30 g",115,6],["2–3","Dates","20 g",55,0]]],["Dinner","Moong dal rice & salad",[["1 portion","Rice","50 g dry",180,3],["1 bowl","Moong dal","60 g dry",210,14],["1 bowl","Cucumber salad","100 g",20,1],["2 tsp","Cooking oil","10 g",90,0]]],["Before bed","Milk",[["1 small glass","Milk","150 ml",95,5]]]],[["Breakfast","Masala omelette & toast",[["3","Eggs","50 g each",215,19],["1 portion","Onion & tomato","100 g",35,1],["2 slices","Whole-wheat toast","60 g",150,6],["1 tsp","Cooking oil","5 g",45,0],["1","Orange","150 g",70,1]]],["Morning snack","Banana, peanuts & milk",[["1","Banana","100 g",90,1],["1 small handful","Peanuts","15 g",87,4],["1 small glass","Milk","150 ml",95,5]]],["Lunch","Chole chawal with curd",[["1 portion","Rice","50 g dry",180,3],["1 bowl","Chole","65 g dry chickpeas",235,13],["1 bowl","Curd","150 g",95,5],["1 bowl","Salad","100 g",30,1],["2 tsp","Cooking oil","10 g",90,0]]],["Evening snack","Chana & apple",[["1 small handful","Roasted chana","25 g",96,5],["1","Apple","150 g",80,0]]],["Dinner","Chicken breast, chapati & sabzi",[["1 portion","Chicken breast","140 g raw",170,32],["2","Chapatis","50 g atta total",170,6],["1 bowl","Vegetable sabzi","150 g",60,3],["2 tsp","Cooking oil","10 g",90,0]]],["Before bed","Milk",[["1 glass","Milk","200 ml",125,7]]]],[["Breakfast","Paneer besan chillas & curd",[["2","Besan chillas","75 g besan total",290,16],["1 portion","Paneer stuffing","45 g",135,8],["1 bowl","Curd","100 g",65,4],["1 tsp","Cooking oil","5 g",45,0]]],["Morning snack","Banana, almonds & milk",[["1","Banana","100 g",90,1],["8–10","Almonds","10 g total",58,2],["1 glass","Milk","200 ml",125,7]]],["Lunch","Fish with rice & vegetables",[["1 portion","Fish","150 g raw",170,30],["1 portion","Rice","65 g dry",233,5],["1 bowl","Mixed vegetables","150 g",60,3],["2 tsp","Cooking oil","10 g",90,0]]],["Evening snack","Peanut butter toast & guava",[["1 slice","Whole-wheat bread","30 g",75,3],["1 tbsp","Peanut butter","20 g",120,5],["1","Guava","100 g",65,3]]],["Dinner","Chapatis, masoor dal & salad",[["2","Chapatis","55 g atta total",186,7],["1 bowl","Masoor dal","65 g dry",230,16],["1 bowl","Salad","100 g",30,1],["1 tsp","Cooking oil","5 g",45,0]]],["Before bed","Plain curd",[["1 bowl","Curd","150 g",95,5]]]],[["Breakfast","Eggs & vegetable upma",[["2","Boiled eggs","50 g each",145,13],["1 plate","Upma","55 g dry rava",198,7],["1 portion","Mixed vegetables","100 g",40,2],["2 tsp","Cooking oil","10 g",90,0]]],["Morning snack","Milk & banana",[["1 glass","Milk","200 ml",125,7],["1","Banana","100 g",90,1]]],["Lunch","Chicken pulao & cucumber raita",[["1 portion","Chicken","140 g raw",170,30],["1 portion","Rice","65 g dry",233,5],["1 portion","Mixed vegetables","100 g",40,2],["2 tsp","Cooking oil","10 g",90,0],["1 bowl","Cucumber raita","100 g",65,4]]],["Evening snack","Chana, peanuts & apple",[["1 handful","Roasted chana","40 g",155,8],["8–10","Peanuts","8 g",45,2],["1","Apple","150 g",80,0]]],["Dinner","Chapati, dal & sabzi",[["2","Chapatis","70 g atta total",240,9],["1 bowl","Dal","55 g dry",195,13],["1 bowl","Vegetable sabzi","150 g",60,3],["1 tsp","Cooking oil","5 g",45,0]]],["Before bed","Plain curd",[["1 bowl","Curd","150 g",95,5]]]],[["Breakfast","Egg bhurji & chapati",[["2","Eggs","50 g each",145,13],["1 portion","Onion & tomato","80 g",30,1],["2","Chapatis","50 g atta total",169,6],["1 tsp","Cooking oil","5 g",45,0],["1 small glass","Milk","150 ml",95,5]]],["Morning snack","Banana, almonds & curd",[["1","Banana","100 g",90,1],["8–10","Almonds","10 g",58,2],["1 bowl","Curd","100 g",65,4]]],["Lunch","Home-style chicken curry & rice",[["1 portion","Boneless chicken","150 g raw",180,32],["1 portion","Rice","50 g dry",180,3],["1 bowl","Salad","150 g",40,2],["2 tsp","Cooking oil","10 g",90,0]]],["Evening snack","Peanut butter sandwich & fruit",[["2 slices","Whole-wheat bread","60 g",150,6],["1 tbsp","Peanut butter","15 g",90,4],["1 portion","Seasonal fruit","100 g",60,1]]],["Dinner","Chapati, dal, paneer & vegetables",[["2","Chapatis","50 g atta total",169,6],["1 bowl","Dal","60 g dry",210,14],["1 portion","Paneer","45 g",135,8],["1 bowl","Mixed vegetables","150 g",60,3],["1 tsp","Cooking oil","5 g",45,0]]],["Before bed","Milk",[["1 small glass","Milk","150 ml",95,5]]]]];
 const recipes={"Spiced chicken, rice & vegetable sabzi":"Marinate the chicken with ginger-garlic, turmeric, chilli, salt and lemon for 10 minutes. Cook the chicken with 5 g of the listed oil until it reaches 74°C inside. Prepare rice using the listed dry quantity. Sauté vegetables with cumin and the remaining 5 g oil.","Chapati, dal, paneer & salad":"Prepare 2 chapatis using the listed atta, without added oil. Cook dal with turmeric, cumin and tomato; finish with the listed 5 g oil. Lightly season paneer with black pepper and serve with fresh salad.","Vegetable poha & eggs":"Prepare poha with mustard seeds, curry leaves, onion, peanuts and vegetables; use the listed 5 g oil. Serve with two boiled eggs.","Fish curry, chapatis, sabzi & curd":"Cook fish with ginger-garlic, turmeric, coriander, tomato and the listed oil until fully cooked (63°C internally). Prepare chapatis without added oil; serve with seasoned sabzi and plain curd.","Rajma rice & salad":"Soak rajma overnight, discard soaking water and boil thoroughly until soft. Simmer with tomato, onion, cumin and the listed oil. Serve over rice with salad.","Banana-almond oats":"Cook oats in milk until thick; top with sliced banana and almonds.","Chicken curry, chapati & sabzi":"Simmer chicken with onion, tomato, ginger-garlic, turmeric, chilli and coriander in the listed oil until it reaches 74°C inside. Prepare chapatis without added oil; serve with sabzi.","Moong dal rice & salad":"Cook moong dal with turmeric and tomato; finish with cumin tempered in the listed oil. Serve with rice and cucumber salad.","Masala omelette & toast":"Whisk eggs with chopped onion, tomato, coriander, chilli and salt. Cook with the listed oil until set; serve with toast and orange.","Chole chawal with curd":"Soak chickpeas overnight and cook until tender. Simmer with tomato, onion, cumin, coriander and the listed oil. Serve with rice, curd and salad.","Chicken breast, chapati & sabzi":"Season chicken with ginger-garlic, turmeric, coriander and lemon. Cook until 74°C internally using part of the listed oil; use the remainder for vegetable sabzi. Prepare chapatis without additional oil.","Paneer besan chillas & curd":"Make besan batter with water, onion, coriander, turmeric and salt. Cook two chillas with the listed oil and fill with crumbled seasoned paneer. Serve with curd.","Fish with rice & vegetables":"Season fish with turmeric, lemon and pepper; pan-cook with 5 g oil until 63°C internally. Prepare rice and sauté vegetables using the remaining 5 g oil.","Chapatis, masoor dal & salad":"Prepare chapatis without added oil. Cook masoor dal with turmeric and tomato, then temper with cumin and the listed oil. Serve with salad.","Eggs & vegetable upma":"Toast rava until fragrant; cook with mustard seeds, curry leaves, vegetables and the listed oil. Serve with boiled eggs.","Chicken pulao & cucumber raita":"Sauté whole spices and chicken with the listed oil, then add rice and vegetables. Simmer until rice is cooked and chicken reaches 74°C internally. Serve with cucumber raita.","Chapati, dal & sabzi":"Prepare chapatis without added oil. Cook dal with turmeric and cumin; use the listed oil for the vegetable sabzi.","Egg bhurji & chapati":"Scramble eggs with onion, tomato, turmeric, chilli and coriander in the listed oil. Serve with chapatis prepared without additional oil.","Home-style chicken curry & rice":"Cook onion, tomato, ginger-garlic and spices in the listed oil. Add chicken, simmer until 74°C internally, then serve with rice and salad.","Chapati, dal, paneer & vegetables":"Prepare chapatis without added oil. Cook dal with turmeric and cumin, season paneer with coriander and pepper, and sauté vegetables in the listed oil."};
+
+
+/*
+ * Exercise catalog is independent of the rendered UI.
+ * Stable IDs support future per-position image assets/tutorials without changing the daily schedule.
+ * Explanations and images are deliberately not included in this version.
+ */
+const EXERCISE_CATALOG={
+ warmup:{en:"Warm-up walk or marching",hi:"Warm-up walk ya march"},
+ squat:{en:"Bodyweight squats",hi:"Bodyweight squats"},
+ inclinePushup:{en:"Incline push-ups",hi:"Incline push-ups"},
+ bandRow:{en:"Resistance-band row / seated row",hi:"Band row / seated row"},
+ gluteBridge:{en:"Glute bridges",hi:"Glute bridges"},
+ plank:{en:"Forearm plank",hi:"Forearm plank"},
+ walk:{en:"Brisk or easy walk",hi:"Brisk ya easy walk"},
+ mobility:{en:"Gentle joint mobility",hi:"Light mobility"},
+ lunge:{en:"Reverse lunges",hi:"Reverse lunges"},
+ press:{en:"Light dumbbell shoulder press",hi:"Light dumbbell shoulder press"},
+ pulldown:{en:"Lat pulldown / band pulldown",hi:"Lat pulldown / band pulldown"},
+ rdl:{en:"Light Romanian deadlift / hip hinge",hi:"Light Romanian deadlift / hip hinge"},
+ deadBug:{en:"Dead bug",hi:"Dead bug"},
+ stretch:{en:"Gentle stretching",hi:"Light stretching"},
+ rest:{en:"Rest from strength training",hi:"Strength training se rest"}
+};
+/* Each entry has an exercise ID plus either duration or sets/reps/rest. */
+const DAY_WORKOUTS=[
+ {kind:"strength",icon:"🏋️",en:"Full-body Strength A",hi:"Full-body Strength A",minutes:"35–45 min",items:[
+  {id:"warmup",duration:"5 min"},
+  {id:"squat",sets:3,reps:"10–12",rest:"60–90 sec"},
+  {id:"inclinePushup",sets:3,reps:"8–12",rest:"60–90 sec"},
+  {id:"bandRow",sets:3,reps:"10–12",rest:"60–90 sec"},
+  {id:"gluteBridge",sets:2,reps:"12–15",rest:"60 sec"},
+  {id:"plank",sets:2,duration:"20–40 sec",rest:"45 sec"}
+ ]},
+ {kind:"recovery",icon:"🚶",en:"Walk & mobility",hi:"Walk aur mobility",minutes:"25–35 min",items:[
+  {id:"walk",duration:"20–30 min"},
+  {id:"mobility",duration:"5 min"}
+ ]},
+ {kind:"strength",icon:"🏋️",en:"Full-body Strength B",hi:"Full-body Strength B",minutes:"35–45 min",items:[
+  {id:"warmup",duration:"5 min"},
+  {id:"lunge",sets:2,reps:"8 each leg",rest:"60–90 sec"},
+  {id:"press",sets:3,reps:"8–12",rest:"60–90 sec"},
+  {id:"pulldown",sets:3,reps:"10–12",rest:"60–90 sec"},
+  {id:"rdl",sets:2,reps:"10–12",rest:"60–90 sec"},
+  {id:"deadBug",sets:2,reps:"8 each side",rest:"45 sec"}
+ ]},
+ {kind:"rest",icon:"🌿",en:"Rest & recover",hi:"Rest aur recovery",minutes:"Rest day",items:[
+  {id:"rest",duration:"All day"},
+  {id:"stretch",duration:"5–10 min (optional)"}
+ ]},
+ {kind:"strength",icon:"🏋️",en:"Full-body Strength A",hi:"Full-body Strength A",minutes:"35–45 min",items:[
+  {id:"warmup",duration:"5 min"},
+  {id:"squat",sets:3,reps:"10–12",rest:"60–90 sec"},
+  {id:"inclinePushup",sets:3,reps:"8–12",rest:"60–90 sec"},
+  {id:"bandRow",sets:3,reps:"10–12",rest:"60–90 sec"},
+  {id:"gluteBridge",sets:2,reps:"12–15",rest:"60 sec"},
+  {id:"plank",sets:2,duration:"20–40 sec",rest:"45 sec"}
+ ]},
+ {kind:"recovery",icon:"🚶",en:"Easy walking",hi:"Easy walking",minutes:"25–35 min",items:[
+  {id:"walk",duration:"20–30 min"},
+  {id:"mobility",duration:"5 min"}
+ ]},
+ {kind:"rest",icon:"🌿",en:"Full rest day",hi:"Full rest day",minutes:"Rest day",items:[
+  {id:"rest",duration:"All day"}
+ ]}
+];
+const EXERCISE_UI={
+ english:{
+  open:"View exercises",close:"Hide exercises",recoveryOpen:"View recovery plan",recoveryClose:"Hide recovery plan",
+  categoryStrength:"Strength training",categoryRecovery:"Active recovery",categoryRest:"Rest day",
+  session:"Daily workout",exerciseCount:"activities",sets:"sets",reps:"reps",rest:"rest",notes:"Start with comfortable resistance and good form. Take an extra rest day if unusually sore. Stop an exercise if it causes pain.",
+  restNotes:"Recovery helps muscle growth. Gentle movement is optional on rest days.",sessionTag:"Today's plan"
+ },
+ hinglish:{
+  open:"Exercises dekhein",close:"Exercises hide karein",recoveryOpen:"Recovery plan dekhein",recoveryClose:"Recovery plan hide karein",
+  categoryStrength:"Strength workout",categoryRecovery:"Active recovery",categoryRest:"Rest day",
+  session:"Aaj ka workout",exerciseCount:"activities",sets:"sets",reps:"reps",rest:"rest",notes:"Light weight se start karein aur form sahi rakhein. Zyada soreness ho toh extra rest lein. Pain ho toh exercise stop karein.",
+  restNotes:"Muscle growth ke liye recovery bhi important hai. Rest day par light movement optional hai.",sessionTag:"Aaj ka plan"
+ }
+};
+let exerciseOpen=false;
+const exText=k=>EXERCISE_UI[language][k]||EXERCISE_UI.english[k]||k;
+function renderExercises(){
+ const w=DAY_WORKOUTS[active],kind=w.kind;
+ el("exerciseMainIcon").textContent=w.icon;
+ el("exerciseDayType").textContent=exText(kind==="strength"?"categoryStrength":kind==="recovery"?"categoryRecovery":"categoryRest");
+ el("exerciseDaySummary").textContent=(language==="hinglish"?w.hi:w.en)+" · "+w.minutes;
+ el("exercisePlanTitle").textContent=language==="hinglish"?w.hi:w.en;
+ el("exercisePlanSub").textContent=w.minutes+" · "+w.items.length+" "+exText("exerciseCount");
+ el("exercisePlanTag").textContent=exText(kind==="strength"?"categoryStrength":kind==="recovery"?"categoryRecovery":"categoryRest");
+ const button=el("exerciseToggle"),panel=el("exercisePanel");
+ button.setAttribute("aria-expanded",String(exerciseOpen));
+ const view=kind==="strength"?(exerciseOpen?"close":"open"):(exerciseOpen?"recoveryClose":"recoveryOpen");
+ el("exerciseToggleLabel").textContent=exText(view);
+ panel.hidden=!exerciseOpen;
+ const list=el("exerciseList");list.replaceChildren();
+ if(exerciseOpen){
+  w.items.forEach((exercise,i)=>{
+   const item=elNode("div","exercise-item"),number=elNode("span","exercise-number",String(i+1).padStart(2,"0"));
+   const detail=elNode("div","exercise-details");
+   const title=elNode("strong","exercise-name",EXERCISE_CATALOG[exercise.id][language==="hinglish"?"hi":"en"]);
+   const metrics=elNode("div","exercise-prescription");
+   if(exercise.sets)metrics.append(elNode("span","",exercise.sets+" "+exText("sets")));
+   if(exercise.reps)metrics.append(elNode("span","",exercise.reps+" "+exText("reps")));
+   if(exercise.duration)metrics.append(elNode("span","",exercise.duration));
+   if(exercise.rest)metrics.append(elNode("span","",exercise.rest+" "+exText("rest")));
+   detail.append(title,metrics);item.append(number,detail);list.append(item);
+  });
+ }
+ el("exerciseFootnote").textContent=exText(kind==="rest"?"restNotes":"notes");
+}
 
 const mealIcons=["🍳","🍎","🍛","🥜","🍽️","🥛"];
 const mealDescriptions=["Breakfast","Morning snack","Lunch","Evening snack","Dinner","Before bed"];
@@ -453,7 +609,7 @@ function renderTabs(){
   b.type="button";b.setAttribute("aria-current",i===active?"true":"false");
   const name=elNode("span","day-name","Day "+(i+1)),count=elNode("span","day-count",n+"/6 "+(language==="hinglish"?"meals done":"meals done"));
   const track=elNode("div","day-track"),fill=elNode("div","day-fill");fill.style.width=n/6*100+"%";track.append(fill);
-  b.append(name,count,track);b.addEventListener("click",()=>{active=i;render();});tabs.append(b);
+  b.append(name,count,track);b.addEventListener("click",()=>{if(active!==i)exerciseOpen=false;active=i;render();});tabs.append(b);
  });
 }
 function makeRow(row){
@@ -510,6 +666,7 @@ function renderSide(){
  el("plannedKcal").textContent=totalKcal.toLocaleString()+" kcal";el("plannedProtein").textContent=totalProtein+" g protein · approx. from listed foods";
 }
 function render(){
+ renderExercises();
  el("dayEyebrow").textContent="DAY "+String(active+1).padStart(2,"0")+" OF 07";
  el("dayTitle").textContent=language==="hinglish"?DAY_HI[active]:dayThemes[active];
  el("dayDescription").textContent=t("dayDescription");
@@ -517,10 +674,11 @@ function render(){
  renderSide();renderTabs();paintStaticText();renderGroceries();
  el("prevDay").disabled=active===0;el("nextDay").disabled=active===days.length-1;
 }
-function goToDay(next){active=Math.max(0,Math.min(6,next));render();el("dayTabs").scrollIntoView({behavior:"smooth",block:"start"});}
+function goToDay(next){const nextDay=Math.max(0,Math.min(6,next));if(nextDay!==active)exerciseOpen=false;active=nextDay;render();el("dayTabs").scrollIntoView({behavior:"smooth",block:"start"});}
 el("prevDay").addEventListener("click",()=>goToDay(active-1));
 el("nextDay").addEventListener("click",()=>goToDay(active+1));
 el("resetDay").addEventListener("click",()=>{if(!completed(active))return;if(!confirm("Clear the completed meals for Day "+(active+1)+"?"))return;for(let i=0;i<6;i++)delete done[active+"-"+i];keep();render();});
+el("exerciseToggle").addEventListener("click",()=>{exerciseOpen=!exerciseOpen;renderExercises();});
 el("langHinglish").addEventListener("click",()=>setLanguage("hinglish"));
 el("langEnglish").addEventListener("click",()=>setLanguage("english"));
 el("copyGroceries").addEventListener("click",copyGroceryList);
