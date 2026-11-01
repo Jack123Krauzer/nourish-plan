@@ -22,9 +22,75 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-vis
 .meal-bottom{padding:13px 18px;display:flex;align-items:center;gap:12px;min-height:52px}.recipe-toggle{display:flex;align-items:center;gap:8px;color:#15744f;background:#f0f8f2;border-radius:9px;border:1px solid #e0efe3;font-size:12px;font-weight:800;padding:9px 12px;cursor:pointer;list-style:none}.recipe-toggle::-webkit-details-marker{display:none}.recipe-toggle:hover{background:#e7f2e9}.recipe-toggle .chev{transition:transform .2s}.recipe[open] .chev{transform:rotate(180deg)}.recipe{width:100%}.recipe-panel{background:#f8fbf8;border:1px solid #e6efe8;border-radius:10px;padding:15px 17px;margin-top:10px}.recipe-panel h4{font-size:11px;letter-spacing:1px;color:#14714b;margin:0 0 7px;text-transform:uppercase}.recipe-panel p{margin:0;color:#476756;font-size:13px;line-height:1.8}.simple-note{color:#9baa9e;font-size:11px}
 .sidebar{display:flex;flex-direction:column;gap:15px;position:sticky;top:18px}.side-card{background:#fff;border:1px solid #e3ebe5;border-radius:18px;padding:20px;box-shadow:var(--shadow)}.side-card h3{margin:0 0 17px;font-size:15px;letter-spacing:-.2px}.ring-section{display:flex;align-items:center;gap:18px}.ring{width:105px;height:105px;display:grid;place-items:center;border-radius:50%;background:conic-gradient(#168b5d 0%,#e8f0e8 0%);flex:none}.ring-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;border-radius:50%;width:82px;height:82px}.ring-inner strong{font-size:28px;letter-spacing:-1px;line-height:1}.ring-inner small{font-size:10px;color:#7e9385;margin-top:5px}.ring-copy strong{display:block;font-size:14px}.ring-copy p{color:#819487;font-size:11px;line-height:1.7;margin:4px 0 0}.side-muted{font-size:11px;color:#839486;line-height:1.65}.reset{width:100%;padding:10px 12px;border-radius:10px;border:1px solid #e0e9e1;background:#fff;color:#385847;font-weight:800;font-size:12px;margin-top:17px}.reset:hover{background:#f0f7f2}
 .target-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid #edf0ec;font-size:12px}.target-row:last-child{border:0}.target-row span{color:#708579}.target-row strong{font-weight:850;color:#173d2b}.target-label{font-size:10px;text-transform:uppercase;color:#82978a;font-weight:850;letter-spacing:1px;margin-bottom:5px}.planned{background:#f1f8f3;border:1px solid #e1f0e5;border-radius:11px;padding:12px;margin-top:11px}.planned big{font-size:22px;font-weight:850;color:#166b4b}.planned small{display:block;color:#6b8474;font-size:10px}.tip{display:flex;gap:9px;margin-top:9px;align-items:start;color:#71887b;font-size:11px;line-height:1.7}.tip-icon{font-size:18px}.side-actions{display:flex;gap:8px;margin-top:12px}.side-actions button{flex:1;justify-content:center}.how{margin:22px 0 0;border:1px solid #e0ebe1;background:#eef5ef;border-radius:14px;padding:17px 20px;font-size:12px;color:#547261;line-height:1.8}.how strong{color:#1d5136}.nav-bottom{display:flex;justify-content:space-between;gap:12px;margin-top:20px}.nav-bottom button{background:#fff;border:1px solid #dfeadf;border-radius:12px;font-weight:800;color:#176849;padding:12px 16px}.nav-bottom button:disabled{opacity:.38;cursor:default}.footer{margin-top:40px;text-align:center;color:#95a59a;font-size:11px}
+
+/* Food-table refinement: spacious rows and exact column alignment. */
+.meal-card{border-radius:20px;border-color:#dce9df;box-shadow:0 10px 28px rgba(18,67,45,.055)}
+.meal-content{padding:21px 22px 0}
+.dish-row{margin-bottom:17px;align-items:center}
+.dish-row h3{font-size:20px;font-weight:850;letter-spacing:-.45px}
+.dish-row .macro-summary{background:#e7f4ea;color:#275b37;font-size:12px;border-radius:16px;padding:9px 14px}
+.whattoeat{color:#607d6b;font-size:11px;letter-spacing:1.65px;margin-bottom:12px}
+.food-scroll{border:1px solid #d8e8da;border-radius:15px;overflow:hidden}
+.food-table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.food-table th{padding:14px 15px;background:#ebf5ed;color:#3e6050;font-weight:800;font-size:12px;letter-spacing:0}
+.food-table td{padding:13px 15px;border-top:1px solid #e6eee8;color:#384d40;vertical-align:middle}
+.food-table tbody tr:nth-child(even){background:#fff}
+.food-table tbody tr:hover{background:#fafdfb}
+.food-table td:nth-child(1){font-size:14px;font-weight:850;color:#115b35}
+.food-table td:nth-child(2){font-weight:750;color:#10291c}
+.food-table td:nth-child(3){color:#485e50}
+.food-table td:nth-child(4),.food-table td:nth-child(5){font-size:14px}
+.food-table thead th:nth-child(4),.food-table thead th:nth-child(5){text-align:right}
+.food-name{display:flex;align-items:center;gap:12px;min-height:36px}
+.food-emoji{display:inline-flex;align-items:center;justify-content:center;width:38px;min-width:38px;height:38px;line-height:1;flex-shrink:0}
+.food-emoji svg{width:36px;height:36px;display:block;overflow:visible}
+.food-table tfoot{background:#e0f2e4}
+.food-table tfoot td{background:transparent;color:#115d34;border-top:1px solid #cfe8d5;font-size:16px!important;font-weight:850;padding:16px 15px}
+.food-table tfoot td.total-label{text-align:left;font-size:16px!important}
+.food-table tfoot td.total-kcal,.food-table tfoot td.total-protein{text-align:right;font-size:17px!important}
+.meal-bottom{padding:16px 22px 19px}
+.recipe-toggle{width:100%;background:#ecf7ef;border:1px solid #d4e9d9;color:#145e37;border-radius:12px;padding:13px 15px;display:flex;gap:10px;font-size:13px}
+.recipe-toggle:hover{background:#e5f4e9}
+.recipe-toggle .chev{margin-left:auto;font-size:16px}
+.recipe-panel{padding:17px 19px;border-radius:12px}
+.simple-note{background:#f4f9f5;border-radius:10px;padding:10px 13px}
+@media(max-width:620px){
+ .meal-content{padding:15px 13px 0}
+ .dish-row h3{font-size:17px}
+ .dish-row .macro-summary{font-size:11px;padding:6px 9px}
+ .food-scroll{border:none;border-radius:0;overflow:visible}
+ .food-table,.food-table tbody{display:block;width:100%}
+ .food-table tbody tr{padding:13px 12px;background:#fff!important;border:1px solid #dce9df;border-radius:11px;margin-bottom:9px}
+ .food-table tbody td{border:0;padding:0;font-size:12px}
+ .food-table tbody td:nth-child(1){font-size:12px}
+ .food-table tbody td:nth-child(2){font-size:14px}
+ .food-emoji{width:36px;min-width:36px;height:36px}
+ .food-emoji svg{width:34px;height:34px}
+ .food-table tfoot tr{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;background:#e0f2e4;border-radius:11px;align-items:center;padding:13px}
+ .food-table tfoot td{display:block;padding:0!important;border:0;background:none;font-size:12px!important}
+ .food-table tfoot td.total-label{font-size:14px!important}
+ .food-table tfoot td.total-kcal,.food-table tfoot td.total-protein{font-size:14px!important}
+ .food-table tfoot td.total-kcal::after{content:" kcal";font-size:10px;font-weight:700}
+ .meal-bottom{padding:10px 13px 14px}
+ .recipe-toggle{padding:12px 14px}
+}
+
 @media(max-width:1100px){.hero{grid-template-columns:1fr 260px}.content-grid{grid-template-columns:minmax(0,1fr) 260px;gap:14px}.metric{padding:14px 12px}.metric strong{font-size:19px}.day-tab{padding:12px 8px}.day-tab .day-name{font-size:12px}}
 @media(max-width:850px){.layout{padding:20px 18px 50px}.hero{grid-template-columns:1fr;gap:20px;padding:30px}.hero-aside{max-width:440px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.day-tabs{display:flex;overflow-x:auto;padding:0 1px 8px;scrollbar-width:thin}.day-tab{min-width:128px}.content-grid{grid-template-columns:1fr}.sidebar{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.side-card:last-child{grid-column:span 2}}
 @media(max-width:620px){.topbar{height:62px}.topbar-inner{padding:0 16px}.brand{font-size:18px}.nav-actions .ghost span{display:none}.layout{padding:15px 12px 35px}.hero{border-radius:19px;padding:26px 22px;min-height:0}.hero h1{font-size:33px;letter-spacing:-1.3px}.hero-aside{padding:16px}.hero-meta span{font-size:10px}.metric{padding:12px;gap:9px}.metric-symbol{width:37px;height:37px;font-size:18px}.metric strong{font-size:18px}.metric-label{font-size:10px}.section-top{margin-top:25px}.section-top h2{font-size:18px}.section-hint{display:none}.day-tab{min-width:113px}.planner-top h2{font-size:24px}.count-badge{font-size:10px;padding:7px 9px}.meal-bar{padding:12px}.meal-symbol{width:39px;height:39px;font-size:20px}.meal-content{padding:15px 12px 0}.meal-title{gap:9px}.meal-check{padding:8px;font-size:11px}.dish-row{flex-wrap:wrap;gap:7px}.dish-row h3{font-size:17px}.food-scroll{border:0;overflow:visible}.food-table,.food-table tbody{display:block;width:100%}.food-table thead{display:none}.food-table tbody tr{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;padding:13px 12px;border:1px solid #e9efe9;border-radius:10px;margin-bottom:8px;background:#fdfefd!important}.food-table td{display:block;border:0;padding:0;font-size:12px}.food-table tbody td:nth-child(2){grid-column:1/-1;grid-row:1;font-size:14px;margin-bottom:5px}.food-table tbody td:nth-child(1){grid-column:1;grid-row:2}.food-table tbody td:nth-child(3){grid-column:2;grid-row:2;text-align:right}.food-table tbody td:nth-child(4){grid-column:1;grid-row:3;text-align:left!important;color:#2a7953}.food-table tbody td:nth-child(5){grid-column:2;grid-row:3;text-align:right!important;color:#2a7953}.food-table tbody td:nth-child(1):before{content:"QTY  ";font-weight:750;color:#91a296;font-size:10px}.food-table tbody td:nth-child(3):before{content:"PORTION  ";font-weight:750;color:#91a296;font-size:10px}.food-table tbody td:nth-child(4):before{content:"KCAL  ";font-weight:750;color:#91a296;font-size:10px}.food-table tbody td:nth-child(5):before{content:"PROTEIN  ";font-weight:750;color:#91a296;font-size:10px}.food-table tfoot,.food-table tfoot tr{display:block}.food-table tfoot tr{background:#eaf5ed;border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;gap:8px}.food-table tfoot td{padding:0!important;border:0;background:transparent!important}.food-table tfoot td.total-label{flex:1;text-align:left}.food-table tfoot td.total-kcal,.food-table tfoot td.total-protein{flex:0 0 auto;text-align:right}.food-table tfoot td.total-label:after{content:""}.food-table colgroup{display:none}.meal-bottom{padding:10px 12px 14px}.sidebar{grid-template-columns:1fr}.side-card:last-child{grid-column:auto}.ring-section{justify-content:start}.nav-bottom{margin:18px 2px}.footer{margin-top:25px}.how{padding:13px}}
+
+@media(max-width:620px){
+ .food-table tfoot tr{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:center;justify-content:initial;padding:13px;background:#e0f2e4}
+ .food-table tfoot td{display:block;flex:initial!important;padding:0!important;border:0!important;background:transparent!important}
+ .food-table tfoot td.total-label{font-size:14px!important}
+ .food-table tfoot td.total-kcal,.food-table tfoot td.total-protein{font-size:14px!important}
+ .food-table tfoot td.total-kcal::after{content:" kcal";font-size:10px}
+ .food-table tbody td:nth-child(2){font-size:14px}
+ .food-name{gap:10px}
+ .food-emoji{width:36px;min-width:36px;height:36px}
+ .food-emoji svg{width:34px;height:34px}
+}
+
 @media print{body{background:white}.topbar,.nav-actions,.day-tabs,.section-top,.sidebar,.nav-bottom,.footer,.recipe-toggle,.meal-check,.hero-aside{display:none!important}.layout{padding:0}.hero{min-height:0;background:white!important;color:#172f22;box-shadow:none;padding:0 0 14px}.hero p,.hero-meta span{color:#333}.hero-meta span{background:none;border:1px solid #aaa}.eyebrow{color:#276448}.metrics{display:none}.content-grid{display:block}.meal-card{break-inside:avoid;box-shadow:none;margin-bottom:8px}.meal-bar{background:#eee}.meal-bottom{display:none}.food-table tbody tr{display:table-row}.food-table thead{display:table-header-group}}
 </style>
 </head>
@@ -70,38 +136,58 @@ const mealIcons=["🍳","🍎","🍛","🥜","🍽️","🥛"];
 const mealDescriptions=["Breakfast","Morning snack","Lunch","Evening snack","Dinner","Before bed"];
 const times=["7:30 AM","10:30 AM","1:30 PM","5:00 PM","8:00 PM","10:00 PM"];
 const dayThemes=["Chicken, eggs & dal","Fish, poha & rajma","Oats, chicken & moong dal","Eggs, chole & chicken","Paneer, fish & masoor dal","Chicken pulao & eggs","Chicken curry & paneer"];
-function foodIcon(name){
- const n=name.toLowerCase();
- if(/egg/.test(n))return "🥚";
- if(/chicken/.test(n))return "🍗";
- if(/fish/.test(n))return "🐟";
- if(/paneer|cheese/.test(n))return "🧀";
- if(/milk/.test(n))return "🥛";
- if(/curd|raita|yogurt/.test(n))return "🥣";
- if(/almond|peanut|chana/.test(n))return "🥜";
- if(/banana/.test(n))return "🍌";
- if(/apple/.test(n))return "🍎";
- if(/orange/.test(n))return "🍊";
- if(/papaya|guava|fruit|dates/.test(n))return "🍉";
- if(/rice|poha|upma|oats/.test(n))return "🍚";
- if(/bread|toast/.test(n))return "🍞";
- if(/chilla/.test(n))return "🥞";
- if(/chapati|roti/.test(n))return "roti";
- if(/dal|rajma|chole/.test(n))return "🥘";
- if(/vegetable|salad|cucumber|onion|tomato/.test(n))return "🥗";
- if(/oil/.test(n))return "oil";
- if(/butter/.test(n))return "🧈";
- return "🍽";
-}
-const FOOD_SVG={
- roti:'<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chapati"><ellipse cx="16" cy="23" rx="13" ry="5.5" fill="#b97b3a" stroke="#8c542b" stroke-width="1.3"/><ellipse cx="16" cy="18.5" rx="13.5" ry="6.5" fill="#f2c477" stroke="#a77038" stroke-width="1.5"/><path d="M5 17c5-4 16-5 23 .5" fill="none" stroke="#e6a85d" stroke-width="1.1"/><circle cx="10" cy="17" r="1.3" fill="#ad6736"/><circle cx="18" cy="15" r="1.5" fill="#ad6736"/><circle cx="23" cy="19" r="1.1" fill="#a35d32"/><circle cx="15" cy="21" r="1.1" fill="#ad6736"/></svg>',
- oil:'<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cooking oil"><rect x="13" y="2" width="6" height="5" rx="1" fill="#9d724a"/><path d="M12 7h8v4l3.5 3.5V26c0 2-1.5 3-3.5 3h-8c-2 0-3.5-1-3.5-3V14.5L12 11z" fill="#f6fbf5" stroke="#67927b" stroke-width="1.3"/><path d="M10 18h12v8.5c0 1.1-.8 1.5-2 1.5h-8c-1.2 0-2-.4-2-1.5z" fill="#f4c84f"/><path d="M24 16h1.5c3 0 3 8 0 8H24" fill="none" stroke="#67927b" stroke-width="1.8" stroke-linecap="round"/><path d="M12 8h8" stroke="#bd955f" stroke-width="1.5"/></svg>'
+
+/* Consistent, embedded SVG food illustrations: no emoji-font or CDN dependency. */
+const svgBody = body => '<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">'+body+'</svg>';
+const FOOD_SVG = {
+ roti: svgBody('<ellipse cx="20" cy="29" rx="17" ry="7" fill="#b97636" stroke="#805026" stroke-width="1.6"/><ellipse cx="20" cy="22" rx="17" ry="10" fill="#f5ca83" stroke="#aa6f35" stroke-width="1.6"/><path d="M5 20Q21 11 35 20" fill="none" stroke="#e7a960" stroke-width="1.5"/><g fill="#b67c43"><circle cx="11" cy="21" r="1.6"/><circle cx="19" cy="17" r="1.9"/><circle cx="28" cy="22" r="1.5"/><circle cx="19" cy="26" r="1.4"/><circle cx="13" cy="27" r="1.1"/></g>'),
+ dal: svgBody('<path d="M4 17h32l-4 13c-2 5-22 5-24 0z" fill="#358d5f" stroke="#206743" stroke-width="1.8"/><ellipse cx="20" cy="17" rx="16" ry="7" fill="#f7bd42" stroke="#a76f28" stroke-width="1.5"/><path d="M8 17q12-7 24 0" stroke="#ef9540" fill="none" stroke-width="2"/><g fill="#b66227"><circle cx="11" cy="17" r="1.5"/><circle cx="19" cy="15" r="1.5"/><circle cx="28" cy="19" r="1.6"/></g><path d="M17 19q3-6 6 0m-7 4q4-7 8-4" fill="none" stroke="#32864e" stroke-width="1.9" stroke-linecap="round"/>'),
+ paneer: svgBody('<ellipse cx="20" cy="32" rx="17" ry="5" fill="#5d9a63"/><path d="M7 20l10-5 9 4-10 6z" fill="#fff8e1" stroke="#b9af8a" stroke-width="1.2"/><path d="M7 20l9 5v9l-9-5z" fill="#e3d6b4" stroke="#b9af8a" stroke-width="1.2"/><path d="M16 25l10-6v10l-10 5z" fill="#f9f3d9" stroke="#b9af8a" stroke-width="1.2"/><path d="M19 12l9-5 8 5-9 6z" fill="#fffdf1" stroke="#b9af8a" stroke-width="1.2"/><path d="M19 12l8 6v10l-8-6z" fill="#e5d8b9" stroke="#b9af8a" stroke-width="1.2"/><path d="M27 18l9-6v10l-9 6z" fill="#f8efd2" stroke="#b9af8a" stroke-width="1.2"/><path d="M23 8q-1-6 6-4" stroke="#368a4e" stroke-width="2.5" fill="none" stroke-linecap="round"/>'),
+ salad: svgBody('<path d="M4 23h32l-4 10q-12 6-24 0z" fill="#f4f8f5" stroke="#758b7c" stroke-width="1.7"/><path d="M6 22q-6-12 5-12 0-10 9-3 10-9 12 3 9 2 2 12" fill="#6fba55" stroke="#388947" stroke-width="1.4"/><path d="M10 14l9 8m9-10-8 11" stroke="#c4e18e" stroke-width="2"/><circle cx="12" cy="21" r="5" fill="#f2694b" stroke="#c84031" stroke-width="1.2"/><circle cx="27" cy="21" r="4.5" fill="#ee6949" stroke="#c84031" stroke-width="1.2"/><circle cx="20" cy="16" r="4" fill="#add26f" stroke="#618b46"/><circle cx="12" cy="21" r="1" fill="#fbbd78"/>'),
+ oil: svgBody('<rect x="16" y="2" width="8" height="5" rx="1" fill="#95683e"/><path d="M15 7h10v4l4 5v16q0 3-4 3H15q-4 0-4-3V16l4-5z" fill="#f7fbf5" stroke="#53866d" stroke-width="1.7"/><path d="M13 22h14v10q0 1-2 1H15q-2 0-2-1z" fill="#f2cb48"/><path d="M29 18h2q6 0 4 9-1 3-6 2" stroke="#53866d" stroke-width="2" fill="none"/><path d="M16 9h8" stroke="#ad916d" stroke-width="1.5"/>'),
+ egg: svgBody('<ellipse cx="20" cy="32" rx="17" ry="5" fill="#e2ebdf" stroke="#acbdb0"/><ellipse cx="13" cy="22" rx="10" ry="9" fill="#fffdf2" stroke="#b7b4a2" stroke-width="1.5"/><circle cx="13" cy="22" r="4.5" fill="#f7b83f" stroke="#dc942a" stroke-width="1"/><ellipse cx="27" cy="19" rx="8" ry="11" fill="#fff9e7" stroke="#d3c8a9" stroke-width="1.6"/><path d="M20 24q6-6 13-1" fill="none" stroke="#ece5cf" stroke-width="1.2"/>'),
+ chicken: svgBody('<path d="M12 25q-12-9-2-19Q20-3 29 8q8 9-2 18-8 9-15-1z" fill="#d98949" stroke="#96512f" stroke-width="1.8"/><path d="M24 25l8 8" stroke="#f4e6ce" stroke-width="6" stroke-linecap="round"/><circle cx="34" cy="34" r="4" fill="#f4e6ce"/><circle cx="30" cy="36" r="3.5" fill="#f4e6ce"/><path d="M12 12q8-7 15 1" stroke="#f4b477" stroke-width="2.4" stroke-linecap="round" fill="none"/>'),
+ fish: svgBody('<path d="M29 20l9-9v18z" fill="#5196b0" stroke="#2b6c91" stroke-width="1.4"/><ellipse cx="17" cy="20" rx="15" ry="11" fill="#8dd0d9" stroke="#2b6c91" stroke-width="1.7"/><circle cx="10" cy="18" r="2" fill="#254c5f"/><path d="M20 11l-1 18m7-16-1 15m-13-1q9-4 19 0" stroke="#4ea3b2" stroke-width="1.5" fill="none"/><path d="M3 24q5 2 9 0" stroke="#da7a70" stroke-width="2" fill="none"/>'),
+ milk: svgBody('<path d="M10 8h20l-2 27H12z" fill="#e7f4fb" stroke="#75a6bf" stroke-width="1.8"/><path d="M12 18h16l-2 15H14z" fill="#fffdf1"/><path d="M10 8q10-3 20 0" stroke="#669bb5" stroke-width="2" fill="none"/><path d="M15 12v18" stroke="#fff" stroke-width="2.3" opacity=".75"/>'),
+ curd: svgBody('<path d="M5 15h30l-4 16q-11 6-22 0z" fill="#c4e2df" stroke="#5d9690" stroke-width="1.5"/><ellipse cx="20" cy="15" rx="15.5" ry="6.8" fill="#fffdf1" stroke="#aacdc6" stroke-width="1.5"/><path d="M10 14q6-5 12 1 5-4 8 0" fill="none" stroke="#e6ede2" stroke-width="2.2"/>'),
+ nuts: svgBody('<g stroke="#865132" stroke-width="1.5"><ellipse cx="12" cy="26" rx="6" ry="9" transform="rotate(-28 12 26)" fill="#c18a50"/><ellipse cx="23" cy="25" rx="6" ry="9" transform="rotate(27 23 25)" fill="#d3a56e"/><ellipse cx="20" cy="13" rx="6" ry="8" transform="rotate(12 20 13)" fill="#c98d53"/></g><path d="M10 22l4 7m9-18-2 7m3 4-2 6" stroke="#f0d2a4" stroke-width="1.7" stroke-linecap="round"/>'),
+ banana: svgBody('<path d="M8 9q-3 25 17 25 10-1 12-14Q22 33 13 6z" fill="#ffda4f" stroke="#c99525" stroke-width="1.7"/><path d="M12 8q0 24 21 19" stroke="#faee99" stroke-width="2.2" fill="none"/><path d="M10 6l4 4m20 10 3-2" stroke="#906331" stroke-width="2" stroke-linecap="round"/>'),
+ apple: svgBody('<path d="M20 13q-10-9-16 3Q0 30 11 35q5 2 9-1 4 3 9 1 11-6 7-19-5-12-16-3" fill="#e65c50" stroke="#ad3c37" stroke-width="1.7"/><path d="M20 13V6" stroke="#6a663b" stroke-width="2.5" stroke-linecap="round"/><path d="M21 10q3-9 12-7-2 9-12 7" fill="#56a05b" stroke="#347743" stroke-width="1.2"/><path d="M10 18q-4 7-1 11" fill="none" stroke="#f8a39b" stroke-width="2.5" stroke-linecap="round"/>'),
+ orange: svgBody('<circle cx="20" cy="21" r="15" fill="#ffae42" stroke="#d17625" stroke-width="1.6"/><circle cx="20" cy="21" r="11.7" fill="#ffce72" stroke="#f8a23b" stroke-width="1.2"/><path d="M20 9v24M8 21h24M12 12l16 18M28 12 12 30" stroke="#f8a23b" stroke-width="1.4"/><path d="M19 5q6-6 12 0-5 5-12 0" fill="#4e9951"/>'),
+ fruit: svgBody('<path d="M3 28q15 13 34 0l-4 7H7z" fill="#7bae67"/><path d="M9 21q-2-9 8-10 9 0 11 10" fill="#ffac63" stroke="#d67546" stroke-width="1.6"/><path d="M20 11q-6-7 3-9" stroke="#558d4f" stroke-width="2" fill="none"/><circle cx="16" cy="22" r="6" fill="#f4c047" stroke="#da9529"/><circle cx="27" cy="26" r="6" fill="#d85959" stroke="#a94747"/><circle cx="24" cy="24" r="1.5" fill="#ffddba"/>'),
+ rice: svgBody('<path d="M4 19h32l-5 13q-11 5-22 0z" fill="#7aacc9" stroke="#467c9c" stroke-width="1.6"/><ellipse cx="20" cy="19" rx="16" ry="6.5" fill="#fffdf2" stroke="#c4d0d0" stroke-width="1.4"/><g fill="#e1d4b6"><ellipse cx="12" cy="19" rx="2" ry="1"/><ellipse cx="19" cy="17" rx="2" ry="1"/><ellipse cx="25" cy="21" rx="2" ry="1"/><ellipse cx="29" cy="18" rx="2" ry="1"/></g>'),
+ bread: svgBody('<path d="M7 13q-3-10 8-10h10q11 0 8 10v22H7z" fill="#d08f4b" stroke="#925626" stroke-width="1.8"/><path d="M11 14q-1-8 6-8h7q7 0 6 8v18H11z" fill="#f5d5a0" stroke="#ddaa64" stroke-width="1.3"/><path d="M13 18h15" stroke="#ead0a5" stroke-width="1.4"/>'),
+ chilla: svgBody('<ellipse cx="20" cy="30" rx="17" ry="6" fill="#f0efe9" stroke="#abb4a8" stroke-width="1.2"/><ellipse cx="20" cy="24" rx="15" ry="7" fill="#e7b968" stroke="#b48a43" stroke-width="1.4"/><ellipse cx="19" cy="20" rx="15" ry="7" fill="#f2c978" stroke="#b48a43" stroke-width="1.4"/><g fill="#488e51"><circle cx="14" cy="19" r="1.4"/><circle cx="25" cy="21" r="1.2"/><circle cx="21" cy="17" r="1.4"/></g>'),
+ butter: svgBody('<rect x="8" y="12" width="24" height="24" rx="5" fill="#c79452" stroke="#90683d" stroke-width="1.5"/><rect x="6" y="8" width="28" height="7" rx="3" fill="#e7bb7d" stroke="#a98151" stroke-width="1.5"/><rect x="12" y="21" width="16" height="9" rx="2" fill="#fff3d2"/><path d="M15 25h10" stroke="#be9655" stroke-width="1.3"/>'),
+ other: svgBody('<ellipse cx="20" cy="29" rx="17" ry="6" fill="#e4f0e9" stroke="#80a28e" stroke-width="1.7"/><ellipse cx="20" cy="26" rx="12" ry="4" fill="#fbfff5" stroke="#bbd1bd" stroke-width="1"/><path d="M6 8v13m-3-13v9m6-9v9M34 8v13" stroke="#658a74" stroke-width="2" stroke-linecap="round"/>')
 };
+function foodCategory(name){
+ const n=String(name).toLowerCase();
+ if(/chapati|roti/.test(n))return "roti";
+ if(/dal|rajma|chole/.test(n))return "dal";
+ if(/paneer|cheese/.test(n))return "paneer";
+ if(/vegetable|salad|cucumber|onion|tomato/.test(n))return "salad";
+ if(/oil/.test(n))return "oil";
+ if(/egg/.test(n))return "egg";
+ if(/chicken/.test(n))return "chicken";
+ if(/fish/.test(n))return "fish";
+ if(/milk/.test(n))return "milk";
+ if(/curd|raita|yogurt/.test(n))return "curd";
+ if(/almond|peanut|chana/.test(n))return "nuts";
+ if(/banana/.test(n))return "banana";
+ if(/apple/.test(n))return "apple";
+ if(/orange/.test(n))return "orange";
+ if(/papaya|guava|fruit|dates/.test(n))return "fruit";
+ if(/rice|poha|upma|oats/.test(n))return "rice";
+ if(/bread|toast/.test(n))return "bread";
+ if(/chilla/.test(n))return "chilla";
+ if(/butter/.test(n))return "butter";
+ return "other";
+}
 function makeFoodGraphic(name){
- const code=foodIcon(name), icon=elNode("span","food-emoji");
+ const icon=elNode("span","food-emoji");
  icon.setAttribute("aria-hidden","true");
- if(Object.hasOwn(FOOD_SVG,code)){icon.innerHTML=FOOD_SVG[code];}
- else{icon.textContent=code;}
+ icon.innerHTML=FOOD_SVG[foodCategory(name)] || FOOD_SVG.other;
  return icon;
 }
 const key="nourish-sajid-meals-v1";
@@ -119,7 +205,7 @@ const article=elNode("article","meal-card"+(done[active+"-"+mi]?" completed":"")
 const bar=elNode("div","meal-bar"),left=elNode("div","meal-title"),symbol=elNode("span","meal-symbol",mealIcons[mi]);symbol.setAttribute("aria-hidden","true");const txt=elNode("div");txt.append(elNode("strong","",mealDescriptions[mi]),elNode("small","",times[mi]));left.append(symbol,txt);
 const label=elNode("label","meal-check"),cb=document.createElement("input");cb.type="checkbox";cb.checked=!!done[active+"-"+mi];cb.setAttribute("aria-label","Mark "+mealDescriptions[mi]+" as eaten");cb.addEventListener("change",()=>{done[active+"-"+mi]=cb.checked;keep();render();});label.append(cb,document.createTextNode("Eaten"));bar.append(left,label);
 const body=elNode("div","meal-content"),dish=elNode("div","dish-row");dish.append(elNode("h3","",meal[1]),elNode("span","macro-summary",cal+" kcal · "+protein+" g protein"));body.append(dish,elNode("div","whattoeat","Your food & portions"));
-const wrapper=elNode("div","food-scroll"),table=elNode("table","food-table");table.setAttribute("aria-label",meal[0]+" food quantities and nutrition");const columns=document.createElement("colgroup");[15,36,27,11,11].forEach(w=>{const c=document.createElement("col");c.style.width=w+"%";columns.append(c)});table.append(columns);const thead=document.createElement("thead"),headrow=document.createElement("tr");["Quantity","What to eat","Size / Portion","Kcal","Protein"].forEach(h=>{const th=elNode("th","",h);th.scope="col";headrow.append(th)});thead.append(headrow);const tbody=document.createElement("tbody");rows.forEach(r=>tbody.append(makeRow(r)));const tfoot=document.createElement("tfoot"),totalrow=document.createElement("tr"),name=elNode("td","total-label","Meal total");name.colSpan=3;totalrow.append(name,elNode("td","total-kcal",cal),elNode("td","total-protein",protein+" g"));tfoot.append(totalrow);table.append(thead,tbody,tfoot);wrapper.append(table);body.append(wrapper);
+const wrapper=elNode("div","food-scroll"),table=elNode("table","food-table");table.setAttribute("aria-label",meal[0]+" food quantities and nutrition");const columns=document.createElement("colgroup");[15,37,24,12,12].forEach(w=>{const c=document.createElement("col");c.style.width=w+"%";columns.append(c)});table.append(columns);const thead=document.createElement("thead"),headrow=document.createElement("tr");["Quantity","What to eat","Size / Portion","Kcal","Protein"].forEach(h=>{const th=elNode("th","",h);th.scope="col";headrow.append(th)});thead.append(headrow);const tbody=document.createElement("tbody");rows.forEach(r=>tbody.append(makeRow(r)));const tfoot=document.createElement("tfoot"),totalrow=document.createElement("tr"),name=elNode("td","total-label","Meal total");name.colSpan=3;totalrow.append(name,elNode("td","total-kcal",cal),elNode("td","total-protein",protein+" g"));tfoot.append(totalrow);table.append(thead,tbody,tfoot);wrapper.append(table);body.append(wrapper);
 article.append(bar,body);
 const bottom=elNode("div","meal-bottom");if(recipes[meal[1]]){const details=elNode("details","recipe"),summary=elNode("summary","recipe-toggle");summary.append(document.createTextNode("👨‍🍳 View recipe"),elNode("span","chev","⌄"));const panel=elNode("div","recipe-panel");panel.append(elNode("h4","","Preparation"),elNode("p","",recipes[meal[1]]));details.append(summary,panel);bottom.append(details);}else{bottom.append(elNode("span","simple-note","Ready to eat · No recipe needed"));}article.append(bottom);return article;}
 function renderSide(){const n=completed(active),percent=n/6*100;el("dayBadge").textContent=n+" / 6 eaten";el("progressRing").style.background="conic-gradient(#168b5d "+percent+"%,#e8f0e8 "+percent+"%)";el("ringCount").textContent=n+"/6";el("progressHeading").textContent=n===6?"All meals complete!":n===0?"Ready to begin":"Keep it going";el("progressText").textContent=n===6?"You completed today's meal checklist.":n===0?"Tick a meal after eating. Your progress saves in this browser.":(6-n)+" meal"+(6-n===1?"":"s")+" remaining today.";const day=days[active],totalKcal=day.reduce((v,m)=>v+sum(m[2],3),0),totalProtein=day.reduce((v,m)=>v+sum(m[2],4),0);el("plannedKcal").textContent=totalKcal.toLocaleString()+" kcal";el("plannedProtein").textContent=totalProtein+" g protein · approx. from listed foods";}
