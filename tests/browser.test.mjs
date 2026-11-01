@@ -7,7 +7,7 @@ import { chromium } from 'playwright';
 const root=resolve(import.meta.dirname,'..');
 const server=createServer((req,res)=>{
  const route=new URL(req.url,'http://localhost').pathname;
- if(!['/sajid-maulana.html','/index.html'].includes(route)){res.writeHead(404);res.end();return}
+ if(!['/sajid-maulana.html','/sajid-maulana-workout.html','/index.html'].includes(route)){res.writeHead(404);res.end();return}
  res.setHeader('content-type','text/html; charset=utf-8');
  res.end(readFileSync(resolve(root,route.slice(1))));
 });
@@ -15,7 +15,6 @@ await new Promise(ok=>server.listen(0,'127.0.0.1',ok));
 const url='http://127.0.0.1:'+server.address().port+'/sajid-maulana.html';
 const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
 const rowCounts=[20,19,18,20,19,19,21];
-const exerciseCounts=[6,2,6,2,6,2,1];
 try{
  for(const width of [1440,820,390]){
   const page=await browser.newPage({viewport:{width,height:900},deviceScaleFactor:1});
@@ -38,21 +37,12 @@ try{
    }));
    totals.forEach((v,j)=>{assert.equal(v.cal,v.totalCal,'Day '+(i+1)+' meal '+(j+1)+' calories');assert.equal(v.pro,v.totalPro,'Day '+(i+1)+' meal '+(j+1)+' protein');assert.equal(v.span,3)});
 
-   // Each day has its own hidden-by-default exercise list; no tutorial images yet.
-   const exerciseToggle=page.locator('#exerciseToggle');
-   const exercisePanel=page.locator('#exercisePanel');
-   assert.equal(await exerciseToggle.getAttribute('aria-expanded'),'false','Day '+(i+1)+' initially collapsed');
-   assert.equal(await exercisePanel.isVisible(),false,'Day '+(i+1)+' panel initially hidden');
-   await exerciseToggle.click();
-   assert.equal(await exerciseToggle.getAttribute('aria-expanded'),'true');
-   assert.equal(await exercisePanel.isVisible(),true);
-   assert.equal(await exercisePanel.locator('.exercise-item').count(),exerciseCounts[i],'Day '+(i+1)+' exercises');
-   assert.equal(await exercisePanel.locator('img').count(),0,'No image tutorials until requested');
-   assert.equal(await exercisePanel.locator('a').count(),0,'No tutorial links until requested');
-   const displayedWorkout=await exercisePanel.locator('#exercisePlanTitle').textContent();
-   assert.ok(displayedWorkout&&displayedWorkout.trim().length>3);
-   await exerciseToggle.click();
-   assert.equal(await exercisePanel.isVisible(),false);
+   // The exercise CTA is a link to a standalone page for the selected day.
+   const workoutLink=page.locator('#exerciseToggle');
+   assert.equal(await workoutLink.getAttribute('href'),'./sajid-maulana-workout.html?day='+(i+1));
+   assert.equal(await workoutLink.evaluate(node=>node.tagName.toLowerCase()),'a');
+   assert.equal(await page.locator('#exercisePanel').count(),0,'Accordion removed');
+   assert.ok((await page.locator('#exerciseDaySummary').textContent()).trim().length>4);
    if(width===1440){
     const bounds=await page.locator('.food-table').first().evaluate(table=>{
      const h=table.querySelectorAll('thead th'),f=table.querySelectorAll('tfoot td');
@@ -62,14 +52,11 @@ try{
     assert.ok(Math.abs(bounds.h5-bounds.f5)<3,'Protein footer alignment');
    }
   }
-  // Navigating to another day closes the previously expanded workout.
+  // Day selection changes the workout destination without opening anything inline.
   await page.locator('#dayTabs button').first().click();
-  await page.locator('#exerciseToggle').click();
-  assert.equal(await page.locator('#exercisePanel').isVisible(),true);
+  assert.equal(await page.locator('#exerciseToggle').getAttribute('href'),'./sajid-maulana-workout.html?day=1');
   await page.locator('#dayTabs button').nth(1).click();
-  assert.equal(await page.locator('#exercisePanel').isVisible(),false);
-  const exerciseKinds=await page.evaluate(()=>DAY_WORKOUTS.map(x=>x.kind));
-  assert.deepEqual(exerciseKinds,['strength','recovery','strength','rest','strength','recovery','rest']);
+  assert.equal(await page.locator('#exerciseToggle').getAttribute('href'),'./sajid-maulana-workout.html?day=2');
   await page.locator('#dayTabs button').nth(1).click();
   const egg=page.locator('.food-table tbody tr').filter({hasText:'Boiled eggs'}).first();
   assert.equal(await egg.count(),1);
@@ -96,13 +83,10 @@ try{
   assert.ok((await page.locator('#mealList').textContent()).includes('Eggs'));
   assert.ok((await page.locator('#mealList').textContent()).includes('Milk'));
   assert.doesNotMatch(await page.locator('#mealList').textContent(),/Anda/i);
-  await page.locator('#exerciseToggle').click();
-  assert.equal(await page.locator('#exercisePanel').isVisible(),true);
+  assert.equal(await page.locator('#exerciseToggle').getAttribute('href'),'./sajid-maulana-workout.html?day=1');
   await page.locator('#langEnglish').click();
   assert.equal(await page.locator('#langEnglish').getAttribute('aria-pressed'),'true');
-  assert.equal(await page.locator('#exercisePanel').isVisible(),true,'Language switch preserves open exercise list');
-  assert.match(await page.locator('#exercisePanel').textContent(),/walk/i);
-  await page.locator('#exerciseToggle').click();
+  assert.equal(await page.locator('#exerciseToggle').getAttribute('href'),'./sajid-maulana-workout.html?day=1');
 
   assert.ok((await page.locator('#mealList').textContent()).includes('Plain curd'));
   await page.locator('#langHinglish').click();
@@ -153,7 +137,7 @@ try{
   await page.emulateMedia({media:'print'});
   assert.equal(await page.locator('.sidebar').evaluate(e=>getComputedStyle(e).display),'none');
   assert.deepEqual(errors,[]);
-  console.log('PASS Chromium width='+width+' (7 days, icons, totals, nav, recipes, progress, print)');
+  console.log('PASS Diet Chromium width='+width+' (7 days, workout links, icons, totals, translations, progress)');
   await page.close();
  }
 }finally{await browser.close();await new Promise(ok=>server.close(ok));}
