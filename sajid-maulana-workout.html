@@ -30,6 +30,32 @@
  #printPage{display:none}
  .brand{min-width:0}
 }
+
+/* Exercise tutorials: independently translated instructions, three image-only pose panels */
+.movement:has(.tutorial){align-items:center}
+.tutorial{grid-column:1/-1;width:100%;border-top:1px solid #e6eee6;margin-top:1px;padding-top:11px;min-width:0}
+.tutorial>summary{cursor:pointer;display:inline-flex;align-items:center;gap:8px;border:1px solid #c9e5d2;background:#edf9f1;color:#156943;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:850;list-style:none;user-select:none}
+.tutorial>summary::-webkit-details-marker{display:none}
+.tutorial>summary:hover{background:#e1f2e7}
+.tutorial>summary:focus-visible{outline:3px solid #5fbe8c;outline-offset:3px}
+.tutorial[open]>summary{background:#dff1e5}
+.tutorial-chevron{margin-left:8px;transition:transform .2s}
+.tutorial[open] .tutorial-chevron{transform:rotate(180deg)}
+.tutorial-content{margin-top:12px}
+.tutorial-intro{color:#708479;font-size:11px;line-height:1.6;margin:0 0 12px}
+.tutorial-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tutorial-step{min-width:0;background:#f8fbf8;border:1px solid #e1eae2;border-radius:12px;overflow:hidden}
+.pose{display:block;height:150px;background-color:white;background-image:var(--tutorial-sprite,none);background-size:300% 1000%;background-repeat:no-repeat;position:relative}
+.pose::after{content:"";position:absolute;inset:0;border-bottom:1px solid #e9f0e9;pointer-events:none}
+.step-description{padding:12px}
+.step-description strong{display:block;color:#185338;font-size:12px;margin:0 0 5px}
+.step-description p{margin:0;color:#506b5a;font-size:12px;line-height:1.65}
+.step-number{display:inline-flex;align-items:center;justify-content:center;background:#167c50;color:white;border-radius:100px;height:21px;width:21px;font-size:10px;margin-right:5px}
+.tutorial-tip{font-size:12px;margin-top:11px;background:#eaf7ee;border-radius:9px;padding:11px 13px;color:#366348;line-height:1.65}
+.art-disclaimer{font-size:10px;margin:7px 0 0;color:#7c8d81}
+@media(max-width:800px){.pose{height:125px}.step-description{padding:10px}.step-description p{font-size:11px}}
+@media(max-width:580px){.tutorial-steps{grid-template-columns:1fr}.tutorial-step{display:grid;grid-template-columns:112px minmax(0,1fr);align-items:center}.pose{width:112px;height:100px}.step-description{padding:10px 12px}.tutorial>summary{width:100%;justify-content:center}}
+@media print{.tutorial-steps{grid-template-columns:repeat(3,1fr)}.pose{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>
 </head>
 <body>
@@ -116,6 +142,99 @@ const TRANSLATIONS={
  english:{home:"Home",dietNav:"Diet plan",dietPlan:"Diet plan",workouts:"Workouts",print:"Print",eyebrow:"YOUR TRAINING PLAN",heroTitle:"Train smarter. Get stronger.",heroDescription:"Three different beginner-friendly full-body sessions, balanced with walking and recovery. Choose a day to see the exercises, sets and reps.",strengthDays:"3 strength days",activeDays:"2 active recovery days",restDays:"2 rest days",weeklyFocus:"WEEKLY FOCUS",goal:"Build muscle",goalSub:"Strength + recovery + good nutrition",scheduleTitle:"Your 7-day workout schedule",scheduleDesc:"Choose a day to see its exercises.",backToMeals:"Back to this day's meals",warmUp:"Warm up before strength training",warmUpDuration:"5 minutes of easy walking or marching",progressHeading:"Workout progress",complete:"complete",resetProgress:"↺ Reset this day",weeklyHeading:"Your weekly schedule",quickTips:"Quick reminders",footer:"Nourish Plan · General fitness guidance. Adjust intensity to your ability.",sets:"sets",reps:"reps",rest:"rest",done:"Done",strength:"Strength",recovery:"Recovery",restDay:"Rest",ready:"Ready to train",inProgress:"Keep going",allDone:"Session complete!",readyDetail:"Tick off each exercise when finished.",inProgressDetail:"exercises remaining.",allDoneDetail:"Nice work. Give your body time to recover.",recoveryDetail:"Easy movement only. Recovery supports muscle gain.",restDetail:"Rest is part of your plan. No strength session today.",restRow:"No exercises scheduled today",restSub:"Take a rest from strength training.",noteStrength:"Start light and keep each movement controlled. Use a stable step and light backpack or water bottles where listed. A gym or equipment alternative is fine. Stop if something causes pain.",noteRecovery:"Keep effort comfortable. Walking and gentle mobility are enough today.",noteRest:"You do not need a hard workout every day. Recover, eat well and sleep.",tipsStrength:"Choose loads that allow the listed reps with good form. Increase resistance gradually, not all at once.",tipsRecovery:"Keep the walk comfortable and stay hydrated. Skip optional mobility if you feel sore.",tipsRest:"Rest and sleep help your muscles adapt to strength training.",day:"Day"},
  hinglish:{home:"Home",dietNav:"Diet plan",dietPlan:"Diet plan",workouts:"Workouts",print:"Print",eyebrow:"AAPKA WORKOUT PLAN",heroTitle:"Train smart. Grow strong.",heroDescription:"Muscle gain ke liye 3 alag full-body workouts, walking aur recovery days. Har day ke sets aur reps clearly dekhein.",strengthDays:"3 strength days",activeDays:"2 active recovery days",restDays:"2 rest days",weeklyFocus:"WEEKLY FOCUS",goal:"Build muscle",goalSub:"Strength + recovery + nutrition",scheduleTitle:"Aapka 7-day workout schedule",scheduleDesc:"Day select karke exercises dekhein.",backToMeals:"Is day ke meals par jaayein",warmUp:"Workout se pehle warm-up",warmUpDuration:"5 min easy walk ya marching",progressHeading:"Workout progress",complete:"complete",resetProgress:"↺ Is day ka progress reset karein",weeklyHeading:"Weekly schedule",quickTips:"Quick reminders",footer:"Nourish Plan · General fitness guide. Workout ko apni capacity ke hisaab se adjust karein.",sets:"sets",reps:"reps",rest:"rest",done:"Ho gaya",strength:"Strength",recovery:"Recovery",restDay:"Rest",ready:"Start karein",inProgress:"Continue rakhein",allDone:"Workout complete!",readyDetail:"Har exercise complete hone par tick karein.",inProgressDetail:"exercises baaki hain.",allDoneDetail:"Workout done. Recovery bhi zaroori hai.",recoveryDetail:"Aaj light movement kaafi hai. Recovery muscle gain mein help karti hai.",restDetail:"Aaj strength workout nahi hai. Rest bhi plan ka hissa hai.",restRow:"Aaj koi exercise schedule nahi hai",restSub:"Strength training se rest lein.",noteStrength:"Light resistance aur controlled form se start karein. Stable step aur zaroorat par light backpack ya water bottles use karein. Pain ho toh stop karein.",noteRecovery:"Walk comfortable pace mein karein. Aaj light mobility enough hai.",noteRest:"Roz heavy workout zaroori nahi hai. Recovery, diet aur sleep important hain.",tipsStrength:"Aisa weight choose karein jisse saare reps sahi form se ho sakein. Resistance gradually badhayein.",tipsRecovery:"Walk easy rakhein aur hydration maintain karein. Soreness ho toh optional mobility skip karein.",tipsRest:"Rest aur sleep muscle recovery ke liye important hain.",day:"Day"}
 };
+
+/* 10 generated exercise illustrations as a sprite of 30 separate position panels.
+   The WebP is stored in 2 plain-text base64 chunks to keep GitHub file uploads text-safe.
+   Artwork contains no text. Step names and instructions are translated in DOM. */
+const TUTORIALS={
+ bodyweightSquat:{row:0,steps:[
+  {en:"Stand with feet roughly shoulder-width apart and brace your core.",hi:"Feet shoulder-width rakhein aur core tight karein."},
+  {en:"Push your hips back and bend your knees. Keep your heels on the floor.",hi:"Hips peeche le jaakar knees bend karein. Heels floor par rakhein."},
+  {en:"Press through your feet to stand tall again, without snapping your knees.",hi:"Feet se push karke seedhe khade ho jaayein. Knees ko jhatka na dein."}
+ ],tip:{en:"Move only as deep as you can while maintaining balance and control.",hi:"Utna hi neeche jaayein jitna balance aur form sahi rahe."}},
+ inclinePushup:{row:1,steps:[
+  {en:"Put both hands on a stable raised surface and walk your feet back into a straight plank.",hi:"Dono haath stable raised surface par rakhein aur feet peeche lekar straight plank banayein."},
+  {en:"Bend your elbows and lower your chest toward the edge, keeping your hips in line.",hi:"Elbows bend karke chest ko surface ki taraf le jaayein. Hips straight rakhein."},
+  {en:"Push the surface away until your arms are extended again.",hi:"Surface ko push karke arms phir se straight karein."}
+ ],tip:{en:"A higher surface makes the exercise easier. Never use an unstable chair.",hi:"Zyada height se exercise easy hogi. Unstable chair use na karein."}},
+ backpackRow:{row:2,steps:[
+  {en:"Support one hand on a stable bench, hinge forward, and hold a light backpack in the other hand.",hi:"Stable bench par ek haath rakhein, hip se aage jhukein aur doosre haath mein light backpack pakdein."},
+  {en:"Pull the backpack toward your hip while keeping your back flat and elbow close to your body.",hi:"Back straight rakhte hue backpack ko hip ki taraf kheenchein. Elbow body ke paas rakhein."},
+  {en:"Lower the backpack slowly; finish your reps, then repeat with the other arm.",hi:"Backpack dheere neeche laayein. Reps complete karke doosre haath se repeat karein."}
+ ],tip:{en:"Avoid twisting your torso or jerking the weight upward.",hi:"Torso twist na karein aur weight ko jhatke se na uthayein."}},
+ gluteBridge:{row:3,steps:[
+  {en:"Lie on your back with knees bent, feet flat and arms beside you.",hi:"Peeth ke bal letein. Knees bend, feet flat aur arms side mein rakhein."},
+  {en:"Press through your heels and lift your hips until shoulders, hips and knees form a line.",hi:"Heels se push karke hips uthayein, shoulders se knees tak straight line banayein."},
+  {en:"Squeeze your glutes briefly and slowly lower your hips.",hi:"Glutes ko halkasa squeeze karke hips dheere neeche laayein."}
+ ],tip:{en:"Lift with the glutes, not by excessively arching your lower back.",hi:"Hips glutes se lift karein. Lower back ko zyada arch na karein."}},
+ forearmPlank:{row:4,steps:[
+  {en:"Set forearms on the floor with elbows under shoulders; begin with knees down.",hi:"Forearms floor par aur elbows shoulders ke niche rakhein. Shuru mein knees floor par ho."},
+  {en:"Extend both legs back, tighten your abdomen and keep your body aligned.",hi:"Legs peeche extend karein, core tight rakhein aur body straight rakhein."},
+  {en:"Hold still for your prescribed time while breathing normally.",hi:"Diye gaye seconds tak hold karein aur normal breathing rakhein."}
+ ],tip:{en:"Do not let your hips sag or hold your breath.",hi:"Hips neeche drop na hone dein aur breath hold na karein."}},
+ reverseLunge:{row:5,steps:[
+  {en:"Stand tall with feet hip-width apart.",hi:"Feet hip-width par rakhkar seedhe khade ho."},
+  {en:"Step one leg backward and bend both knees under control.",hi:"Ek leg peeche le jaakar dono knees controlled tarike se bend karein."},
+  {en:"Push through the front foot to return to standing; switch legs.",hi:"Front foot se push karke khade ho jaayein. Phir leg change karein."}
+ ],tip:{en:"Use a wall for balance if needed. Keep your front knee aligned with your toes.",hi:"Balance ke liye wall support le sakte hain. Front knee toes ki direction mein rakhein."}},
+ backpackHipHinge:{row:6,steps:[
+  {en:"Stand tall holding a light backpack in front of your thighs. Soften your knees.",hi:"Light backpack thighs ke saamne pakdein. Knees halka bend rakhein."},
+  {en:"Move your hips backward and lower the backpack close to your legs, keeping your back neutral.",hi:"Hips peeche le jaakar backpack ko legs ke paas neeche laayein. Back neutral rakhein."},
+  {en:"Drive hips forward to stand up; avoid leaning backward at the top.",hi:"Hips aage laakar khade ho jaayein. Upar jaakar peeche na jhukein."}
+ ],tip:{en:"This is a hip movement, not a deep squat. Stop before your back rounds.",hi:"Ye hip hinge hai, deep squat nahi. Back round hone se pehle ruk jaayein."}},
+ bottleShoulderPress:{row:7,steps:[
+  {en:"Stand tall holding two light water bottles beside your shoulders.",hi:"Do light water bottles shoulders ke paas pakadkar seedhe khade ho."},
+  {en:"Brace your core and press the bottles overhead without leaning back.",hi:"Core tight karke bottles overhead press karein, peeche lean na karein."},
+  {en:"Lower both bottles slowly to shoulder level.",hi:"Bottles ko dheere shoulders tak neeche laayein."}
+ ],tip:{en:"Use bottles of equal weight and keep your wrists aligned.",hi:"Dono bottles same weight ki rakhein aur wrists aligned rakhein."}},
+ bandRow:{row:8,steps:[
+  {en:"Sit upright with legs extended and a resistance band securely looped around your feet.",hi:"Seedhe baithkar legs extend karein aur band ko feet ke around securely lagayein."},
+  {en:"Pull handles toward your ribs, bringing your elbows back while keeping your shoulders relaxed.",hi:"Band handles ribs ki taraf kheenchein, elbows peeche laayein aur shoulders relaxed rakhein."},
+  {en:"Extend your arms slowly, maintaining tension and posture.",hi:"Arms dheere aage extend karein, posture aur band tension maintain rakhein."}
+ ],tip:{en:"Inspect the band for damage and keep it securely anchored around the feet.",hi:"Band damage check karein aur feet ke around securely lagaayein."}},
+ deadBug:{row:9,steps:[
+  {en:"Lie on your back with arms above your shoulders and knees bent at 90 degrees.",hi:"Peeth ke bal letein, arms upar aur knees 90 degree bend rakhein."},
+  {en:"Slowly extend one arm and the opposite leg without lifting your lower back.",hi:"Ek arm aur opposite leg dheere extend karein, lower back ko lift na hone dein."},
+  {en:"Return both to the start, then alternate sides with control.",hi:"Dono ko start position mein laayein. Phir opposite side repeat karein."}
+ ],tip:{en:"Move slowly and keep your lower back gently in contact with the floor.",hi:"Dheere move karein aur lower back floor ke paas rakhein."}}
+};
+const ATLAS_PARTS=["./assets/workouts/tutorial-atlas.part1.txt","./assets/workouts/tutorial-atlas.part2.txt"];
+let tutorialArtReady=false;
+async function loadTutorialArt(){
+ try{
+  const response=await Promise.all(ATLAS_PARTS.map(url=>fetch(url)));
+  if(response.some(r=>!r.ok))throw Error("Illustration assets unavailable");
+  const b64=(await Promise.all(response.map(r=>r.text()))).join("").trim();
+  if(b64.length!==13352)throw Error("Illustration asset incomplete");
+  const img=new Image();
+  img.src="data:image/webp;base64,"+b64;
+  await img.decode();
+  if(img.naturalWidth!==480||img.naturalHeight!==1100)throw Error("Illustration atlas dimensions invalid");
+  document.documentElement.style.setProperty("--tutorial-sprite",'url("'+img.src+'")');
+  tutorialArtReady=true;
+ }catch(err){console.warn("Workout illustrations unavailable:",err);}
+}
+function makeTutorial(item){
+ const data=TUTORIALS[item.id];if(!data)return null;
+ const details=create("details","tutorial"),summary=create("summary");
+ summary.append(create("span","",language==="hinglish"?"📖 Tutorial dekhein":"📖 View tutorial"),create("span","tutorial-chevron","⌄"));
+ const area=create("div","tutorial-content");
+ area.append(create("p","tutorial-intro",language==="hinglish"?"Har position ki image aur step-by-step instructions neeche hain.":"See three separate positions with instructions below each image."));
+ const grid=create("div","tutorial-steps");
+ data.steps.forEach((step,index)=>{
+  const card=create("section","tutorial-step"),pose=create("div","pose");
+  pose.style.backgroundPosition=(index*50)+"% "+(data.row*100/9)+"%";
+  pose.setAttribute("role","img");
+  pose.setAttribute("aria-label",itemName(item)+": position "+(index+1));
+  const desc=create("div","step-description");
+  const name=create("strong","");name.append(create("span","step-number",index+1),document.createTextNode(language==="hinglish"?["Start","Movement","Return"][index]:["Start","Movement","Return"][index]));
+  desc.append(name,create("p","",language==="hinglish"?step.hi:step.en));card.append(pose,desc);grid.append(card);
+ });
+ area.append(grid,create("div","tutorial-tip","💡 "+(language==="hinglish"?data.tip.hi:data.tip.en)));
+ area.append(create("p","art-disclaimer",language==="hinglish"?"Images sirf posture reference ke liye hain; instructions follow karein.":"Illustrations are posture references. Follow the written cues."));
+ details.append(summary,area);return details;
+}
+
 const KEY_LANG="nourish-plan-language";
 const KEY_PROGRESS="nourish-sajid-workout-progress-v1";
 let language="hinglish",completed={};
@@ -162,7 +281,9 @@ function renderMovements(w){
   const label=create("label");
   const input=create("input");input.type="checkbox";input.checked=checked;input.setAttribute("aria-label",itemName(item)+" "+tr("done"));
   input.addEventListener("change",()=>{completed[doneKey(active,item.id)]=input.checked;persist();render();});
-  label.append(input,document.createTextNode(tr("done")));row.append(label);list.append(row);
+  label.append(input,document.createTextNode(tr("done")));row.append(label);
+  const tutorial=makeTutorial(item);if(tutorial)row.append(tutorial);
+  list.append(row);
  });
 }
 function renderProgress(w){
@@ -217,5 +338,6 @@ el("resetProgress").addEventListener("click",()=>{session().items.forEach(item=>
 el("printPage").addEventListener("click",()=>window.print());
 window.addEventListener("popstate",()=>{const day=Number.parseInt(new URLSearchParams(window.location.search).get("day"),10);active=Math.max(0,Math.min(6,(day||1)-1));render();});
 render();
+loadTutorialArt();
 </script>
 </body></html>
