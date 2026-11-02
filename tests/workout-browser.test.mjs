@@ -7,7 +7,7 @@ import {chromium} from 'playwright';
 const root=resolve(import.meta.dirname,'..');
 const server=createServer((req,res)=>{
  const pathname=new URL(req.url,'http://localhost').pathname;
- if(!['/sajid-maulana-workout.html','/sajid-maulana.html','/index.html'].includes(pathname)){res.writeHead(404);res.end();return;}
+ if(!['/sajid-maulana-workout.html','/sajid-maulana.html','/index.html','/assets/workouts/tutorial-atlas.part1.txt','/assets/workouts/tutorial-atlas.part2.txt'].includes(pathname)){res.writeHead(404);res.end();return;}
  res.setHeader('content-type','text/html; charset=utf-8');res.end(readFileSync(resolve(root,pathname.slice(1))));
 });
 await new Promise(ok=>server.listen(0,'127.0.0.1',ok));
@@ -23,6 +23,11 @@ try{
   await page.goto(base+'/sajid-maulana-workout.html?day=3');
   await page.locator('#dayTabs a').first().waitFor();
   assert.equal(await page.locator('#dayTabs a').count(),7);
+  await page.waitForFunction(()=>tutorialArtReady,{timeout:15000});
+  const validAtlas=await page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--tutorial-sprite').includes('data:image/webp;base64,'));
+  assert.ok(validAtlas,'Generated atlas must load and decode');
+  assert.equal(await page.evaluate(()=>Object.keys(TUTORIALS).length),10,'10 exercises with tutorials');
+
   const structure=await page.evaluate(()=>WEEK.map(key=>({id:key,name:WORKOUTS[key].en,kind:WORKOUTS[key].kind,items:WORKOUTS[key].items})));
   assert.deepEqual(structure.map(s=>s.name),names);
   assert.deepEqual(structure.map(s=>s.kind),kinds);
@@ -42,7 +47,19 @@ try{
    assert.equal(await page.locator('#movementList .movement').count(),counts[i]||1);
    assert.equal(await page.locator('#movementList input[type=checkbox]').count(),counts[i]);
    assert.equal(await page.locator('#prepStrip').isVisible(),kinds[i]==='strength');
-   assert.equal(await page.locator('img').count(),0,'Tutorial images are reserved for later');
+   // The images are displayed as three independent, text-free pose panels per illustrated exercise.
+   const illustrated=structure[i].items.filter(x=>['bodyweightSquat','inclinePushup','backpackRow','gluteBridge','forearmPlank','reverseLunge','backpackHipHinge','bottleShoulderPress','bandRow','deadBug'].includes(x.id)).length;
+   assert.equal(await page.locator('#movementList details.tutorial').count(),illustrated);
+   if(illustrated){
+    const first=page.locator('#movementList details.tutorial').first();
+    await first.locator('summary').click();
+    assert.equal(await first.locator('.tutorial-step').count(),3);
+    assert.equal(await first.locator('.pose[role="img"]').count(),3);
+    assert.equal(await first.locator('.step-description p').count(),3);
+    const backgrounds=await first.locator('.pose').evaluateAll(nodes=>nodes.map(node=>getComputedStyle(node).backgroundImage));
+    assert.ok(backgrounds.every(bg=>bg.includes('data:image/webp;base64,')),'Separate poses must use the generated artwork');
+    await first.locator('summary').click();
+   }
    const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
    assert.ok(overflow<=1,'Horizontal overflow '+width+'px, Day '+(i+1)+': '+overflow);
   }
@@ -53,7 +70,14 @@ try{
   assert.equal(await page.locator('#progressCount').textContent(),'0/5');
   await page.locator('#dayTabs a').nth(2).click();
   assert.equal(await page.locator('#progressCount').textContent(),'1/5');
+  await page.locator('#dayTabs a').first().click();
+  await page.locator('#movementList details.tutorial').first().locator('summary').click();
+  assert.ok((await page.locator('#movementList .step-description p').first().textContent()).includes('rakhein'));
   await page.locator('#langEnglish').click();
+  await page.locator('#movementList details.tutorial').first().locator('summary').click();
+  assert.ok((await page.locator('#movementList .step-description p').first().textContent()).includes('Stand'));
+  await page.locator('#dayTabs a').nth(2).click();
+
   assert.equal(await page.locator('#langEnglish').getAttribute('aria-pressed'),'true');
   await page.reload();
   assert.equal(await page.locator('#progressCount').textContent(),'1/5');
